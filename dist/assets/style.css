@@ -1747,7 +1747,7 @@ body.al-admin {
   margin-left: auto;
 }
 .form--search .form__field {
-  height: 40px;
+  height: 48px;
   padding: 0 16px;
   border: 1px solid #94A3B8;
   border-radius: 4px;
@@ -2034,7 +2034,7 @@ body.al-admin {
 .form__group--horizontal .form-label,
 .form-group--horizontal .form__label,
 .form-group--horizontal .form-label {
-  min-height: 40px;
+  min-height: 48px;
   display: flex;
   align-items: center;
 }
@@ -2117,7 +2117,7 @@ body.al-admin {
   align-items: center;
   gap: 12px;
   width: 100%;
-  height: 40px;
+  height: 48px;
   padding: 0 14px;
   border-radius: 6px;
   border: 1px solid #94A3B8;
@@ -2222,7 +2222,7 @@ body.al-admin {
   border: 0;
   background: transparent;
   outline: none;
-  font-size: 14px;
+  font-size: 17px;
   color: #333;
   appearance: none;
 }
@@ -7526,7 +7526,7 @@ select:focus {
 }
 .op-task__search .form__field {
   width: 320px;
-  height: 42px;
+  height: 48px;
 }
 .op-task__table-wrapper {
   max-height: 216px;
@@ -9080,7 +9080,7 @@ select:focus {
 }
 .battery-detail__level-input {
   width: 100%;
-  height: 38px;
+  height: 48px;
   min-width: 0;
   max-width: 154px;
   padding: 0 12px;
