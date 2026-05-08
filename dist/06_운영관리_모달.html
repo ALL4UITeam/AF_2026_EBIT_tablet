@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>가이드 | E-BIT 관리자</title>
+  
+  <link rel="stylesheet" href="./assets/fonts/pretendard.css">
+  <link rel="stylesheet" href="./lib/simplebar/simplebar.css">
+  <link rel="stylesheet" href="./lib/dragula/dragula.min.css">
+  <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.theme.min.css">
+  <link rel="stylesheet" href="./lib/datetimepicker/jquery.datetimepicker.css">
+  <link rel="stylesheet" href="./lib/glightbox/glightbox.min.css">
+  
+  
+  <script src="./lib/jQuery/jquery-3.7.1.js"></script>
+  <script src="./lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+  <script src="./lib/jQuery-ui/jquery-ui.min.js"></script>
+  <script src="./lib/simplebar/simplebar.min.js"></script>
+  <script src="./lib/dragula/dragula.min.js"></script>
+  <script src="./lib/glightbox/glightbox.min.js"></script>
+  <script type="module" src="/2026_AF_EBIT/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_EBIT/assets/style.css">
+</head>
+
+<body class="al-admin">
+  <div class="al-wrap">
+
+    <header class="al-header">
+        <div class="al-header__left">
+            <button type="button" class="al-header__menu-btn" id="alMenuBtn" aria-label="메뉴 열기">
+                <span class="al-header__hamburger" aria-hidden="true"><span></span></span>
+            </button>
+            <a href="#" class="al-header__brand">
+                <img src="/2026_AF_EBIT/assets/images/logo2.svg" alt="" />
+            </a>
+        </div>
+    
+        <div class="al-header__right">
+            <button type="button" class="al-header__notify" aria-label="알림">
+                <span class="al-header__notify-icon" aria-hidden="true"></span>
+            </button>
+            <div class="al-header__user">
+                <div class="al-header__user-name"><strong>관리자</strong>님</div>
+                <div class="al-header__avatar" aria-hidden="true">
+                    <span class="al-header__avatar-icon"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="al-body">
+      <div class="al-backdrop" id="alBackdrop" aria-hidden="true"></div>
+
+      <aside class="al-sidenav" id="alSidenav" aria-label="주 메뉴">
+          <div class="al-sidenav__scroll">
+              <ul class="al-sidenav__list">
+      
+                  <!-- 대시보드 (단일 메뉴) -->
+                  <li class="al-sidenav__item">
+                      <a href="#" class="al-sidenav__link">
+                          <span class="al-sidenav__icon al-sidenav__icon--m01" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">대시보드</span>
+                      </a>
+                  </li>
+      
+                  <!-- 앱 관리 (2depth, 현재 활성) -->
+                  <li class="al-sidenav__item is-open" data-nav="app">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m02" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">앱관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">앱 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">배포 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 단말 관리 -->
+                  <li class="al-sidenav__item">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m03" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">단말관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">운영 대시보드</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">단말 등록</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">단말 등록</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">그룹 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">단말 상태 현황</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">원격 제어</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 컨텐츠 관리 -->
+                  <li class="al-sidenav__item">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m04" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">컨텐츠관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">텍스트 설정</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">텍스트 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 장비분석 -->
+                  <li class="al-sidenav__item">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m05" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">장비분석</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">분석 현황</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">교체주기 분석</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">기기 유형 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">배터리 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 운영관리 -->
+                  <li class="al-sidenav__item">
+                      <a href="#" class="al-sidenav__link">
+                          <span class="al-sidenav__icon al-sidenav__icon--m06" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">운영관리</span>
+                      </a>
+                  </li>
+      
+                  <!-- 시스템관리 -->
+                  <li class="al-sidenav__item is-open">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m07" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">시스템관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">사용자 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">그룹 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="./06_사용자관리_권한관리.html" class="al-sidenav__sublink is-active">권한 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">작업 이력</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">공통 코드 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </aside>
+      <main class="al-content" id="alContent">
+        <section class="card">
+          <h3 class="card__title">운영관리 Modal</h3>
+          <div class="al-guide-row">
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-device-select">작업 지시 등록(단말선택)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-assignee-select">작업 지시 등록(작업자 선택)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-content">작업 지시 등록(작업 내용)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-register-complete">작업 지시 등록(완료)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-edit-terminal">작업 지시 수정(단말 정보)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-edit-assignee">작업 지시 수정(작업자 선택)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-edit-work">작업 지시 수정(작업 내용)</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="operation-task-detail">작업 지시 수정(완료)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-1">경고(오류)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-2">경고(OTP초기화)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-confirm">확인</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-modify">수정</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-regist">등록</button>
+          </div>
+        </section>
+
+        <div class="modal-backdrop" id="operation-task-device-select" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskDeviceSelectTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskDeviceSelectTitle">작업 지시 등록</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-device-select"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="mdm-wrapper op-task__content">
+                        <nav class="step op-task__step" aria-label="작업 지시 등록 단계">
+                            <ol class="step__list">
+                                <li class="step__item step__item--current">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.2251%2022.8982L26.7914%2014.3674L25.2914%2012.8844L18.2193%2019.9678L14.6835%2016.4261L13.1922%2017.9007L18.2251%2022.8982ZM2.30762%2033.7178V31.6236H37.6918V33.7178H2.30762ZM6.77345%2029.5511C6.05706%2029.5511%205.44345%2029.2957%204.93262%2028.7849C4.42178%2028.274%204.16637%2027.6606%204.16637%2026.9444V8.82486C4.16637%208.10847%204.42178%207.49486%204.93262%206.98402C5.44345%206.47319%206.05706%206.21777%206.77345%206.21777H33.226C33.9423%206.21777%2034.556%206.47319%2035.0668%206.98402C35.5776%207.49486%2035.833%208.10847%2035.833%208.82486V26.9444C35.833%2027.6606%2035.5776%2028.274%2035.0668%2028.7849C34.556%2029.2957%2033.9423%2029.5511%2033.226%2029.5511H6.77345ZM6.77345%2027.4574H33.226C33.3543%2027.4574%2033.4719%2027.4039%2033.5789%2027.2969C33.6855%2027.19%2033.7389%2027.0725%2033.7389%2026.9444V8.82486C33.7389%208.69652%2033.6855%208.57889%2033.5789%208.47194C33.4719%208.36528%2033.3543%208.31194%2033.226%208.31194H6.77345C6.64512%208.31194%206.52748%208.36528%206.42053%208.47194C6.31387%208.57889%206.26053%208.69652%206.26053%208.82486V26.9444C6.26053%2027.0725%206.31387%2027.19%206.42053%2027.2969C6.52748%2027.4039%206.64512%2027.4574%206.77345%2027.4574Z'%20fill='white'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">1단계</span>
+                                    <strong class="step__label">단말 선택</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24.3227%2034.9574H34.8785V33.712C34.2188%2032.9242%2033.4325%2032.3116%2032.5198%2031.8741C31.607%2031.4369%2030.6321%2031.2182%2029.5952%2031.2182C28.5582%2031.2182%2027.5834%2031.4369%2026.6706%2031.8741C25.7578%2032.3116%2024.9752%2032.9242%2024.3227%2033.712V34.9574ZM31.2352%2029.0066C31.6838%2028.558%2031.9081%2028.0131%2031.9081%2027.372C31.9081%2026.7312%2031.6838%2026.1863%2031.2352%2025.7374C30.7866%2025.2888%2030.2399%2025.0645%2029.5952%2025.0645C28.9507%2025.0645%2028.4059%2025.2888%2027.9606%2025.7374C27.5156%2026.1863%2027.2931%2026.7312%2027.2931%2027.372C27.2931%2028.0131%2027.5156%2028.558%2027.9606%2029.0066C28.4059%2029.4555%2028.9507%2029.6799%2029.5952%2029.6799C30.2399%2029.6799%2030.7866%2029.4555%2031.2352%2029.0066ZM19.9744%2015.2032C18.6477%2015.2032%2017.5166%2015.6692%2016.581%2016.6012C15.6455%2017.5331%2015.1777%2018.6662%2015.1777%2020.0003C15.1777%2021.0559%2015.4652%2021.9828%2016.0402%2022.7812C16.6155%2023.5798%2017.3642%2024.1574%2018.2864%2024.5141C18.2973%2024.1216%2018.3205%2023.7366%2018.356%2023.3591C18.3916%2022.9819%2018.4524%2022.6364%2018.5385%2022.3228C18.1282%2022.1%2017.8145%2021.7756%2017.5973%2021.3495C17.38%2020.9237%2017.2714%2020.4739%2017.2714%2020.0003C17.2714%2019.2531%2017.5352%2018.6159%2018.0627%2018.0887C18.5902%2017.5612%2019.2274%2017.2974%2019.9744%2017.2974C20.4538%2017.2974%2020.8998%2017.4125%2021.3123%2017.6428C21.7245%2017.8734%2022.0539%2018.1952%2022.3006%2018.6082C22.5225%2018.5285%2022.7549%2018.4694%2022.9977%2018.4307C23.2402%2018.3924%2023.4807%2018.3732%2023.7194%2018.3732H24.4564C24.1273%2017.4452%2023.5566%2016.6849%2022.7444%2016.0924C21.9318%2015.4996%2021.0085%2015.2032%2019.9744%2015.2032ZM16.5152%2035.8337L15.8014%2030.8016C15.2723%2030.6221%2014.7102%2030.3639%2014.1152%2030.027C13.5199%2029.6901%2013.0018%2029.3321%2012.561%2028.9532L7.88685%2031.0303L4.38477%2024.8828L8.54852%2021.792C8.49852%2021.5142%208.46268%2021.2182%208.44102%2020.9041C8.41935%2020.5899%208.40852%2020.2939%208.40852%2020.0162C8.40852%2019.7492%208.41935%2019.4596%208.44102%2019.1474C8.46268%2018.8349%208.49852%2018.522%208.54852%2018.2087L4.38477%2015.107L7.88685%209.00241L12.5452%2011.0528C13.018%2010.6703%2013.5427%2010.3132%2014.1193%209.98158C14.696%209.65019%2015.2514%209.39866%2015.7856%209.22699L16.5152%204.16699H23.4852L24.1989%209.21491C24.7745%209.42658%2025.3341%209.68463%2025.8777%209.98908C26.4216%2010.2935%2026.926%2010.6481%2027.391%2011.0528L32.1239%209.00241L35.6156%2015.107L31.4885%2018.2053C31.4919%2018.2567%2031.4953%2018.2856%2031.4989%2018.292C31.5025%2018.2984%2031.5098%2018.3123%2031.5206%2018.3337H29.246C29.2182%2018.172%2029.1913%2018.0135%2029.1652%2017.8582C29.1394%2017.703%2029.1021%2017.5445%2029.0535%2017.3828L32.8594%2014.5474L31.201%2011.6349L26.871%2013.4799C26.2946%2012.8424%2025.601%2012.2802%2024.7902%2011.7932C23.9794%2011.306%2023.1491%2010.9914%2022.2994%2010.8495L21.746%206.26116H18.2631L17.7118%2010.8337C16.813%2011.0231%2015.9846%2011.3355%2015.2268%2011.7707C14.4688%2012.2057%2013.7573%2012.7673%2013.0923%2013.4553L8.79935%2011.6349L7.14102%2014.5474L10.9093%2017.3262C10.7818%2017.7514%2010.6875%2018.1863%2010.6264%2018.6307C10.565%2019.0752%2010.5343%2019.537%2010.5343%2020.0162C10.5343%2020.4687%2010.565%2020.9117%2010.6264%2021.3453C10.6875%2021.7792%2010.7766%2022.2141%2010.8935%2022.6499L7.14102%2025.4532L8.79935%2028.3657L13.076%2026.5366C13.7655%2027.2388%2014.5531%2027.8209%2015.4389%2028.2828C16.3245%2028.7448%2017.263%2029.0782%2018.2544%2029.2832V35.8337H16.5152ZM24.216%2037.372C23.568%2037.372%2023.0213%2037.1477%2022.576%2036.6991C22.131%2036.2502%2021.9085%2035.7053%2021.9085%2035.0645V24.2953C21.9085%2023.6542%2022.131%2023.1094%2022.576%2022.6607C23.0213%2022.2119%2023.568%2021.9874%2024.216%2021.9874H34.9852C35.6263%2021.9874%2036.1712%2022.2119%2036.6198%2022.6607C37.0684%2023.1094%2037.2927%2023.6542%2037.2927%2024.2953V35.0645C37.2927%2035.7053%2037.0684%2036.2502%2036.6198%2036.6991C36.1712%2037.1477%2035.6263%2037.372%2034.9852%2037.372H24.216Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">2단계</span>
+                                    <strong class="step__label">작업자 선택</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.5749%2020.0746V17.9808H10.4812V20.0746H12.5749ZM19.7257%2020.0746C19.933%2019.6788%2020.157%2019.3118%2020.3978%2018.9738C20.6387%2018.636%2020.898%2018.305%2021.1757%2017.9808H15.5024V20.0746H19.7257ZM18.4491%2025.5771C18.4377%2025.5046%2018.4324%2025.4314%2018.4332%2025.3575C18.4338%2025.2833%2018.4341%2025.2065%2018.4341%2025.1271C18.4341%2024.8376%2018.4412%2024.5583%2018.4553%2024.2892C18.4698%2024.0203%2018.4994%2023.7515%2018.5441%2023.4829H10.4812V25.5771H18.4491ZM21.4682%2032.5H6.77408C6.05991%2032.5%205.44685%2032.244%204.93491%2031.7321C4.42296%2031.2201%204.16699%2030.6071%204.16699%2029.8929V10.1071C4.16699%209.39292%204.42296%208.77986%204.93491%208.26792C5.44685%207.75597%206.05991%207.5%206.77408%207.5H33.2266C33.9407%207.5%2034.5538%207.75597%2035.0657%208.26792C35.5777%208.77986%2035.8337%209.39292%2035.8337%2010.1071V16.9958C35.5095%2016.7058%2035.1785%2016.4446%2034.8407%2016.2121C34.5027%2015.9796%2034.1356%2015.7682%2033.7395%2015.5779V10.1071C33.7395%209.95736%2033.6914%209.83444%2033.5953%209.73833C33.4992%209.64222%2033.3763%209.59417%2033.2266%209.59417H6.77408C6.62435%209.59417%206.50144%209.64222%206.40533%209.73833C6.30921%209.83444%206.26116%209.95736%206.26116%2010.1071V29.8929C6.26116%2030.0426%206.30921%2030.1656%206.40533%2030.2617C6.50144%2030.3578%206.62435%2030.4058%206.77408%2030.4058H19.8412C20.0648%2030.8019%2020.3137%2031.1736%2020.5878%2031.5208C20.8623%2031.8681%2021.1557%2032.1944%2021.4682%2032.5ZM29.9949%2032.5H28.1424L27.8157%2030.1646C27.3355%2030.0471%2026.8835%2029.8725%2026.4599%2029.6408C26.036%2029.4094%2025.6453%2029.1128%2025.2878%2028.7508L23.2374%2029.3612L22.3507%2027.875L24.1028%2026.375C23.972%2025.9789%2023.9066%2025.5629%2023.9066%2025.1271C23.9066%2024.6913%2023.972%2024.2718%2024.1028%2023.8688L22.367%2022.3471L23.2537%2020.8613L25.2878%2021.4871C25.6348%2021.1182%2026.0227%2020.8207%2026.4516%2020.5946C26.8807%2020.3685%2027.3355%2020.1967%2027.8157%2020.0792L28.1424%2017.7437H29.9949L30.3057%2020.0792C30.786%2020.1967%2031.2403%2020.3696%2031.6687%2020.5979C32.097%2020.8263%2032.4853%2021.1249%2032.8337%2021.4938L34.8678%2020.8613L35.7545%2022.3538L34.0182%2023.875C34.1494%2024.2781%2034.2149%2024.6971%2034.2149%2025.1321C34.2149%2025.5671%2034.1494%2025.9814%2034.0182%2026.375L35.7707%2027.875L34.8837%2029.3612L32.8337%2028.7508C32.4762%2029.1128%2032.0855%2029.4094%2031.6616%2029.6408C31.238%2029.8725%2030.786%2030.0471%2030.3057%2030.1646L29.9949%2032.5ZM29.0474%2028.3004C29.9285%2028.3004%2030.6775%2027.99%2031.2945%2027.3692C31.9117%2026.7483%2032.2203%2026.001%2032.2203%2025.1271C32.2203%2024.246%2031.9117%2023.4969%2031.2945%2022.88C30.6775%2022.2628%2029.9303%2021.9542%2029.0528%2021.9542C28.1753%2021.9542%2027.4262%2022.2628%2026.8053%2022.88C26.1848%2023.4969%2025.8745%2024.2442%2025.8745%2025.1217C25.8745%2025.9992%2026.1848%2026.7483%2026.8053%2027.3692C27.4262%2027.99%2028.1735%2028.3004%2029.0474%2028.3004Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">3단계</span>
+                                    <strong class="step__label">작업 내용</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3621%2029.1204L33.0117%2011.4817L31.5117%209.99042L15.3533%2026.1292L7.46583%2018.2329L5.96583%2019.7325L15.3621%2029.1204ZM15.3621%2032.0946L3%2019.7325L7.46583%2015.2692L15.3621%2023.1654L31.5192%207L35.9996%2011.4571L15.3621%2032.0946Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">4단계</span>
+                                    <strong class="step__label">완료</strong>
+                                </li>
+                            </ol>
+                        </nav>
+        
+                        <section class="modal-card op-task__card" aria-labelledby="operationTaskDeviceCardTitle">
+                            <header class="modal-card__header">
+                                <h3 class="modal-card__title" id="operationTaskDeviceCardTitle">단말 선택</h3>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__toolbar">
+                                    <p class="search__total">총 <strong>00</strong>건</p>
+                                    <div class="form--search op-task__search">
+                                        <span class="form__field form__field--search">
+                                            <input class="form__input" type="search" placeholder="검색어를 입력해주세요."
+                                                aria-label="단말 검색">
+                                            <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                aria-label="검색"></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="table-wrapper op-task__table-wrapper">
+                                    <table class="al-table op-task__table">
+                                        <colgroup>
+                                            <col style="width: 64px;">
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </th>
+                                                <th class="left">단말 ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox" checked>
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">DANMAL-1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">DANMAL-2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">DANMAL-3</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination al-pagination" data-al-pagination="" data-al-pagination-current="1" data-al-pagination-total="99" aria-label="페이지 네비게이션">
+                                    <button type="button" class="pagination__nav al-pagination__nav" data-al-page-first="" aria-label="첫 페이지" disabled="">처음</button>
+                                    <button type="button" class="pagination__nav al-pagination__nav al-pagination__nav--prev" data-al-page-prev="" aria-label="이전 페이지" disabled="">이전</button>
+                                    <div class="pagination__pages al-pagination__pages" data-al-pagination-pages=""><button type="button" class="al-pagination__page al-pagination__page--active" data-al-page-num="1" aria-current="page">1</button><button type="button" class="al-pagination__page" data-al-page-num="2">2</button><button type="button" class="al-pagination__page" data-al-page-num="3">3</button><button type="button" class="al-pagination__page" data-al-page-num="4">4</button><button type="button" class="al-pagination__page" data-al-page-num="5">5</button><button type="button" class="al-pagination__page" data-al-page-num="6">6</button><button type="button" class="al-pagination__page" data-al-page-num="7">7</button><button type="button" class="al-pagination__page" data-al-page-num="8">8</button><span class="al-pagination__ellipsis" aria-hidden="true">…</span><button type="button" class="al-pagination__page" data-al-page-num="99">99</button></div>
+                                    <button type="button" class="pagination__nav al-pagination__nav al-pagination__nav--next" data-al-page-next="" aria-label="다음 페이지">다음</button>
+                                    <button type="button" class="pagination__nav al-pagination__nav" data-al-page-last="" aria-label="마지막 페이지">마지막</button>
+                                </nav>                    </div>
+                        </section>
+        
+                        <section class="modal-card op-task__card" aria-labelledby="operationTaskMapTitle">
+                            <header class="modal-card__header">
+                                <h3 class="modal-card__title" id="operationTaskMapTitle">정류장 위치</h3>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__map-placeholder" role="img" aria-label="정류장 위치 지도 영역">
+                                    지도 영역
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-device-select">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-assignee-select" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="modal modal--form w-960 op-task op-task--assignee" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskAssigneeTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskAssigneeTitle">작업 지시 등록</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-assignee-select"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="mdm-wrapper op-task__content">
+                        <nav class="step op-task__step" aria-label="작업 지시 등록 단계">
+                            <ol class="step__list">
+                                <li class="step__item step__item--complete">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.2251%2022.8982L26.7914%2014.3674L25.2914%2012.8844L18.2193%2019.9678L14.6835%2016.4261L13.1922%2017.9007L18.2251%2022.8982ZM2.30762%2033.7178V31.6236H37.6918V33.7178H2.30762ZM6.77345%2029.5511C6.05706%2029.5511%205.44345%2029.2957%204.93262%2028.7849C4.42178%2028.274%204.16637%2027.6606%204.16637%2026.9444V8.82486C4.16637%208.10847%204.42178%207.49486%204.93262%206.98402C5.44345%206.47319%206.05706%206.21777%206.77345%206.21777H33.226C33.9423%206.21777%2034.556%206.47319%2035.0668%206.98402C35.5776%207.49486%2035.833%208.10847%2035.833%208.82486V26.9444C35.833%2027.6606%2035.5776%2028.274%2035.0668%2028.7849C34.556%2029.2957%2033.9423%2029.5511%2033.226%2029.5511H6.77345ZM6.77345%2027.4574H33.226C33.3543%2027.4574%2033.4719%2027.4039%2033.5789%2027.2969C33.6855%2027.19%2033.7389%2027.0725%2033.7389%2026.9444V8.82486C33.7389%208.69652%2033.6855%208.57889%2033.5789%208.47194C33.4719%208.36528%2033.3543%208.31194%2033.226%208.31194H6.77345C6.64512%208.31194%206.52748%208.36528%206.42053%208.47194C6.31387%208.57889%206.26053%208.69652%206.26053%208.82486V26.9444C6.26053%2027.0725%206.31387%2027.19%206.42053%2027.2969C6.52748%2027.4039%206.64512%2027.4574%206.77345%2027.4574Z'%20fill='%2364748B'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">1단계</span>
+                                    <strong class="step__label">단말 선택</strong>
+                                </li>
+                                <li class="step__item step__item--current">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24.3227%2034.9574H34.8785V33.712C34.2188%2032.9242%2033.4325%2032.3116%2032.5198%2031.8741C31.607%2031.4369%2030.6321%2031.2182%2029.5952%2031.2182C28.5582%2031.2182%2027.5834%2031.4369%2026.6706%2031.8741C25.7578%2032.3116%2024.9752%2032.9242%2024.3227%2033.712V34.9574ZM31.2352%2029.0066C31.6838%2028.558%2031.9081%2028.0131%2031.9081%2027.372C31.9081%2026.7312%2031.6838%2026.1863%2031.2352%2025.7374C30.7866%2025.2888%2030.2399%2025.0645%2029.5952%2025.0645C28.9507%2025.0645%2028.4059%2025.2888%2027.9606%2025.7374C27.5156%2026.1863%2027.2931%2026.7312%2027.2931%2027.372C27.2931%2028.0131%2027.5156%2028.558%2027.9606%2029.0066C28.4059%2029.4555%2028.9507%2029.6799%2029.5952%2029.6799C30.2399%2029.6799%2030.7866%2029.4555%2031.2352%2029.0066ZM19.9744%2015.2032C18.6477%2015.2032%2017.5166%2015.6692%2016.581%2016.6012C15.6455%2017.5331%2015.1777%2018.6662%2015.1777%2020.0003C15.1777%2021.0559%2015.4652%2021.9828%2016.0402%2022.7812C16.6155%2023.5798%2017.3642%2024.1574%2018.2864%2024.5141C18.2973%2024.1216%2018.3205%2023.7366%2018.356%2023.3591C18.3916%2022.9819%2018.4524%2022.6364%2018.5385%2022.3228C18.1282%2022.1%2017.8145%2021.7756%2017.5973%2021.3495C17.38%2020.9237%2017.2714%2020.4739%2017.2714%2020.0003C17.2714%2019.2531%2017.5352%2018.6159%2018.0627%2018.0887C18.5902%2017.5612%2019.2274%2017.2974%2019.9744%2017.2974C20.4538%2017.2974%2020.8998%2017.4125%2021.3123%2017.6428C21.7245%2017.8734%2022.0539%2018.1952%2022.3006%2018.6082C22.5225%2018.5285%2022.7549%2018.4694%2022.9977%2018.4307C23.2402%2018.3924%2023.4807%2018.3732%2023.7194%2018.3732H24.4564C24.1273%2017.4452%2023.5566%2016.6849%2022.7444%2016.0924C21.9319%2015.4996%2021.0085%2015.2032%2019.9744%2015.2032ZM16.5152%2035.8337L15.8014%2030.8016C15.2723%2030.6221%2014.7102%2030.3639%2014.1152%2030.027C13.5199%2029.6901%2013.0018%2029.3321%2012.561%2028.9532L7.88685%2031.0303L4.38477%2024.8828L8.54852%2021.792C8.49852%2021.5142%208.46268%2021.2182%208.44102%2020.9041C8.41935%2020.5899%208.40852%2020.2939%208.40852%2020.0162C8.40852%2019.7492%208.41935%2019.4596%208.44102%2019.1474C8.46268%2018.8349%208.49852%2018.522%208.54852%2018.2087L4.38477%2015.107L7.88685%209.00241L12.5452%2011.0528C13.018%2010.6703%2013.5427%2010.3132%2014.1193%209.98158C14.696%209.65019%2015.2514%209.39866%2015.7856%209.22699L16.5152%204.16699H23.4852L24.1989%209.21491C24.7745%209.42658%2025.3341%209.68463%2025.8777%209.98908C26.4216%2010.2935%2026.926%2010.6481%2027.391%2011.0528L32.1239%209.00241L35.6156%2015.107L31.4885%2018.2053C31.4919%2018.2567%2031.4953%2018.2856%2031.4989%2018.292C31.5025%2018.2984%2031.5098%2018.3123%2031.5206%2018.3337H29.246C29.2182%2018.172%2029.1913%2018.0135%2029.1652%2017.8582C29.1394%2017.703%2029.1021%2017.5445%2029.0535%2017.3828L32.8594%2014.5474L31.201%2011.6349L26.871%2013.4799C26.2946%2012.8424%2025.601%2012.2802%2024.7902%2011.7932C23.9794%2011.306%2023.1491%2010.9914%2022.2994%2010.8495L21.746%206.26116H18.2631L17.7118%2010.8337C16.813%2011.0231%2015.9846%2011.3355%2015.2268%2011.7707C14.4688%2012.2057%2013.7573%2012.7673%2013.0923%2013.4553L8.79935%2011.6349L7.14102%2014.5474L10.9093%2017.3262C10.7818%2017.7514%2010.6875%2018.1863%2010.6264%2018.6307C10.565%2019.0752%2010.5343%2019.537%2010.5343%2020.0162C10.5343%2020.4687%2010.565%2020.9117%2010.6264%2021.3453C10.6875%2021.7792%2010.7766%2022.2141%2010.8935%2022.6499L7.14102%2025.4532L8.79935%2028.3657L13.076%2026.5366C13.7655%2027.2388%2014.5531%2027.8209%2015.4389%2028.2828C16.3245%2028.7448%2017.263%2029.0782%2018.2544%2029.2832V35.8337H16.5152ZM24.216%2037.372C23.568%2037.372%2023.0213%2037.1477%2022.576%2036.6991C22.131%2036.2502%2021.9085%2035.7053%2021.9085%2035.0645V24.2953C21.9085%2023.6542%2022.131%2023.1094%2022.576%2022.6607C23.0213%2022.2119%2023.568%2021.9874%2024.216%2021.9874H34.9852C35.6263%2021.9874%2036.1712%2022.2119%2036.6198%2022.6607C37.0684%2023.1094%2037.2927%2023.6542%2037.2927%2024.2953V35.0645C37.2927%2035.7053%2037.0684%2036.2502%2036.6198%2036.6991C36.1712%2037.1477%2035.6263%2037.372%2034.9852%2037.372H24.216Z'%20fill='white'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">2단계</span>
+                                    <strong class="step__label">작업자 선택</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.5749%2020.0746V17.9808H10.4812V20.0746H12.5749ZM19.7257%2020.0746C19.933%2019.6788%2020.157%2019.3118%2020.3978%2018.9738C20.6387%2018.636%2020.898%2018.305%2021.1757%2017.9808H15.5024V20.0746H19.7257ZM18.4491%2025.5771C18.4377%2025.5046%2018.4324%2025.4314%2018.4332%2025.3575C18.4338%2025.2833%2018.4341%2025.2065%2018.4341%2025.1271C18.4341%2024.8376%2018.4412%2024.5583%2018.4553%2024.2892C18.4698%2024.0203%2018.4994%2023.7515%2018.5441%2023.4829H10.4812V25.5771H18.4491ZM21.4682%2032.5H6.77408C6.05991%2032.5%205.44685%2032.244%204.93491%2031.7321C4.42296%2031.2201%204.16699%2030.6071%204.16699%2029.8929V10.1071C4.16699%209.39292%204.42296%208.77986%204.93491%208.26792C5.44685%207.75597%206.05991%207.5%206.77408%207.5H33.2266C33.9407%207.5%2034.5538%207.75597%2035.0657%208.26792C35.5777%208.77986%2035.8337%209.39292%2035.8337%2010.1071V16.9958C35.5095%2016.7058%2035.1785%2016.4446%2034.8407%2016.2121C34.5027%2015.9796%2034.1356%2015.7682%2033.7395%2015.5779V10.1071C33.7395%209.95736%2033.6914%209.83444%2033.5953%209.73833C33.4992%209.64222%2033.3763%209.59417%2033.2266%209.59417H6.77408C6.62435%209.59417%206.50144%209.64222%206.40533%209.73833C6.30921%209.83444%206.26116%209.95736%206.26116%2010.1071V29.8929C6.26116%2030.0426%206.30921%2030.1656%206.40533%2030.2617C6.50144%2030.3578%206.62435%2030.4058%206.77408%2030.4058H19.8412C20.0648%2030.8019%2020.3137%2031.1736%2020.5878%2031.5208C20.8623%2031.8681%2021.1557%2032.1944%2021.4682%2032.5ZM29.9949%2032.5H28.1424L27.8157%2030.1646C27.3355%2030.0471%2026.8835%2029.8725%2026.4599%2029.6408C26.036%2029.4094%2025.6453%2029.1128%2025.2878%2028.7508L23.2374%2029.3612L22.3507%2027.875L24.1028%2026.375C23.972%2025.9789%2023.9066%2025.5629%2023.9066%2025.1271C23.9066%2024.6913%2023.972%2024.2718%2024.1028%2023.8688L22.367%2022.3471L23.2537%2020.8613L25.2878%2021.4871C25.6348%2021.1182%2026.0227%2020.8207%2026.4516%2020.5946C26.8807%2020.3685%2027.3355%2020.1967%2027.8157%2020.0792L28.1424%2017.7437H29.9949L30.3057%2020.0792C30.786%2020.1967%2031.2403%2020.3696%2031.6687%2020.5979C32.097%2020.8263%2032.4853%2021.1249%2032.8337%2021.4938L34.8678%2020.8613L35.7545%2022.3538L34.0182%2023.875C34.1494%2024.2781%2034.2149%2024.6971%2034.2149%2025.1321C34.2149%2025.5671%2034.1494%2025.9814%2034.0182%2026.375L35.7707%2027.875L34.8837%2029.3612L32.8337%2028.7508C32.4762%2029.1128%2032.0855%2029.4094%2031.6616%2029.6408C31.238%2029.8725%2030.786%2030.0471%2030.3057%2030.1646L29.9949%2032.5ZM29.0474%2028.3004C29.9285%2028.3004%2030.6775%2027.99%2031.2945%2027.3692C31.9117%2026.7483%2032.2203%2026.001%2032.2203%2025.1271C32.2203%2024.246%2031.9117%2023.4969%2031.2945%2022.88C30.6775%2022.2628%2029.9303%2021.9542%2029.0528%2021.9542C28.1753%2021.9542%2027.4262%2022.2628%2026.8053%2022.88C26.1848%2023.4969%2025.8745%2024.2442%2025.8745%2025.1217C25.8745%2025.9992%2026.1848%2026.7483%2026.8053%2027.3692C27.4262%2027.99%2028.1735%2028.3004%2029.0474%2028.3004Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">3단계</span>
+                                    <strong class="step__label">작업 내용</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3621%2029.1204L33.0117%2011.4817L31.5117%209.99042L15.3533%2026.1292L7.46583%2018.2329L5.96583%2019.7325L15.3621%2029.1204ZM15.3621%2032.0946L3%2019.7325L7.46583%2015.2692L15.3621%2023.1654L31.5192%207L35.9996%2011.4571L15.3621%2032.0946Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">4단계</span>
+                                    <strong class="step__label">완료</strong>
+                                </li>
+                            </ol>
+                        </nav>
+        
+                        <section class="modal-card op-task__card op-task__card--assignee"
+                            aria-labelledby="operationTaskAssigneeCardTitle">
+                            <header class="modal-card__header">
+                                <h3 class="modal-card__title" id="operationTaskAssigneeCardTitle">작업자 선택</h3>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__toolbar">
+                                    <p class="search__total">총 <strong>00</strong>건</p>
+                                    <div class="form--search op-task__search">
+                                        <span class="form__field form__field--search">
+                                            <input class="form__input" type="search" placeholder="검색어를 입력해주세요."
+                                                aria-label="작업자 검색">
+                                            <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                aria-label="검색"></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="table-wrapper op-task__table-wrapper">
+                                    <table class="al-table op-task__table op-task__table--assignee">
+                                        <colgroup>
+                                            <col style="width: 64px;">
+                                            <col>
+                                            <col style="width: 300px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </th>
+                                                <th class="left">작업자명</th>
+                                                <th class="left">전화번호</th>
+                                                <th class="left">지역</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox" checked>
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">김운영</td>
+                                                <td class="left">010-1234-5678</td>
+                                                <td class="left">전북</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">이현장</td>
+                                                <td class="left">010-2345-6789</td>
+                                                <td class="left">인천</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">박점검</td>
+                                                <td class="left">010-3456-7890</td>
+                                                <td class="left">부산</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination al-pagination" data-al-pagination="" data-al-pagination-current="1" data-al-pagination-total="99" aria-label="페이지 네비게이션">
+                                    <button type="button" class="pagination__nav al-pagination__nav" data-al-page-first="" aria-label="첫 페이지" disabled="">처음</button>
+                                    <button type="button" class="pagination__nav al-pagination__nav al-pagination__nav--prev" data-al-page-prev="" aria-label="이전 페이지" disabled="">이전</button>
+                                    <div class="pagination__pages al-pagination__pages" data-al-pagination-pages=""><button type="button" class="al-pagination__page al-pagination__page--active" data-al-page-num="1" aria-current="page">1</button><button type="button" class="al-pagination__page" data-al-page-num="2">2</button><button type="button" class="al-pagination__page" data-al-page-num="3">3</button><button type="button" class="al-pagination__page" data-al-page-num="4">4</button><button type="button" class="al-pagination__page" data-al-page-num="5">5</button><button type="button" class="al-pagination__page" data-al-page-num="6">6</button><button type="button" class="al-pagination__page" data-al-page-num="7">7</button><button type="button" class="al-pagination__page" data-al-page-num="8">8</button><span class="al-pagination__ellipsis" aria-hidden="true">…</span><button type="button" class="al-pagination__page" data-al-page-num="99">99</button></div>
+                                    <button type="button" class="pagination__nav al-pagination__nav al-pagination__nav--next" data-al-page-next="" aria-label="다음 페이지">다음</button>
+                                    <button type="button" class="pagination__nav al-pagination__nav" data-al-page-last="" aria-label="마지막 페이지">마지막</button>
+                                </nav>                    </div>
+                        </section>
+                    </div>
+                </div>
+        
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-assignee-select">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-content" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskContentTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskContentTitle">작업 지시 등록</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-content"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="mdm-wrapper op-task__content">
+                        <nav class="step op-task__step" aria-label="작업 지시 등록 단계">
+                            <ol class="step__list">
+                                <li class="step__item step__item--complete">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.2251%2022.8982L26.7914%2014.3674L25.2914%2012.8844L18.2193%2019.9678L14.6835%2016.4261L13.1922%2017.9007L18.2251%2022.8982ZM2.30762%2033.7178V31.6236H37.6918V33.7178H2.30762ZM6.77345%2029.5511C6.05706%2029.5511%205.44345%2029.2957%204.93262%2028.7849C4.42178%2028.274%204.16637%2027.6606%204.16637%2026.9444V8.82486C4.16637%208.10847%204.42178%207.49486%204.93262%206.98402C5.44345%206.47319%206.05706%206.21777%206.77345%206.21777H33.226C33.9423%206.21777%2034.556%206.47319%2035.0668%206.98402C35.5776%207.49486%2035.833%208.10847%2035.833%208.82486V26.9444C35.833%2027.6606%2035.5776%2028.274%2035.0668%2028.7849C34.556%2029.2957%2033.9423%2029.5511%2033.226%2029.5511H6.77345ZM6.77345%2027.4574H33.226C33.3543%2027.4574%2033.4719%2027.4039%2033.5789%2027.2969C33.6855%2027.19%2033.7389%2027.0725%2033.7389%2026.9444V8.82486C33.7389%208.69652%2033.6855%208.57889%2033.5789%208.47194C33.4719%208.36528%2033.3543%208.31194%2033.226%208.31194H6.77345C6.64512%208.31194%206.52748%208.36528%206.42053%208.47194C6.31387%208.57889%206.26053%208.69652%206.26053%208.82486V26.9444C6.26053%2027.0725%206.31387%2027.19%206.42053%2027.2969C6.52748%2027.4039%206.64512%2027.4574%206.77345%2027.4574Z'%20fill='%2364748B'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">1단계</span>
+                                    <strong class="step__label">단말 선택</strong>
+                                </li>
+                                <li class="step__item step__item--complete">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24.3227%2034.9574H34.8785V33.712C34.2188%2032.9242%2033.4325%2032.3116%2032.5198%2031.8741C31.607%2031.4369%2030.6321%2031.2182%2029.5952%2031.2182C28.5582%2031.2182%2027.5834%2031.4369%2026.6706%2031.8741C25.7578%2032.3116%2024.9752%2032.9242%2024.3227%2033.712V34.9574ZM31.2352%2029.0066C31.6838%2028.558%2031.9081%2028.0131%2031.9081%2027.372C31.9081%2026.7312%2031.6838%2026.1863%2031.2352%2025.7374C30.7866%2025.2888%2030.2399%2025.0645%2029.5952%2025.0645C28.9507%2025.0645%2028.4059%2025.2888%2027.9606%2025.7374C27.5156%2026.1863%2027.2931%2026.7312%2027.2931%2027.372C27.2931%2028.0131%2027.5156%2028.558%2027.9606%2029.0066C28.4059%2029.4555%2028.9507%2029.6799%2029.5952%2029.6799C30.2399%2029.6799%2030.7866%2029.4555%2031.2352%2029.0066ZM19.9744%2015.2032C18.6477%2015.2032%2017.5166%2015.6692%2016.581%2016.6012C15.6455%2017.5331%2015.1777%2018.6662%2015.1777%2020.0003C15.1777%2021.0559%2015.4652%2021.9828%2016.0402%2022.7812C16.6155%2023.5798%2017.3642%2024.1574%2018.2864%2024.5141C18.2973%2024.1216%2018.3205%2023.7366%2018.356%2023.3591C18.3916%2022.9819%2018.4524%2022.6364%2018.5385%2022.3228C18.1282%2022.1%2017.8145%2021.7756%2017.5973%2021.3495C17.38%2020.9237%2017.2714%2020.4739%2017.2714%2020.0003C17.2714%2019.2531%2017.5352%2018.6159%2018.0627%2018.0887C18.5902%2017.5612%2019.2274%2017.2974%2019.9744%2017.2974C20.4538%2017.2974%2020.8998%2017.4125%2021.3123%2017.6428C21.7245%2017.8734%2022.0539%2018.1952%2022.3006%2018.6082C22.5225%2018.5285%2022.7549%2018.4694%2022.9977%2018.4307C23.2402%2018.3924%2023.4807%2018.3732%2023.7194%2018.3732H24.4564C24.1273%2017.4452%2023.5566%2016.6849%2022.7444%2016.0924C21.9318%2015.4996%2021.0085%2015.2032%2019.9744%2015.2032ZM16.5152%2035.8337L15.8014%2030.8016C15.2723%2030.6221%2014.7102%2030.3639%2014.1152%2030.027C13.5199%2029.6901%2013.0018%2029.3321%2012.561%2028.9532L7.88685%2031.0303L4.38477%2024.8828L8.54852%2021.792C8.49852%2021.5142%208.46268%2021.2182%208.44102%2020.9041C8.41935%2020.5899%208.40852%2020.2939%208.40852%2020.0162C8.40852%2019.7492%208.41935%2019.4596%208.44102%2019.1474C8.46268%2018.8349%208.49852%2018.522%208.54852%2018.2087L4.38477%2015.107L7.88685%209.00241L12.5452%2011.0528C13.018%2010.6703%2013.5427%2010.3132%2014.1193%209.98158C14.696%209.65019%2015.2514%209.39866%2015.7856%209.22699L16.5152%204.16699H23.4852L24.1989%209.21491C24.7745%209.42658%2025.3341%209.68463%2025.8777%209.98908C26.4216%2010.2935%2026.926%2010.6481%2027.391%2011.0528L32.1239%209.00241L35.6156%2015.107L31.4885%2018.2053C31.4919%2018.2567%2031.4953%2018.2856%2031.4989%2018.292C31.5025%2018.2984%2031.5098%2018.3123%2031.5206%2018.3337H29.246C29.2182%2018.172%2029.1913%2018.0135%2029.1652%2017.8582C29.1394%2017.703%2029.1021%2017.5445%2029.0535%2017.3828L32.8594%2014.5474L31.201%2011.6349L26.871%2013.4799C26.2946%2012.8424%2025.601%2012.2802%2024.7902%2011.7932C23.9794%2011.306%2023.1491%2010.9914%2022.2994%2010.8495L21.746%206.26116H18.2631L17.7118%2010.8337C16.813%2011.0231%2015.9846%2011.3355%2015.2268%2011.7707C14.4688%2012.2057%2013.7573%2012.7673%2013.0923%2013.4553L8.79935%2011.6349L7.14102%2014.5474L10.9093%2017.3262C10.7818%2017.7514%2010.6875%2018.1863%2010.6264%2018.6307C10.565%2019.0752%2010.5343%2019.537%2010.5343%2020.0162C10.5343%2020.4687%2010.565%2020.9117%2010.6264%2021.3453C10.6875%2021.7792%2010.7766%2022.2141%2010.8935%2022.6499L7.14102%2025.4532L8.79935%2028.3657L13.076%2026.5366C13.7655%2027.2388%2014.5531%2027.8209%2015.4389%2028.2828C16.3245%2028.7448%2017.263%2029.0782%2018.2544%2029.2832V35.8337H16.5152ZM24.216%2037.372C23.568%2037.372%2023.0213%2037.1477%2022.576%2036.6991C22.131%2036.2502%2021.9085%2035.7053%2021.9085%2035.0645V24.2953C21.9085%2023.6542%2022.131%2023.1094%2022.576%2022.6607C23.0213%2022.2119%2023.568%2021.9874%2024.216%2021.9874H34.9852C35.6263%2021.9874%2036.1712%2022.2119%2036.6198%2022.6607C37.0684%2023.1094%2037.2927%2023.6542%2037.2927%2024.2953V35.0645C37.2927%2035.7053%2037.0684%2036.2502%2036.6198%2036.6991C36.1712%2037.1477%2035.6263%2037.372%2034.9852%2037.372H24.216Z'%20fill='%2364748B'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">2단계</span>
+                                    <strong class="step__label">작업자 선택</strong>
+                                </li>
+                                <li class="step__item step__item--current">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.5749%2020.0746V17.9808H10.4812V20.0746H12.5749ZM19.7257%2020.0746C19.933%2019.6788%2020.157%2019.3118%2020.3978%2018.9738C20.6387%2018.636%2020.898%2018.305%2021.1757%2017.9808H15.5024V20.0746H19.7257ZM18.4491%2025.5771C18.4377%2025.5046%2018.4324%2025.4314%2018.4332%2025.3575C18.4338%2025.2833%2018.4341%2025.2065%2018.4341%2025.1271C18.4341%2024.8376%2018.4412%2024.5583%2018.4553%2024.2892C18.4698%2024.0203%2018.4994%2023.7515%2018.5441%2023.4829H10.4812V25.5771H18.4491ZM21.4682%2032.5H6.77408C6.05991%2032.5%205.44685%2032.244%204.93491%2031.7321C4.42296%2031.2201%204.16699%2030.6071%204.16699%2029.8929V10.1071C4.16699%209.39292%204.42296%208.77986%204.93491%208.26792C5.44685%207.75597%206.05991%207.5%206.77408%207.5H33.2266C33.9407%207.5%2034.5538%207.75597%2035.0657%208.26792C35.5777%208.77986%2035.8337%209.39292%2035.8337%2010.1071V16.9958C35.5095%2016.7058%2035.1785%2016.4446%2034.8407%2016.2121C34.5027%2015.9796%2034.1356%2015.7682%2033.7395%2015.5779V10.1071C33.7395%209.95736%2033.6914%209.83444%2033.5953%209.73833C33.4992%209.64222%2033.3763%209.59417%2033.2266%209.59417H6.77408C6.62435%209.59417%206.50144%209.64222%206.40533%209.73833C6.30921%209.83444%206.26116%209.95736%206.26116%2010.1071V29.8929C6.26116%2030.0426%206.30921%2030.1656%206.40533%2030.2617C6.50144%2030.3578%206.62435%2030.4058%206.77408%2030.4058H19.8412C20.0648%2030.8019%2020.3137%2031.1736%2020.5878%2031.5208C20.8623%2031.8681%2021.1557%2032.1944%2021.4682%2032.5ZM29.9949%2032.5H28.1424L27.8157%2030.1646C27.3355%2030.0471%2026.8835%2029.8725%2026.4599%2029.6408C26.036%2029.4094%2025.6453%2029.1128%2025.2878%2028.7508L23.2374%2029.3612L22.3507%2027.875L24.1028%2026.375C23.972%2025.9789%2023.9066%2025.5629%2023.9066%2025.1271C23.9066%2024.6912%2023.972%2024.2718%2024.1028%2023.8688L22.367%2022.3471L23.2537%2020.8613L25.2878%2021.4871C25.6348%2021.1182%2026.0227%2020.8207%2026.4516%2020.5946C26.8807%2020.3685%2027.3355%2020.1967%2027.8157%2020.0792L28.1424%2017.7437H29.9949L30.3057%2020.0792C30.786%2020.1967%2031.2403%2020.3696%2031.6687%2020.5979C32.097%2020.8263%2032.4853%2021.1249%2032.8337%2021.4938L34.8678%2020.8613L35.7545%2022.3538L34.0182%2023.875C34.1494%2024.2781%2034.2149%2024.6971%2034.2149%2025.1321C34.2149%2025.5671%2034.1494%2025.9814%2034.0182%2026.375L35.7707%2027.875L34.8837%2029.3612L32.8337%2028.7508C32.4762%2029.1128%2032.0855%2029.4094%2031.6616%2029.6408C31.238%2029.8725%2030.786%2030.0471%2030.3057%2030.1646L29.9949%2032.5ZM29.0474%2028.3004C29.9285%2028.3004%2030.6775%2027.99%2031.2945%2027.3692C31.9117%2026.7483%2032.2203%2026.001%2032.2203%2025.1271C32.2203%2024.246%2031.9117%2023.4969%2031.2945%2022.88C30.6775%2022.2628%2029.9303%2021.9542%2029.0528%2021.9542C28.1753%2021.9542%2027.4262%2022.2628%2026.8053%2022.88C26.1848%2023.4969%2025.8745%2024.2442%2025.8745%2025.1217C25.8745%2025.9992%2026.1848%2026.7483%2026.8053%2027.3692C27.4262%2027.99%2028.1735%2028.3004%2029.0474%2028.3004Z'%20fill='white'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">3단계</span>
+                                    <strong class="step__label">작업 내용</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3621%2029.1204L33.0117%2011.4817L31.5117%209.99042L15.3533%2026.1292L7.46583%2018.2329L5.96583%2019.7325L15.3621%2029.1204ZM15.3621%2032.0946L3%2019.7325L7.46583%2015.2692L15.3621%2023.1654L31.5192%207L35.9996%2011.4571L15.3621%2032.0946Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">4단계</span>
+                                    <strong class="step__label">완료</strong>
+                                </li>
+                            </ol>
+                        </nav>
+        
+                        <div class="mdm-content">
+                            <section class="modal-card" aria-labelledby="operationTaskContentCardTitle">
+                                <header class="modal-card__header">
+                                    <h3 class="modal-card__title" id="operationTaskContentCardTitle">작업 내용</h3>
+                                    <p class="modal-card__note"><strong>*</strong> 표시는 필수 입력사항입니다.</p>
+                                </header>
+                                <div class="modal-card__body">
+                                    <form class="form form--grid" action="#" aria-label="작업 내용 입력">
+                                        <div class="form__row">
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">작업명<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <input class="form__input" type="text" placeholder="시리얼 번호를 입력해주세요"
+                                                        aria-label="작업명">
+                                                </span>
+                                            </label>
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">소요시간<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <input class="form__input" type="text" placeholder="모델명을 입력해주세요"
+                                                        aria-label="소요시간">
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form__row form__row--max1">
+                                            <label class="form__group form__group--horizontal form__group--textarea">
+                                                <span class="form__label">상세 내용<span class="form__required">*</span></span>
+                                                <span class="form__field form__field--textarea">
+                                                    <textarea class="form__textarea" id="operationTaskDetailInput" rows="6"
+                                                        placeholder="업데이트 내용을 입력해주세요," aria-label="상세 내용"></textarea>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form__row">
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">작업유형<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <select class="form__select" aria-label="작업유형" data-custom-select>
+                                                        <option value="">작업유형을 선택해주세요.</option>
+                                                        <option value="inspect">점검</option>
+                                                        <option value="repair">수리</option>
+                                                    </select>
+                                                </span>
+                                            </label>
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">우선순위<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <select class="form__select" aria-label="우선순위" data-custom-select>
+                                                        <option value="">우선 순위를 선택해주세요.</option>
+                                                        <option value="high">높음</option>
+                                                        <option value="normal">보통</option>
+                                                        <option value="low">낮음</option>
+                                                    </select>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form__row form__row--max1">
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">작업일정<span class="form__required">*</span></span>
+                                                <span class="form__field form__field--date" style="width: 241px;">
+                                                    <input class="form__input" type="text" value="2026-03-31 ~ 2026-04-07"
+                                                        aria-label="작업일정" readonly>
+                                                    <button type="button" class="form__icon-btn form__icon-btn--calendar"
+                                                        data-date-toggle aria-label="작업일정 선택"></button>
+                                                    <div class="date-pop" data-date-pop hidden>
+                                                        <div class="date-pop__head">
+                                                            <button type="button" class="date-pop__nav"
+                                                                aria-label="이전 달">&lt;</button>
+                                                            <strong>2026. 04</strong>
+                                                            <button type="button" class="date-pop__nav"
+                                                                aria-label="다음 달">&gt;</button>
+                                                        </div>
+                                                        <div class="date-pop__week" aria-hidden="true">
+                                                            <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+                                                        </div>
+                                                        <div class="date-pop__days">
+                                                            <button type="button">30</button><button
+                                                                type="button">31</button><button type="button">1</button><button
+                                                                type="button">2</button><button type="button">3</button><button
+                                                                type="button">4</button><button type="button">5</button>
+                                                            <button type="button">6</button><button
+                                                                type="button">7</button><button type="button">8</button><button
+                                                                type="button">9</button><button type="button">10</button><button
+                                                                type="button">11</button><button type="button">12</button>
+                                                            <button type="button">13</button><button
+                                                                type="button">14</button><button
+                                                                type="button">15</button><button
+                                                                type="button">16</button><button
+                                                                type="button">17</button><button
+                                                                type="button">18</button><button type="button">19</button>
+                                                            <button type="button">20</button><button
+                                                                type="button">21</button><button
+                                                                type="button">22</button><button
+                                                                type="button">23</button><button
+                                                                type="button">24</button><button
+                                                                type="button">25</button><button type="button">26</button>
+                                                            <button type="button">27</button><button
+                                                                type="button">28</button><button
+                                                                type="button">29</button><button
+                                                                type="button">30</button><button type="button">1</button><button
+                                                                type="button">2</button><button type="button">3</button>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+        
+                            <section class="modal-card" aria-labelledby="operationTaskAttachTitle">
+                                <header class="modal-card__header">
+                                    <h3 class="modal-card__title" id="operationTaskAttachTitle">첨부파일</h3>
+                                </header>
+                                <div class="modal-card__body">
+                                    <div class="op-task__attach">
+                                        <div class="file-upload__dropzone al-file-upload__dropzone" data-al-file-dropzone
+                                            role="presentation">
+                                            <p class="file-upload__hint al-file-upload__hint">APK 파일을 드래그하거나 클릭하여 업로드</p>
+                                            <p class="file-upload__meta al-file-upload__meta">( 지원 확장자 : .apk / 최대 500MB )</p>
+                                            <input class="file-upload__input al-file-upload__input" data-al-file-input
+                                                id="operationTaskApkFile" type="file" accept=".apk" title="APK 파일 선택"
+                                                aria-label="APK 파일 선택">
+                                            <div class="file-upload__actions al-file-upload__actions">
+                                                <button type="button" class="btn btn--secondary btn--sm" data-al-file-pick>파일
+                                                    선택</button>
+                                            </div>
+                                            <div class="file-upload__message al-file-upload__message" data-al-file-message
+                                                hidden>
+                                            </div>
+                                        </div>
+                                        <div class="op-task__attach-toolbar">
+                                            <p class="op-task__attach-count"><span class="op-task__attach-count-text">총
+                                                </span><strong>3</strong><span class="op-task__attach-count-text">개</span></p>
+                                            <button type="button" class="op-task__attach-clear">전체 삭제</button>
+                                        </div>
+                                        <ul class="op-task__attach-list" aria-label="첨부파일 목록">
+                                            <li class="op-task__attach-item">
+                                                <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                                <span class="op-task__attach-meta">
+                                                    <span class="op-task__attach-name">다운로드 파일명</span>
+                                                    <span class="op-task__attach-spec">jpg, 17KB</span>
+                                                </span>
+                                                <button type="button" class="op-task__attach-remove">
+                                                    삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                                </button>
+                                            </li>
+                                            <li class="op-task__attach-item">
+                                                <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                                <span class="op-task__attach-meta">
+                                                    <span class="op-task__attach-name">다운로드 파일명</span>
+                                                    <span class="op-task__attach-spec">jpg, 17KB</span>
+                                                </span>
+                                                <button type="button" class="op-task__attach-remove">
+                                                    삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                                </button>
+                                            </li>
+                                            <li class="op-task__attach-item">
+                                                <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                                <span class="op-task__attach-meta">
+                                                    <span class="op-task__attach-name">다운로드 파일명</span>
+                                                    <span class="op-task__attach-spec">jpg, 17KB</span>
+                                                </span>
+                                                <button type="button" class="op-task__attach-remove">
+                                                    삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-content">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-register-complete" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskRegDoneModalTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskRegDoneModalTitle">작업 지시 등록(완료)</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-register-complete"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div data-operation-modal="register-complete">
+                        <section class="modal-card" aria-labelledby="guideModalDetailTitle">
+                            <header class="modal-card__header">
+                                <h4 class="modal-card__title" id="guideModalDetailTitle">작업 지시 정보 확인</h4>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__reg-kvgroups">
+                                    <ul class="round-list">
+                                        <li class="round-list__item">
+                                            <span class="label">단말 명</span>
+                                            <strong class="value">강남역 1번 출구 단말1</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">단말 ID</span>
+                                            <strong class="value">DANMAL-1</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">정류장</span>
+                                            <strong class="value">강남역 12번 출구(BUS-STOP-1)</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">작업자</span>
+                                            <strong class="value">이아무개</strong>
+                                        </li>
+                                    </ul>
+                                    <ul class="round-list">
+                                        <li class="round-list__item">
+                                            <span class="label">작업 명</span>
+                                            <strong class="value">배터리 교체 작업</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">작업 내용</span>
+                                            <strong class="value">배터리 이상 징후 확인, 교체 진행</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">작업 유형</span>
+                                            <strong class="value">교체</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">우선 순위</span>
+                                            <strong class="value danger">높음</strong>
+                                        </li>
+                                        <li class="round-list__item">
+                                            <span class="label">작업 일정</span>
+                                            <strong class="value">2026-01-01 09:00 ~ 2026-01-01 18:00</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="modal-card" aria-labelledby="operationTaskAttachTitle">
+                            <header class="modal-card__header">
+                                <h3 class="modal-card__title" id="operationTaskAttachTitle">첨부파일</h3>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__attach">
+                                    <ul class="op-task__attach-list" aria-label="첨부파일 목록">
+                                        <li class="op-task__attach-item">
+                                            <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                            <span class="op-task__attach-meta">
+                                                <span class="op-task__attach-name">다운로드 파일명</span>
+                                                <span class="op-task__attach-spec">jpg, 17KB</span>
+                                            </span>
+                                            <button type="button" class="op-task__attach-remove">
+                                                삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                            </button>
+                                        </li>
+                                        <li class="op-task__attach-item">
+                                            <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                            <span class="op-task__attach-meta">
+                                                <span class="op-task__attach-name">다운로드 파일명</span>
+                                                <span class="op-task__attach-spec">jpg, 17KB</span>
+                                            </span>
+                                            <button type="button" class="op-task__attach-remove">
+                                                삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                            </button>
+                                        </li>
+                                        <li class="op-task__attach-item">
+                                            <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                            <span class="op-task__attach-meta">
+                                                <span class="op-task__attach-name">다운로드 파일명</span>
+                                                <span class="op-task__attach-spec">jpg, 17KB</span>
+                                            </span>
+                                            <button type="button" class="op-task__attach-remove">
+                                                삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-register-complete">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-edit-terminal" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskEditDeviceModalTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskEditDeviceModalTitle">작업 지시 수정(단말 정보)</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-edit-terminal"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="mdm-wrapper op-task__content" data-operation-modal="edit-terminal">
+                        <nav class="step op-task__step" aria-label="작업 지시 등록 단계">
+                            <ol class="step__list">
+                                <li class="step__item step__item--current">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.2251%2022.8982L26.7914%2014.3674L25.2914%2012.8844L18.2193%2019.9678L14.6835%2016.4261L13.1922%2017.9007L18.2251%2022.8982ZM2.30762%2033.7178V31.6236H37.6918V33.7178H2.30762ZM6.77345%2029.5511C6.05706%2029.5511%205.44345%2029.2957%204.93262%2028.7849C4.42178%2028.274%204.16637%2027.6606%204.16637%2026.9444V8.82486C4.16637%208.10847%204.42178%207.49486%204.93262%206.98402C5.44345%206.47319%206.05706%206.21777%206.77345%206.21777H33.226C33.9423%206.21777%2034.556%206.47319%2035.0668%206.98402C35.5776%207.49486%2035.833%208.10847%2035.833%208.82486V26.9444C35.833%2027.6606%2035.5776%2028.274%2035.0668%2028.7849C34.556%2029.2957%2033.9423%2029.5511%2033.226%2029.5511H6.77345ZM6.77345%2027.4574H33.226C33.3543%2027.4574%2033.4719%2027.4039%2033.5789%2027.2969C33.6855%2027.19%2033.7389%2027.0725%2033.7389%2026.9444V8.82486C33.7389%208.69652%2033.6855%208.57889%2033.5789%208.47194C33.4719%208.36528%2033.3543%208.31194%2033.226%208.31194H6.77345C6.64512%208.31194%206.52748%208.36528%206.42053%208.47194C6.31387%208.57889%206.26053%208.69652%206.26053%208.82486V26.9444C6.26053%2027.0725%206.31387%2027.19%206.42053%2027.2969C6.52748%2027.4039%206.64512%2027.4574%206.77345%2027.4574Z'%20fill='white'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">1단계</span>
+                                    <strong class="step__label">단말 정보</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24.3227%2034.9574H34.8785V33.712C34.2188%2032.9242%2033.4325%2032.3116%2032.5198%2031.8741C31.607%2031.4369%2030.6321%2031.2182%2029.5952%2031.2182C28.5582%2031.2182%2027.5834%2031.4369%2026.6706%2031.8741C25.7578%2032.3116%2024.9752%2032.9242%2024.3227%2033.712V34.9574ZM31.2352%2029.0066C31.6838%2028.558%2031.9081%2028.0131%2031.9081%2027.372C31.9081%2026.7312%2031.6838%2026.1863%2031.2352%2025.7374C30.7866%2025.2888%2030.2399%2025.0645%2029.5952%2025.0645C28.9507%2025.0645%2028.4059%2025.2888%2027.9606%2025.7374C27.5156%2026.1863%2027.2931%2026.7312%2027.2931%2027.372C27.2931%2028.0131%2027.5156%2028.558%2027.9606%2029.0066C28.4059%2029.4555%2028.9507%2029.6799%2029.5952%2029.6799C30.2399%2029.6799%2030.7866%2029.4555%2031.2352%2029.0066ZM19.9744%2015.2032C18.6477%2015.2032%2017.5166%2015.6692%2016.581%2016.6012C15.6455%2017.5331%2015.1777%2018.6662%2015.1777%2020.0003C15.1777%2021.0559%2015.4652%2021.9828%2016.0402%2022.7812C16.6155%2023.5798%2017.3642%2024.1574%2018.2864%2024.5141C18.2973%2024.1216%2018.3205%2023.7366%2018.356%2023.3591C18.3916%2022.9819%2018.4524%2022.6364%2018.5385%2022.3228C18.1282%2022.1%2017.8145%2021.7756%2017.5973%2021.3495C17.38%2020.9237%2017.2714%2020.4739%2017.2714%2020.0003C17.2714%2019.2531%2017.5352%2018.6159%2018.0627%2018.0887C18.5902%2017.5612%2019.2274%2017.2974%2019.9744%2017.2974C20.4538%2017.2974%2020.8998%2017.4125%2021.3123%2017.6428C21.7245%2017.8734%2022.0539%2018.1952%2022.3006%2018.6082C22.5225%2018.5285%2022.7549%2018.4694%2022.9977%2018.4307C23.2402%2018.3924%2023.4807%2018.3732%2023.7194%2018.3732H24.4564C24.1273%2017.4452%2023.5566%2016.6849%2022.7444%2016.0924C21.9318%2015.4996%2021.0085%2015.2032%2019.9744%2015.2032ZM16.5152%2035.8337L15.8014%2030.8016C15.2723%2030.6221%2014.7102%2030.3639%2014.1152%2030.027C13.5199%2029.6901%2013.0018%2029.3321%2012.561%2028.9532L7.88685%2031.0303L4.38477%2024.8828L8.54852%2021.792C8.49852%2021.5142%208.46268%2021.2182%208.44102%2020.9041C8.41935%2020.5899%208.40852%2020.2939%208.40852%2020.0162C8.40852%2019.7492%208.41935%2019.4596%208.44102%2019.1474C8.46268%2018.8349%208.49852%2018.522%208.54852%2018.2087L4.38477%2015.107L7.88685%209.00241L12.5452%2011.0528C13.018%2010.6703%2013.5427%2010.3132%2014.1193%209.98158C14.696%209.65019%2015.2514%209.39866%2015.7856%209.22699L16.5152%204.16699H23.4852L24.1989%209.21491C24.7745%209.42658%2025.3341%209.68463%2025.8777%209.98908C26.4216%2010.2935%2026.926%2010.6481%2027.391%2011.0528L32.1239%209.00241L35.6156%2015.107L31.4885%2018.2053C31.4919%2018.2567%2031.4953%2018.2856%2031.4989%2018.292C31.5025%2018.2984%2031.5098%2018.3123%2031.5206%2018.3337H29.246C29.2182%2018.172%2029.1913%2018.0135%2029.1652%2017.8582C29.1394%2017.703%2029.1021%2017.5445%2029.0535%2017.3828L32.8594%2014.5474L31.201%2011.6349L26.871%2013.4799C26.2946%2012.8424%2025.601%2012.2802%2024.7902%2011.7932C23.9794%2011.306%2023.1491%2010.9914%2022.2994%2010.8495L21.746%206.26116H18.2631L17.7118%2010.8337C16.813%2011.0231%2015.9846%2011.3355%2015.2268%2011.7707C14.4688%2012.2057%2013.7573%2012.7673%2013.0923%2013.4553L8.79935%2011.6349L7.14102%2014.5474L10.9093%2017.3262C10.7818%2017.7514%2010.6875%2018.1863%2010.6264%2018.6307C10.565%2019.0752%2010.5343%2019.537%2010.5343%2020.0162C10.5343%2020.4687%2010.565%2020.9117%2010.6264%2021.3453C10.6875%2021.7792%2010.7766%2022.2141%2010.8935%2022.6499L7.14102%2025.4532L8.79935%2028.3657L13.076%2026.5366C13.7655%2027.2388%2014.5531%2027.8209%2015.4389%2028.2828C16.3245%2028.7448%2017.263%2029.0782%2018.2544%2029.2832V35.8337H16.5152ZM24.216%2037.372C23.568%2037.372%2023.0213%2037.1477%2022.576%2036.6991C22.131%2036.2502%2021.9085%2035.7053%2021.9085%2035.0645V24.2953C21.9085%2023.6542%2022.131%2023.1094%2022.576%2022.6607C23.0213%2022.2119%2023.568%2021.9874%2024.216%2021.9874H34.9852C35.6263%2021.9874%2036.1712%2022.2119%2036.6198%2022.6607C37.0684%2023.1094%2037.2927%2023.6542%2037.2927%2024.2953V35.0645C37.2927%2035.7053%2037.0684%2036.2502%2036.6198%2036.6991C36.1712%2037.1477%2035.6263%2037.372%2034.9852%2037.372H24.216Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">2단계</span>
+                                    <strong class="step__label">작업자 선택</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.5749%2020.0746V17.9808H10.4812V20.0746H12.5749ZM19.7257%2020.0746C19.933%2019.6788%2020.157%2019.3118%2020.3978%2018.9738C20.6387%2018.636%2020.898%2018.305%2021.1757%2017.9808H15.5024V20.0746H19.7257ZM18.4491%2025.5771C18.4377%2025.5046%2018.4324%2025.4314%2018.4332%2025.3575C18.4338%2025.2833%2018.4341%2025.2065%2018.4341%2025.1271C18.4341%2024.8376%2018.4412%2024.5583%2018.4553%2024.2892C18.4698%2024.0203%2018.4994%2023.7515%2018.5441%2023.4829H10.4812V25.5771H18.4491ZM21.4682%2032.5H6.77408C6.05991%2032.5%205.44685%2032.244%204.93491%2031.7321C4.42296%2031.2201%204.16699%2030.6071%204.16699%2029.8929V10.1071C4.16699%209.39292%204.42296%208.77986%204.93491%208.26792C5.44685%207.75597%206.05991%207.5%206.77408%207.5H33.2266C33.9407%207.5%2034.5538%207.75597%2035.0657%208.26792C35.5777%208.77986%2035.8337%209.39292%2035.8337%2010.1071V16.9958C35.5095%2016.7058%2035.1785%2016.4446%2034.8407%2016.2121C34.5027%2015.9796%2034.1356%2015.7682%2033.7395%2015.5779V10.1071C33.7395%209.95736%2033.6914%209.83444%2033.5953%209.73833C33.4992%209.64222%2033.3763%209.59417%2033.2266%209.59417H6.77408C6.62435%209.59417%206.50144%209.64222%206.40533%209.73833C6.30921%209.83444%206.26116%209.95736%206.26116%2010.1071V29.8929C6.26116%2030.0426%206.30921%2030.1656%206.40533%2030.2617C6.50144%2030.3578%206.62435%2030.4058%206.77408%2030.4058H19.8412C20.0648%2030.8019%2020.3137%2031.1736%2020.5878%2031.5208C20.8623%2031.8681%2021.1557%2032.1944%2021.4682%2032.5ZM29.9949%2032.5H28.1424L27.8157%2030.1646C27.3355%2030.0471%2026.8835%2029.8725%2026.4599%2029.6408C26.036%2029.4094%2025.6453%2029.1128%2025.2878%2028.7508L23.2374%2029.3612L22.3507%2027.875L24.1028%2026.375C23.972%2025.9789%2023.9066%2025.5629%2023.9066%2025.1271C23.9066%2024.6913%2023.972%2024.2718%2024.1028%2023.8688L22.367%2022.3471L23.2537%2020.8613L25.2878%2021.4871C25.6348%2021.1182%2026.0227%2020.8207%2026.4516%2020.5946C26.8807%2020.3685%2027.3355%2020.1967%2027.8157%2020.0792L28.1424%2017.7437H29.9949L30.3057%2020.0792C30.786%2020.1967%2031.2403%2020.3696%2031.6687%2020.5979C32.097%2020.8263%2032.4853%2021.1249%2032.8337%2021.4938L34.8678%2020.8613L35.7545%2022.3538L34.0182%2023.875C34.1494%2024.2781%2034.2149%2024.6971%2034.2149%2025.1321C34.2149%2025.5671%2034.1494%2025.9814%2034.0182%2026.375L35.7707%2027.875L34.8837%2029.3612L32.8337%2028.7508C32.4762%2029.1128%2032.0855%2029.4094%2031.6616%2029.6408C31.238%2029.8725%2030.786%2030.0471%2030.3057%2030.1646L29.9949%2032.5ZM29.0474%2028.3004C29.9285%2028.3004%2030.6775%2027.99%2031.2945%2027.3692C31.9117%2026.7483%2032.2203%2026.001%2032.2203%2025.1271C32.2203%2024.246%2031.9117%2023.4969%2031.2945%2022.88C30.6775%2022.2628%2029.9303%2021.9542%2029.0528%2021.9542C28.1753%2021.9542%2027.4262%2022.2628%2026.8053%2022.88C26.1848%2023.4969%2025.8745%2024.2442%2025.8745%2025.1217C25.8745%2025.9992%2026.1848%2026.7483%2026.8053%2027.3692C27.4262%2027.99%2028.1735%2028.3004%2029.0474%2028.3004Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">3단계</span>
+                                    <strong class="step__label">작업 내용</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3621%2029.1204L33.0117%2011.4817L31.5117%209.99042L15.3533%2026.1292L7.46583%2018.2329L5.96583%2019.7325L15.3621%2029.1204ZM15.3621%2032.0946L3%2019.7325L7.46583%2015.2692L15.3621%2023.1654L31.5192%207L35.9996%2011.4571L15.3621%2032.0946Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">4단계</span>
+                                    <strong class="step__label">완료</strong>
+                                </li>
+                            </ol>
+                        </nav>
+                        <section class="modal-card" aria-labelledby="guideModalDetailTitle">
+                            <header class="modal-card__header">
+                                <h4 class="modal-card__title" id="guideModalDetailTitle">자동 등록된 단말 정보</h4>
+                            </header>
+                            <div class="modal-card__body">
+                                <ul class="round-list">
+                                    <li class="round-list__item">
+                                        <span class="label">단말 명</span>
+                                        <strong class="value">강남역 1번 출구 – 1</strong>
+                                    </li>
+                                    <li class="round-list__item">
+                                        <span class="label">단말 ID</span>
+                                        <strong class="value">DANMAL -1</strong>
+                                    </li>
+                                    <li class="round-list__item">
+                                        <span class="label">정류장명</span>
+                                        <strong class="value">강남역 12번 출구</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="modal-card op-task__card" aria-labelledby="operationTaskMapTitle">
+                            <header class="modal-card__header">
+                                <h3 class="modal-card__title" id="operationTaskMapTitle">정류장 위치</h3>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__map-placeholder" role="img" aria-label="정류장 위치 지도 영역">
+                                    지도 영역
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-edit-terminal">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-edit-assignee" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskEditAssigneeModalTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskEditAssigneeModalTitle">작업 지시 수정(작업자 선택)</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-edit-assignee"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="mdm-wrapper op-task__content" data-operation-modal="edit-assignee">
+                        <nav class="step op-task__step" aria-label="작업 지시 등록 단계">
+                            <ol class="step__list">
+                                <li class="step__item step__item--complete">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.2251%2022.8982L26.7914%2014.3674L25.2914%2012.8844L18.2193%2019.9678L14.6835%2016.4261L13.1922%2017.9007L18.2251%2022.8982ZM2.30762%2033.7178V31.6236H37.6918V33.7178H2.30762ZM6.77345%2029.5511C6.05706%2029.5511%205.44345%2029.2957%204.93262%2028.7849C4.42178%2028.274%204.16637%2027.6606%204.16637%2026.9444V8.82486C4.16637%208.10847%204.42178%207.49486%204.93262%206.98402C5.44345%206.47319%206.05706%206.21777%206.77345%206.21777H33.226C33.9423%206.21777%2034.556%206.47319%2035.0668%206.98402C35.5776%207.49486%2035.833%208.10847%2035.833%208.82486V26.9444C35.833%2027.6606%2035.5776%2028.274%2035.0668%2028.7849C34.556%2029.2957%2033.9423%2029.5511%2033.226%2029.5511H6.77345ZM6.77345%2027.4574H33.226C33.3543%2027.4574%2033.4719%2027.4039%2033.5789%2027.2969C33.6855%2027.19%2033.7389%2027.0725%2033.7389%2026.9444V8.82486C33.7389%208.69652%2033.6855%208.57889%2033.5789%208.47194C33.4719%208.36528%2033.3543%208.31194%2033.226%208.31194H6.77345C6.64512%208.31194%206.52748%208.36528%206.42053%208.47194C6.31387%208.57889%206.26053%208.69652%206.26053%208.82486V26.9444C6.26053%2027.0725%206.31387%2027.19%206.42053%2027.2969C6.52748%2027.4039%206.64512%2027.4574%206.77345%2027.4574Z'%20fill='%2364748B'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">1단계</span>
+                                    <strong class="step__label">단말 선택</strong>
+                                </li>
+                                <li class="step__item step__item--current">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24.3227%2034.9574H34.8785V33.712C34.2188%2032.9242%2033.4325%2032.3116%2032.5198%2031.8741C31.607%2031.4369%2030.6321%2031.2182%2029.5952%2031.2182C28.5582%2031.2182%2027.5834%2031.4369%2026.6706%2031.8741C25.7578%2032.3116%2024.9752%2032.9242%2024.3227%2033.712V34.9574ZM31.2352%2029.0066C31.6838%2028.558%2031.9081%2028.0131%2031.9081%2027.372C31.9081%2026.7312%2031.6838%2026.1863%2031.2352%2025.7374C30.7866%2025.2888%2030.2399%2025.0645%2029.5952%2025.0645C28.9507%2025.0645%2028.4059%2025.2888%2027.9606%2025.7374C27.5156%2026.1863%2027.2931%2026.7312%2027.2931%2027.372C27.2931%2028.0131%2027.5156%2028.558%2027.9606%2029.0066C28.4059%2029.4555%2028.9507%2029.6799%2029.5952%2029.6799C30.2399%2029.6799%2030.7866%2029.4555%2031.2352%2029.0066ZM19.9744%2015.2032C18.6477%2015.2032%2017.5166%2015.6692%2016.581%2016.6012C15.6455%2017.5331%2015.1777%2018.6662%2015.1777%2020.0003C15.1777%2021.0559%2015.4652%2021.9828%2016.0402%2022.7812C16.6155%2023.5798%2017.3642%2024.1574%2018.2864%2024.5141C18.2973%2024.1216%2018.3205%2023.7366%2018.356%2023.3591C18.3916%2022.9819%2018.4524%2022.6364%2018.5385%2022.3228C18.1282%2022.1%2017.8145%2021.7756%2017.5973%2021.3495C17.38%2020.9237%2017.2714%2020.4739%2017.2714%2020.0003C17.2714%2019.2531%2017.5352%2018.6159%2018.0627%2018.0887C18.5902%2017.5612%2019.2274%2017.2974%2019.9744%2017.2974C20.4538%2017.2974%2020.8998%2017.4125%2021.3123%2017.6428C21.7245%2017.8734%2022.0539%2018.1952%2022.3006%2018.6082C22.5225%2018.5285%2022.7549%2018.4694%2022.9977%2018.4307C23.2402%2018.3924%2023.4807%2018.3732%2023.7194%2018.3732H24.4564C24.1273%2017.4452%2023.5566%2016.6849%2022.7444%2016.0924C21.9319%2015.4996%2021.0085%2015.2032%2019.9744%2015.2032ZM16.5152%2035.8337L15.8014%2030.8016C15.2723%2030.6221%2014.7102%2030.3639%2014.1152%2030.027C13.5199%2029.6901%2013.0018%2029.3321%2012.561%2028.9532L7.88685%2031.0303L4.38477%2024.8828L8.54852%2021.792C8.49852%2021.5142%208.46268%2021.2182%208.44102%2020.9041C8.41935%2020.5899%208.40852%2020.2939%208.40852%2020.0162C8.40852%2019.7492%208.41935%2019.4596%208.44102%2019.1474C8.46268%2018.8349%208.49852%2018.522%208.54852%2018.2087L4.38477%2015.107L7.88685%209.00241L12.5452%2011.0528C13.018%2010.6703%2013.5427%2010.3132%2014.1193%209.98158C14.696%209.65019%2015.2514%209.39866%2015.7856%209.22699L16.5152%204.16699H23.4852L24.1989%209.21491C24.7745%209.42658%2025.3341%209.68463%2025.8777%209.98908C26.4216%2010.2935%2026.926%2010.6481%2027.391%2011.0528L32.1239%209.00241L35.6156%2015.107L31.4885%2018.2053C31.4919%2018.2567%2031.4953%2018.2856%2031.4989%2018.292C31.5025%2018.2984%2031.5098%2018.3123%2031.5206%2018.3337H29.246C29.2182%2018.172%2029.1913%2018.0135%2029.1652%2017.8582C29.1394%2017.703%2029.1021%2017.5445%2029.0535%2017.3828L32.8594%2014.5474L31.201%2011.6349L26.871%2013.4799C26.2946%2012.8424%2025.601%2012.2802%2024.7902%2011.7932C23.9794%2011.306%2023.1491%2010.9914%2022.2994%2010.8495L21.746%206.26116H18.2631L17.7118%2010.8337C16.813%2011.0231%2015.9846%2011.3355%2015.2268%2011.7707C14.4688%2012.2057%2013.7573%2012.7673%2013.0923%2013.4553L8.79935%2011.6349L7.14102%2014.5474L10.9093%2017.3262C10.7818%2017.7514%2010.6875%2018.1863%2010.6264%2018.6307C10.565%2019.0752%2010.5343%2019.537%2010.5343%2020.0162C10.5343%2020.4687%2010.565%2020.9117%2010.6264%2021.3453C10.6875%2021.7792%2010.7766%2022.2141%2010.8935%2022.6499L7.14102%2025.4532L8.79935%2028.3657L13.076%2026.5366C13.7655%2027.2388%2014.5531%2027.8209%2015.4389%2028.2828C16.3245%2028.7448%2017.263%2029.0782%2018.2544%2029.2832V35.8337H16.5152ZM24.216%2037.372C23.568%2037.372%2023.0213%2037.1477%2022.576%2036.6991C22.131%2036.2502%2021.9085%2035.7053%2021.9085%2035.0645V24.2953C21.9085%2023.6542%2022.131%2023.1094%2022.576%2022.6607C23.0213%2022.2119%2023.568%2021.9874%2024.216%2021.9874H34.9852C35.6263%2021.9874%2036.1712%2022.2119%2036.6198%2022.6607C37.0684%2023.1094%2037.2927%2023.6542%2037.2927%2024.2953V35.0645C37.2927%2035.7053%2037.0684%2036.2502%2036.6198%2036.6991C36.1712%2037.1477%2035.6263%2037.372%2034.9852%2037.372H24.216Z'%20fill='white'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">2단계</span>
+                                    <strong class="step__label">작업자 선택</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.5749%2020.0746V17.9808H10.4812V20.0746H12.5749ZM19.7257%2020.0746C19.933%2019.6788%2020.157%2019.3118%2020.3978%2018.9738C20.6387%2018.636%2020.898%2018.305%2021.1757%2017.9808H15.5024V20.0746H19.7257ZM18.4491%2025.5771C18.4377%2025.5046%2018.4324%2025.4314%2018.4332%2025.3575C18.4338%2025.2833%2018.4341%2025.2065%2018.4341%2025.1271C18.4341%2024.8376%2018.4412%2024.5583%2018.4553%2024.2892C18.4698%2024.0203%2018.4994%2023.7515%2018.5441%2023.4829H10.4812V25.5771H18.4491ZM21.4682%2032.5H6.77408C6.05991%2032.5%205.44685%2032.244%204.93491%2031.7321C4.42296%2031.2201%204.16699%2030.6071%204.16699%2029.8929V10.1071C4.16699%209.39292%204.42296%208.77986%204.93491%208.26792C5.44685%207.75597%206.05991%207.5%206.77408%207.5H33.2266C33.9407%207.5%2034.5538%207.75597%2035.0657%208.26792C35.5777%208.77986%2035.8337%209.39292%2035.8337%2010.1071V16.9958C35.5095%2016.7058%2035.1785%2016.4446%2034.8407%2016.2121C34.5027%2015.9796%2034.1356%2015.7682%2033.7395%2015.5779V10.1071C33.7395%209.95736%2033.6914%209.83444%2033.5953%209.73833C33.4992%209.64222%2033.3763%209.59417%2033.2266%209.59417H6.77408C6.62435%209.59417%206.50144%209.64222%206.40533%209.73833C6.30921%209.83444%206.26116%209.95736%206.26116%2010.1071V29.8929C6.26116%2030.0426%206.30921%2030.1656%206.40533%2030.2617C6.50144%2030.3578%206.62435%2030.4058%206.77408%2030.4058H19.8412C20.0648%2030.8019%2020.3137%2031.1736%2020.5878%2031.5208C20.8623%2031.8681%2021.1557%2032.1944%2021.4682%2032.5ZM29.9949%2032.5H28.1424L27.8157%2030.1646C27.3355%2030.0471%2026.8835%2029.8725%2026.4599%2029.6408C26.036%2029.4094%2025.6453%2029.1128%2025.2878%2028.7508L23.2374%2029.3612L22.3507%2027.875L24.1028%2026.375C23.972%2025.9789%2023.9066%2025.5629%2023.9066%2025.1271C23.9066%2024.6913%2023.972%2024.2718%2024.1028%2023.8688L22.367%2022.3471L23.2537%2020.8613L25.2878%2021.4871C25.6348%2021.1182%2026.0227%2020.8207%2026.4516%2020.5946C26.8807%2020.3685%2027.3355%2020.1967%2027.8157%2020.0792L28.1424%2017.7437H29.9949L30.3057%2020.0792C30.786%2020.1967%2031.2403%2020.3696%2031.6687%2020.5979C32.097%2020.8263%2032.4853%2021.1249%2032.8337%2021.4938L34.8678%2020.8613L35.7545%2022.3538L34.0182%2023.875C34.1494%2024.2781%2034.2149%2024.6971%2034.2149%2025.1321C34.2149%2025.5671%2034.1494%2025.9814%2034.0182%2026.375L35.7707%2027.875L34.8837%2029.3612L32.8337%2028.7508C32.4762%2029.1128%2032.0855%2029.4094%2031.6616%2029.6408C31.238%2029.8725%2030.786%2030.0471%2030.3057%2030.1646L29.9949%2032.5ZM29.0474%2028.3004C29.9285%2028.3004%2030.6775%2027.99%2031.2945%2027.3692C31.9117%2026.7483%2032.2203%2026.001%2032.2203%2025.1271C32.2203%2024.246%2031.9117%2023.4969%2031.2945%2022.88C30.6775%2022.2628%2029.9303%2021.9542%2029.0528%2021.9542C28.1753%2021.9542%2027.4262%2022.2628%2026.8053%2022.88C26.1848%2023.4969%2025.8745%2024.2442%2025.8745%2025.1217C25.8745%2025.9992%2026.1848%2026.7483%2026.8053%2027.3692C27.4262%2027.99%2028.1735%2028.3004%2029.0474%2028.3004Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">3단계</span>
+                                    <strong class="step__label">작업 내용</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3621%2029.1204L33.0117%2011.4817L31.5117%209.99042L15.3533%2026.1292L7.46583%2018.2329L5.96583%2019.7325L15.3621%2029.1204ZM15.3621%2032.0946L3%2019.7325L7.46583%2015.2692L15.3621%2023.1654L31.5192%207L35.9996%2011.4571L15.3621%2032.0946Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">4단계</span>
+                                    <strong class="step__label">완료</strong>
+                                </li>
+                            </ol>
+                        </nav>
+        
+                        <section class="modal-card op-task__card op-task__card--assignee"
+                            aria-labelledby="operationTaskAssigneeCardTitle">
+                            <header class="modal-card__header">
+                                <h3 class="modal-card__title" id="operationTaskAssigneeCardTitle">작업자 선택</h3>
+                            </header>
+                            <div class="modal-card__body">
+                                <div class="op-task__toolbar">
+                                    <p class="search__total">총 <strong>00</strong>건</p>
+                                    <div class="form--search op-task__search">
+                                        <span class="form__field form__field--search">
+                                            <input class="form__input" type="search" placeholder="검색어를 입력해주세요."
+                                                aria-label="작업자 검색">
+                                            <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                aria-label="검색"></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="table-wrapper op-task__table-wrapper">
+                                    <table class="al-table op-task__table op-task__table--assignee">
+                                        <colgroup>
+                                            <col style="width: 64px;">
+                                            <col>
+                                            <col style="width: 300px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </th>
+                                                <th class="left">작업자명</th>
+                                                <th class="left">전화번호</th>
+                                                <th class="left">지역</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox" checked>
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">김운영</td>
+                                                <td class="left">010-1234-5678</td>
+                                                <td class="left">전북</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">이현장</td>
+                                                <td class="left">010-2345-6789</td>
+                                                <td class="left">인천</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td class="left">박점검</td>
+                                                <td class="left">010-3456-7890</td>
+                                                <td class="left">부산</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav class="pagination al-pagination" data-al-pagination="" data-al-pagination-current="1" data-al-pagination-total="99" aria-label="페이지 네비게이션">
+                                    <button type="button" class="pagination__nav al-pagination__nav" data-al-page-first="" aria-label="첫 페이지" disabled="">처음</button>
+                                    <button type="button" class="pagination__nav al-pagination__nav al-pagination__nav--prev" data-al-page-prev="" aria-label="이전 페이지" disabled="">이전</button>
+                                    <div class="pagination__pages al-pagination__pages" data-al-pagination-pages=""><button type="button" class="al-pagination__page al-pagination__page--active" data-al-page-num="1" aria-current="page">1</button><button type="button" class="al-pagination__page" data-al-page-num="2">2</button><button type="button" class="al-pagination__page" data-al-page-num="3">3</button><button type="button" class="al-pagination__page" data-al-page-num="4">4</button><button type="button" class="al-pagination__page" data-al-page-num="5">5</button><button type="button" class="al-pagination__page" data-al-page-num="6">6</button><button type="button" class="al-pagination__page" data-al-page-num="7">7</button><button type="button" class="al-pagination__page" data-al-page-num="8">8</button><span class="al-pagination__ellipsis" aria-hidden="true">…</span><button type="button" class="al-pagination__page" data-al-page-num="99">99</button></div>
+                                    <button type="button" class="pagination__nav al-pagination__nav al-pagination__nav--next" data-al-page-next="" aria-label="다음 페이지">다음</button>
+                                    <button type="button" class="pagination__nav al-pagination__nav" data-al-page-last="" aria-label="마지막 페이지">마지막</button>
+                                </nav>                    </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-edit-assignee">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-edit-work" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskEditWorkModalTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskEditWorkModalTitle">작업 지시 수정(작업 내용)</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-edit-work"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="mdm-wrapper op-task__content">
+                        <nav class="step op-task__step" aria-label="작업 지시 등록 단계">
+                            <ol class="step__list">
+                                <li class="step__item step__item--complete">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.2251%2022.8982L26.7914%2014.3674L25.2914%2012.8844L18.2193%2019.9678L14.6835%2016.4261L13.1922%2017.9007L18.2251%2022.8982ZM2.30762%2033.7178V31.6236H37.6918V33.7178H2.30762ZM6.77345%2029.5511C6.05706%2029.5511%205.44345%2029.2957%204.93262%2028.7849C4.42178%2028.274%204.16637%2027.6606%204.16637%2026.9444V8.82486C4.16637%208.10847%204.42178%207.49486%204.93262%206.98402C5.44345%206.47319%206.05706%206.21777%206.77345%206.21777H33.226C33.9423%206.21777%2034.556%206.47319%2035.0668%206.98402C35.5776%207.49486%2035.833%208.10847%2035.833%208.82486V26.9444C35.833%2027.6606%2035.5776%2028.274%2035.0668%2028.7849C34.556%2029.2957%2033.9423%2029.5511%2033.226%2029.5511H6.77345ZM6.77345%2027.4574H33.226C33.3543%2027.4574%2033.4719%2027.4039%2033.5789%2027.2969C33.6855%2027.19%2033.7389%2027.0725%2033.7389%2026.9444V8.82486C33.7389%208.69652%2033.6855%208.57889%2033.5789%208.47194C33.4719%208.36528%2033.3543%208.31194%2033.226%208.31194H6.77345C6.64512%208.31194%206.52748%208.36528%206.42053%208.47194C6.31387%208.57889%206.26053%208.69652%206.26053%208.82486V26.9444C6.26053%2027.0725%206.31387%2027.19%206.42053%2027.2969C6.52748%2027.4039%206.64512%2027.4574%206.77345%2027.4574Z'%20fill='%2364748B'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">1단계</span>
+                                    <strong class="step__label">단말 선택</strong>
+                                </li>
+                                <li class="step__item step__item--complete">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24.3227%2034.9574H34.8785V33.712C34.2188%2032.9242%2033.4325%2032.3116%2032.5198%2031.8741C31.607%2031.4369%2030.6321%2031.2182%2029.5952%2031.2182C28.5582%2031.2182%2027.5834%2031.4369%2026.6706%2031.8741C25.7578%2032.3116%2024.9752%2032.9242%2024.3227%2033.712V34.9574ZM31.2352%2029.0066C31.6838%2028.558%2031.9081%2028.0131%2031.9081%2027.372C31.9081%2026.7312%2031.6838%2026.1863%2031.2352%2025.7374C30.7866%2025.2888%2030.2399%2025.0645%2029.5952%2025.0645C28.9507%2025.0645%2028.4059%2025.2888%2027.9606%2025.7374C27.5156%2026.1863%2027.2931%2026.7312%2027.2931%2027.372C27.2931%2028.0131%2027.5156%2028.558%2027.9606%2029.0066C28.4059%2029.4555%2028.9507%2029.6799%2029.5952%2029.6799C30.2399%2029.6799%2030.7866%2029.4555%2031.2352%2029.0066ZM19.9744%2015.2032C18.6477%2015.2032%2017.5166%2015.6692%2016.581%2016.6012C15.6455%2017.5331%2015.1777%2018.6662%2015.1777%2020.0003C15.1777%2021.0559%2015.4652%2021.9828%2016.0402%2022.7812C16.6155%2023.5798%2017.3642%2024.1574%2018.2864%2024.5141C18.2973%2024.1216%2018.3205%2023.7366%2018.356%2023.3591C18.3916%2022.9819%2018.4524%2022.6364%2018.5385%2022.3228C18.1282%2022.1%2017.8145%2021.7756%2017.5973%2021.3495C17.38%2020.9237%2017.2714%2020.4739%2017.2714%2020.0003C17.2714%2019.2531%2017.5352%2018.6159%2018.0627%2018.0887C18.5902%2017.5612%2019.2274%2017.2974%2019.9744%2017.2974C20.4538%2017.2974%2020.8998%2017.4125%2021.3123%2017.6428C21.7245%2017.8734%2022.0539%2018.1952%2022.3006%2018.6082C22.5225%2018.5285%2022.7549%2018.4694%2022.9977%2018.4307C23.2402%2018.3924%2023.4807%2018.3732%2023.7194%2018.3732H24.4564C24.1273%2017.4452%2023.5566%2016.6849%2022.7444%2016.0924C21.9318%2015.4996%2021.0085%2015.2032%2019.9744%2015.2032ZM16.5152%2035.8337L15.8014%2030.8016C15.2723%2030.6221%2014.7102%2030.3639%2014.1152%2030.027C13.5199%2029.6901%2013.0018%2029.3321%2012.561%2028.9532L7.88685%2031.0303L4.38477%2024.8828L8.54852%2021.792C8.49852%2021.5142%208.46268%2021.2182%208.44102%2020.9041C8.41935%2020.5899%208.40852%2020.2939%208.40852%2020.0162C8.40852%2019.7492%208.41935%2019.4596%208.44102%2019.1474C8.46268%2018.8349%208.49852%2018.522%208.54852%2018.2087L4.38477%2015.107L7.88685%209.00241L12.5452%2011.0528C13.018%2010.6703%2013.5427%2010.3132%2014.1193%209.98158C14.696%209.65019%2015.2514%209.39866%2015.7856%209.22699L16.5152%204.16699H23.4852L24.1989%209.21491C24.7745%209.42658%2025.3341%209.68463%2025.8777%209.98908C26.4216%2010.2935%2026.926%2010.6481%2027.391%2011.0528L32.1239%209.00241L35.6156%2015.107L31.4885%2018.2053C31.4919%2018.2567%2031.4953%2018.2856%2031.4989%2018.292C31.5025%2018.2984%2031.5098%2018.3123%2031.5206%2018.3337H29.246C29.2182%2018.172%2029.1913%2018.0135%2029.1652%2017.8582C29.1394%2017.703%2029.1021%2017.5445%2029.0535%2017.3828L32.8594%2014.5474L31.201%2011.6349L26.871%2013.4799C26.2946%2012.8424%2025.601%2012.2802%2024.7902%2011.7932C23.9794%2011.306%2023.1491%2010.9914%2022.2994%2010.8495L21.746%206.26116H18.2631L17.7118%2010.8337C16.813%2011.0231%2015.9846%2011.3355%2015.2268%2011.7707C14.4688%2012.2057%2013.7573%2012.7673%2013.0923%2013.4553L8.79935%2011.6349L7.14102%2014.5474L10.9093%2017.3262C10.7818%2017.7514%2010.6875%2018.1863%2010.6264%2018.6307C10.565%2019.0752%2010.5343%2019.537%2010.5343%2020.0162C10.5343%2020.4687%2010.565%2020.9117%2010.6264%2021.3453C10.6875%2021.7792%2010.7766%2022.2141%2010.8935%2022.6499L7.14102%2025.4532L8.79935%2028.3657L13.076%2026.5366C13.7655%2027.2388%2014.5531%2027.8209%2015.4389%2028.2828C16.3245%2028.7448%2017.263%2029.0782%2018.2544%2029.2832V35.8337H16.5152ZM24.216%2037.372C23.568%2037.372%2023.0213%2037.1477%2022.576%2036.6991C22.131%2036.2502%2021.9085%2035.7053%2021.9085%2035.0645V24.2953C21.9085%2023.6542%2022.131%2023.1094%2022.576%2022.6607C23.0213%2022.2119%2023.568%2021.9874%2024.216%2021.9874H34.9852C35.6263%2021.9874%2036.1712%2022.2119%2036.6198%2022.6607C37.0684%2023.1094%2037.2927%2023.6542%2037.2927%2024.2953V35.0645C37.2927%2035.7053%2037.0684%2036.2502%2036.6198%2036.6991C36.1712%2037.1477%2035.6263%2037.372%2034.9852%2037.372H24.216Z'%20fill='%2364748B'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">2단계</span>
+                                    <strong class="step__label">작업자 선택</strong>
+                                </li>
+                                <li class="step__item step__item--current">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.5749%2020.0746V17.9808H10.4812V20.0746H12.5749ZM19.7257%2020.0746C19.933%2019.6788%2020.157%2019.3118%2020.3978%2018.9738C20.6387%2018.636%2020.898%2018.305%2021.1757%2017.9808H15.5024V20.0746H19.7257ZM18.4491%2025.5771C18.4377%2025.5046%2018.4324%2025.4314%2018.4332%2025.3575C18.4338%2025.2833%2018.4341%2025.2065%2018.4341%2025.1271C18.4341%2024.8376%2018.4412%2024.5583%2018.4553%2024.2892C18.4698%2024.0203%2018.4994%2023.7515%2018.5441%2023.4829H10.4812V25.5771H18.4491ZM21.4682%2032.5H6.77408C6.05991%2032.5%205.44685%2032.244%204.93491%2031.7321C4.42296%2031.2201%204.16699%2030.6071%204.16699%2029.8929V10.1071C4.16699%209.39292%204.42296%208.77986%204.93491%208.26792C5.44685%207.75597%206.05991%207.5%206.77408%207.5H33.2266C33.9407%207.5%2034.5538%207.75597%2035.0657%208.26792C35.5777%208.77986%2035.8337%209.39292%2035.8337%2010.1071V16.9958C35.5095%2016.7058%2035.1785%2016.4446%2034.8407%2016.2121C34.5027%2015.9796%2034.1356%2015.7682%2033.7395%2015.5779V10.1071C33.7395%209.95736%2033.6914%209.83444%2033.5953%209.73833C33.4992%209.64222%2033.3763%209.59417%2033.2266%209.59417H6.77408C6.62435%209.59417%206.50144%209.64222%206.40533%209.73833C6.30921%209.83444%206.26116%209.95736%206.26116%2010.1071V29.8929C6.26116%2030.0426%206.30921%2030.1656%206.40533%2030.2617C6.50144%2030.3578%206.62435%2030.4058%206.77408%2030.4058H19.8412C20.0648%2030.8019%2020.3137%2031.1736%2020.5878%2031.5208C20.8623%2031.8681%2021.1557%2032.1944%2021.4682%2032.5ZM29.9949%2032.5H28.1424L27.8157%2030.1646C27.3355%2030.0471%2026.8835%2029.8725%2026.4599%2029.6408C26.036%2029.4094%2025.6453%2029.1128%2025.2878%2028.7508L23.2374%2029.3612L22.3507%2027.875L24.1028%2026.375C23.972%2025.9789%2023.9066%2025.5629%2023.9066%2025.1271C23.9066%2024.6912%2023.972%2024.2718%2024.1028%2023.8688L22.367%2022.3471L23.2537%2020.8613L25.2878%2021.4871C25.6348%2021.1182%2026.0227%2020.8207%2026.4516%2020.5946C26.8807%2020.3685%2027.3355%2020.1967%2027.8157%2020.0792L28.1424%2017.7437H29.9949L30.3057%2020.0792C30.786%2020.1967%2031.2403%2020.3696%2031.6687%2020.5979C32.097%2020.8263%2032.4853%2021.1249%2032.8337%2021.4938L34.8678%2020.8613L35.7545%2022.3538L34.0182%2023.875C34.1494%2024.2781%2034.2149%2024.6971%2034.2149%2025.1321C34.2149%2025.5671%2034.1494%2025.9814%2034.0182%2026.375L35.7707%2027.875L34.8837%2029.3612L32.8337%2028.7508C32.4762%2029.1128%2032.0855%2029.4094%2031.6616%2029.6408C31.238%2029.8725%2030.786%2030.0471%2030.3057%2030.1646L29.9949%2032.5ZM29.0474%2028.3004C29.9285%2028.3004%2030.6775%2027.99%2031.2945%2027.3692C31.9117%2026.7483%2032.2203%2026.001%2032.2203%2025.1271C32.2203%2024.246%2031.9117%2023.4969%2031.2945%2022.88C30.6775%2022.2628%2029.9303%2021.9542%2029.0528%2021.9542C28.1753%2021.9542%2027.4262%2022.2628%2026.8053%2022.88C26.1848%2023.4969%2025.8745%2024.2442%2025.8745%2025.1217C25.8745%2025.9992%2026.1848%2026.7483%2026.8053%2027.3692C27.4262%2027.99%2028.1735%2028.3004%2029.0474%2028.3004Z'%20fill='white'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">3단계</span>
+                                    <strong class="step__label">작업 내용</strong>
+                                </li>
+                                <li class="step__item step__item--upcoming">
+                                    <span class="step__marker" aria-hidden="true"><i><img class="step-icon__image"
+                                                src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3621%2029.1204L33.0117%2011.4817L31.5117%209.99042L15.3533%2026.1292L7.46583%2018.2329L5.96583%2019.7325L15.3621%2029.1204ZM15.3621%2032.0946L3%2019.7325L7.46583%2015.2692L15.3621%2023.1654L31.5192%207L35.9996%2011.4571L15.3621%2032.0946Z'%20fill='%231C8CF4'/%3e%3c/svg%3e" alt=""
+                                                aria-hidden="true"></i></span>
+                                    <span class="step__meta">4단계</span>
+                                    <strong class="step__label">완료</strong>
+                                </li>
+                            </ol>
+                        </nav>
+        
+                        <div class="mdm-content">
+                            <section class="modal-card" aria-labelledby="operationTaskContentCardTitle">
+                                <header class="modal-card__header">
+                                    <h3 class="modal-card__title" id="operationTaskContentCardTitle">작업 내용</h3>
+                                    <p class="modal-card__note"><strong>*</strong> 표시는 필수 입력사항입니다.</p>
+                                </header>
+                                <div class="modal-card__body">
+                                    <form class="form form--grid" action="#" aria-label="작업 내용 입력">
+                                        <div class="form__row">
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">작업명<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <input class="form__input" type="text" placeholder="시리얼 번호를 입력해주세요"
+                                                        aria-label="작업명">
+                                                </span>
+                                            </label>
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">소요시간<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <input class="form__input" type="text" placeholder="모델명을 입력해주세요"
+                                                        aria-label="소요시간">
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form__row form__row--max1">
+                                            <label class="form__group form__group--horizontal form__group--textarea">
+                                                <span class="form__label">상세 내용<span class="form__required">*</span></span>
+                                                <span class="form__field form__field--textarea">
+                                                    <textarea class="form__textarea" id="operationTaskDetailInput" rows="6"
+                                                        placeholder="업데이트 내용을 입력해주세요," aria-label="상세 내용"></textarea>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form__row">
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">작업유형<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <select class="form__select" aria-label="작업유형" data-custom-select>
+                                                        <option value="">작업유형을 선택해주세요.</option>
+                                                        <option value="inspect">점검</option>
+                                                        <option value="repair">수리</option>
+                                                    </select>
+                                                </span>
+                                            </label>
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">우선순위<span class="form__required">*</span></span>
+                                                <span class="form__field">
+                                                    <select class="form__select" aria-label="우선순위" data-custom-select>
+                                                        <option value="">우선 순위를 선택해주세요.</option>
+                                                        <option value="high">높음</option>
+                                                        <option value="normal">보통</option>
+                                                        <option value="low">낮음</option>
+                                                    </select>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form__row form__row--max1">
+                                            <label class="form__group form__group--horizontal">
+                                                <span class="form__label">작업일정<span class="form__required">*</span></span>
+                                                <span class="form__field form__field--date" style="width: 241px;">
+                                                    <input class="form__input" type="text" value="2026-03-31 ~ 2026-04-07"
+                                                        aria-label="작업일정" readonly>
+                                                    <button type="button" class="form__icon-btn form__icon-btn--calendar"
+                                                        data-date-toggle aria-label="작업일정 선택"></button>
+                                                    <div class="date-pop" data-date-pop hidden>
+                                                        <div class="date-pop__head">
+                                                            <button type="button" class="date-pop__nav"
+                                                                aria-label="이전 달">&lt;</button>
+                                                            <strong>2026. 04</strong>
+                                                            <button type="button" class="date-pop__nav"
+                                                                aria-label="다음 달">&gt;</button>
+                                                        </div>
+                                                        <div class="date-pop__week" aria-hidden="true">
+                                                            <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+                                                        </div>
+                                                        <div class="date-pop__days">
+                                                            <button type="button">30</button><button
+                                                                type="button">31</button><button type="button">1</button><button
+                                                                type="button">2</button><button type="button">3</button><button
+                                                                type="button">4</button><button type="button">5</button>
+                                                            <button type="button">6</button><button
+                                                                type="button">7</button><button type="button">8</button><button
+                                                                type="button">9</button><button type="button">10</button><button
+                                                                type="button">11</button><button type="button">12</button>
+                                                            <button type="button">13</button><button
+                                                                type="button">14</button><button
+                                                                type="button">15</button><button
+                                                                type="button">16</button><button
+                                                                type="button">17</button><button
+                                                                type="button">18</button><button type="button">19</button>
+                                                            <button type="button">20</button><button
+                                                                type="button">21</button><button
+                                                                type="button">22</button><button
+                                                                type="button">23</button><button
+                                                                type="button">24</button><button
+                                                                type="button">25</button><button type="button">26</button>
+                                                            <button type="button">27</button><button
+                                                                type="button">28</button><button
+                                                                type="button">29</button><button
+                                                                type="button">30</button><button type="button">1</button><button
+                                                                type="button">2</button><button type="button">3</button>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+        
+                            <section class="modal-card" aria-labelledby="operationTaskAttachTitle">
+                                <header class="modal-card__header">
+                                    <h3 class="modal-card__title" id="operationTaskAttachTitle">첨부파일</h3>
+                                </header>
+                                <div class="modal-card__body">
+                                    <div class="op-task__attach">
+                                        <div class="file-upload__dropzone al-file-upload__dropzone" data-al-file-dropzone
+                                            role="presentation">
+                                            <p class="file-upload__hint al-file-upload__hint">APK 파일을 드래그하거나 클릭하여 업로드</p>
+                                            <p class="file-upload__meta al-file-upload__meta">( 지원 확장자 : .apk / 최대 500MB )</p>
+                                            <input class="file-upload__input al-file-upload__input" data-al-file-input
+                                                id="operationTaskApkFile" type="file" accept=".apk" title="APK 파일 선택"
+                                                aria-label="APK 파일 선택">
+                                            <div class="file-upload__actions al-file-upload__actions">
+                                                <button type="button" class="btn btn--secondary btn--sm" data-al-file-pick>파일
+                                                    선택</button>
+                                            </div>
+                                            <div class="file-upload__message al-file-upload__message" data-al-file-message
+                                                hidden>
+                                            </div>
+                                        </div>
+                                        <div class="op-task__attach-toolbar">
+                                            <p class="op-task__attach-count"><span class="op-task__attach-count-text">총
+                                                </span><strong>3</strong><span class="op-task__attach-count-text">개</span></p>
+                                            <button type="button" class="op-task__attach-clear">전체 삭제</button>
+                                        </div>
+                                        <ul class="op-task__attach-list" aria-label="첨부파일 목록">
+                                            <li class="op-task__attach-item">
+                                                <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                                <span class="op-task__attach-meta">
+                                                    <span class="op-task__attach-name">다운로드 파일명</span>
+                                                    <span class="op-task__attach-spec">jpg, 17KB</span>
+                                                </span>
+                                                <button type="button" class="op-task__attach-remove">
+                                                    삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                                </button>
+                                            </li>
+                                            <li class="op-task__attach-item">
+                                                <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                                <span class="op-task__attach-meta">
+                                                    <span class="op-task__attach-name">다운로드 파일명</span>
+                                                    <span class="op-task__attach-spec">jpg, 17KB</span>
+                                                </span>
+                                                <button type="button" class="op-task__attach-remove">
+                                                    삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                                </button>
+                                            </li>
+                                            <li class="op-task__attach-item">
+                                                <span class="op-task__attach-thumb" aria-hidden="true"><img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></span>
+                                                <span class="op-task__attach-meta">
+                                                    <span class="op-task__attach-name">다운로드 파일명</span>
+                                                    <span class="op-task__attach-spec">jpg, 17KB</span>
+                                                </span>
+                                                <button type="button" class="op-task__attach-remove">
+                                                    삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="삭제 아이콘">
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-edit-work">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="operation-task-detail" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960 op-task" role="dialog" aria-modal="true"
+                aria-labelledby="operationTaskDetailTitle" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="operationTaskDetailTitle">작업 지시 상세 정보</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="operation-task-detail"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="modal__body">
+                    <div class="op-detail">
+                        <div class="op-detail__grid">
+                            <div class="op-detail__column">
+                                <section class="op-detail__card" aria-labelledby="operationDetailBasicTitle">
+                                    <header class="op-detail__card-head">
+                                        <h3 class="op-detail__card-title" id="operationDetailBasicTitle">기본 정보</h3>
+                                    </header>
+                                    <dl class="op-detail__kv">
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>단말명</dt>
+                                            <dd class="op-detail__kv-value">강남역 1번 출구 단말1</dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>단말 ID</dt>
+                                            <dd class="op-detail__kv-value">DANMAL-1</dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>작업 명</dt>
+                                            <dd class="op-detail__kv-value">배터리 교체 작업</dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>작업 유형</dt>
+                                            <dd class="op-detail__kv-value">교체</dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>우선 순위</dt>
+                                            <dd class="op-detail__kv-value op-detail__kv-value--warn">높음
+                                            </dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>담당자</dt>
+                                            <dd class="op-detail__kv-value">이아무개</dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>작업 등록 시간</dt>
+                                            <dd class="op-detail__kv-value"><span>2026-01-01 </span><span
+                                                    class="op-detail__kv-time">12:00</span></dd>
+                                        </div>
+                                        <div class="op-detail__kv-row">
+                                            <dt class="op-detail__kv-label"><span class="op-detail__kv-dot"
+                                                    aria-hidden="true"></span>소요시간</dt>
+                                            <dd class="op-detail__kv-value">3시간</dd>
+                                        </div>
+                                    </dl>
+                                </section>
+        
+                                <section class="op-detail__card op-detail__card--work"
+                                    aria-labelledby="operationDetailWorkBodyTitle">
+                                    <header class="op-detail__card-head op-detail__card-head--work">
+                                        <h3 class="op-detail__card-title" id="operationDetailWorkBodyTitle">작업 내용</h3>
+                                        <span class="op-detail__card-icon" aria-hidden="true"><img
+                                                src="data:image/svg+xml,%3csvg%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.8529%2016.1834L11.958%2019.5912L10.7736%2020.7756L6.37985%2016.3819L1.18474%2021.577L9.51129e-05%2021.577L9.54501e-05%2020.3923L5.19521%2015.1972L0.801484%2010.8035L1.98589%209.61909L5.32343%209.65398L12.7316%202.24585L11.674%201.18826L12.8586%200.00361825L21.5035%208.64847L20.3188%209.83311L19.261%208.77528L11.8529%2016.1834Z'%20fill='%2389B640'/%3e%3c/svg%3e" alt=""></span>
+                                    </header>
+                                    <div class="op-detail__work-body">
+                                        <p>강남역 12번 출구(BUS-STOP-1)</p>
+                                        <p>배터리 문제 있어보였어요</p>
+                                        <p>최대 3줄 까지 노출</p>
+                                    </div>
+                                </section>
+                            </div>
+        
+                            <div class="op-detail__column op-detail__column--map">
+                                <section class="op-detail__card op-detail__card--stretch"
+                                    aria-labelledby="operationDetailStopTitle">
+                                    <header class="op-detail__card-head">
+                                        <h3 class="op-detail__card-title" id="operationDetailStopTitle">정류장</h3>
+                                    </header>
+                                    <div class="op-detail__stop">
+                                        <p class="op-detail__stop-name">강남역 12번 출구(BUS-STOP-1)</p>
+                                        <div class="op-detail__map-placeholder" role="img" aria-label="정류장 지도 영역">
+                                            지도 영역</div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+        
+                        <details class="op-detail__panel" open>
+                            <summary class="op-detail__panel-head">
+                                <h3 class="op-detail__panel-title">상태 이력</h3>
+                                <img class="op-detail__panel-chevron" src="data:image/svg+xml,%3csvg%20width='16'%20height='10'%20viewBox='0%200%2016%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M15.7344%209.39622C16.0628%209.10067%2016.0894%208.59484%2015.7939%208.26642L8.59467%200.266416C8.44296%200.0978308%208.22683%200.00156212%208.00003%200.00155544C7.77323%200.00154972%207.55709%200.0978069%207.40537%200.266384L0.205372%208.26638C-0.0901956%208.59479%20-0.0635729%209.10062%200.264835%209.39619C0.593243%209.69176%201.09908%209.66514%201.39464%209.33673L7.99997%201.99747L14.6046%209.3367C14.9001%209.66512%2015.4059%209.69177%2015.7344%209.39622Z'%20fill='%231D1D1D'/%3e%3c/svg%3e" alt=""
+                                    width="24" height="24">
+                            </summary>
+                            <div class="op-detail__panel-body">
+                                <ol class="op-detail__timeline">
+                                    <li class="op-detail__timeline-item op-detail__timeline-item--active">
+                                        <span class="op-detail__timeline-node op-detail__timeline-node--active"
+                                            aria-hidden="true">
+                                            <img src="data:image/svg+xml,%3csvg%20width='12'%20height='10'%20viewBox='0%200%2012%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%209.4L0%205.4L1.4%204L4%206.6L10.6%200L12%201.4L4%209.4Z'%20fill='%23F0F7FF'/%3e%3c/svg%3e" alt="">
+                                        </span>
+                                        <div class="op-detail__timeline-body">
+                                            <span class="op-detail__timeline-status">조치중</span>
+                                            <span class="op-detail__timeline-meta"><span
+                                                    class="op-detail__timeline-date">2026-01-01 </span><span
+                                                    class="op-detail__timeline-time">12:16</span></span>
+                                        </div>
+                                    </li>
+                                    <li class="op-detail__timeline-item">
+                                        <span class="op-detail__timeline-node op-detail__timeline-node--muted"
+                                            aria-hidden="true"></span>
+                                        <div class="op-detail__timeline-body">
+                                            <span class="op-detail__timeline-status">담당자 배정 완료</span>
+                                            <span class="op-detail__timeline-meta"><span
+                                                    class="op-detail__timeline-date">2026-01-01 </span><span
+                                                    class="op-detail__timeline-time">12:03</span></span>
+                                        </div>
+                                    </li>
+                                    <li class="op-detail__timeline-item op-detail__timeline-item--last">
+                                        <span class="op-detail__timeline-node op-detail__timeline-node--muted"
+                                            aria-hidden="true"></span>
+                                        <div class="op-detail__timeline-body">
+                                            <span class="op-detail__timeline-status">작업 등록</span>
+                                            <span class="op-detail__timeline-meta"><span
+                                                    class="op-detail__timeline-date">2026-01-01 </span><span
+                                                    class="op-detail__timeline-time">12:00</span></span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </details>
+        
+                        <details class="op-detail__panel" open>
+                            <summary class="op-detail__panel-head">
+                                <h3 class="op-detail__panel-title">증빙 자료</h3>
+                                <img class="op-detail__panel-chevron" src="data:image/svg+xml,%3csvg%20width='16'%20height='10'%20viewBox='0%200%2016%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M15.7344%209.39622C16.0628%209.10067%2016.0894%208.59484%2015.7939%208.26642L8.59467%200.266416C8.44296%200.0978308%208.22683%200.00156212%208.00003%200.00155544C7.77323%200.00154972%207.55709%200.0978069%207.40537%200.266384L0.205372%208.26638C-0.0901956%208.59479%20-0.0635729%209.10062%200.264835%209.39619C0.593243%209.69176%201.09908%209.66514%201.39464%209.33673L7.99997%201.99747L14.6046%209.3367C14.9001%209.66512%2015.4059%209.69177%2015.7344%209.39622Z'%20fill='%231D1D1D'/%3e%3c/svg%3e" alt="">
+                            </summary>
+                            <div class="op-detail__panel-body">
+                                <div class="op-detail__evidence">
+                                    <p class="op-detail__evidence-count"><span class="op-detail__evidence-count-strong">사진 : 총
+                                        </span><strong>3</strong><span class="op-detail__evidence-count-strong">개</span></p>
+                                    <ul class="op-detail__file-grid" aria-label="사진 목록">
+                                        <li class="op-detail__file-card">
+                                            <a class="op-detail__file-thumb glightbox"
+                                                href="./assets/images/common/content-station-map.png"
+                                                data-gallery="operation-detail-evidence"
+                                                title="증빙 사진 11`1111"
+                                                aria-label="증빙 사진 크게 보기 (1/3)"><img
+                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></a>
+                                            <span class="op-detail__file-meta">
+                                                <span class="op-detail__file-name">다운로드 파일명</span>
+                                                <span class="op-detail__file-spec">jpg, 17KB</span>
+                                            </span>
+                                            <button type="button" class="op-detail__file-remove">
+                                                삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="">
+                                            </button>
+                                        </li>
+                                        <li class="op-detail__file-card">
+                                            <a class="op-detail__file-thumb glightbox"
+                                                href="./assets/images/login/login-bg.png"
+                                                data-gallery="operation-detail-evidence"
+                                                title="증빙 사진 2"
+                                                aria-label="증빙 사진 크게 보기 (2/3)"><img
+                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></a>
+                                            <span class="op-detail__file-meta">
+                                                <span class="op-detail__file-name">다운로드 파일명</span>
+                                                <span class="op-detail__file-spec">jpg, 17KB</span>
+                                            </span>
+                                            <button type="button" class="op-detail__file-remove">
+                                                삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="">
+                                            </button>
+                                        </li>
+                                        <li class="op-detail__file-card">
+                                            <a class="op-detail__file-thumb glightbox"
+                                                href="./assets/images/common/content-station-map.png"
+                                                data-gallery="operation-detail-evidence"
+                                                title="증빙 사진 3"
+                                                aria-label="증빙 사진 크게 보기 (3/3)"><img
+                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.7435%2014.8603L17.487%2013.6038V2.26425C17.487%202.18725%2017.455%202.11667%2017.391%202.0525C17.3268%201.9885%2017.2563%201.9565%2017.1793%201.9565H5.83975L4.58325%200.7H17.1793C17.6091%200.7%2017.9773%200.85325%2018.2838%201.15975C18.5903%201.46625%2018.7435%201.83442%2018.7435%202.26425V14.8603ZM18.559%2019.4538L16.805%2017.7H3.30775C2.87792%2017.7%202.50975%2017.5468%202.20325%2017.2403C1.89675%2016.9338%201.7435%2016.5656%201.7435%2016.1358V2.6385L0%200.89475L0.89475%200L19.4538%2018.559L18.559%2019.4538ZM4.946%2013.9873L7.38975%2010.7935L9.42675%2013.436L10.8045%2011.6878L3%203.88325V16.1358C3%2016.2128%203.032%2016.2833%203.096%2016.3475C3.16017%2016.4115%203.23075%2016.4435%203.30775%2016.4435H15.5603L13.1038%2013.9873H4.946Z'%20fill='%23475569'/%3e%3c/svg%3e" alt=""></a>
+                                            <span class="op-detail__file-meta">
+                                                <span class="op-detail__file-name">다운로드 파일명</span>
+                                                <span class="op-detail__file-spec">jpg, 17KB</span>
+                                            </span>
+                                            <button type="button" class="op-detail__file-remove">
+                                                삭제<img src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.05319%2012L0%2010.9468L4.96153%205.98528L0%201.0532L1.05319%200L6.01472%204.96153L10.9468%200L12%201.0532L7.03847%205.98528L12%2010.9468L10.9468%2012L6.01472%207.03847L1.05319%2012Z'%20fill='%23F5145B'/%3e%3c/svg%3e" alt="">
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <p class="op-detail__evidence-count op-detail__evidence-count--files"><span
+                                            class="op-detail__evidence-count-strong">첨부파일 : 총 </span><strong>1</strong><span
+                                            class="op-detail__evidence-count-strong">개</span></p>
+                                    <div class="op-detail__file-row">
+                                        <span class="op-detail__file-row-name">다운로드 파일명 [hwp, 17KB]</span>
+                                        <button type="button" class="op-detail__file-download">
+                                            다운로드<img src="data:image/svg+xml,%3csvg%20width='17'%20height='15'%20viewBox='0%200%2017%2015'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.999%2010.1689C16.3672%2010.1689%2016.666%2010.4677%2016.666%2010.8359V13.502C16.666%2013.8701%2016.3672%2014.1689%2015.999%2014.1689H0.666992C0.49018%2014.1689%200.320336%2014.0987%200.195312%2013.9736C0.0702836%2013.8486%20-4.31637e-05%2013.6788%200%2013.502L0.000976562%2010.8359C0.00106638%2010.4679%200.299027%2010.1691%200.666992%2010.1689C1.03518%2010.169%201.33407%2010.4677%201.33398%2010.8359L1.33301%2012.8359H15.333V10.8359C15.333%2010.4679%2015.631%2010.1691%2015.999%2010.1689ZM8.33301%200C8.70109%200%208.99982%200.297976%209%200.666016V8.76074L12.0195%205.62109C12.2747%205.3557%2012.6965%205.34738%2012.9619%205.60254C13.2273%205.85772%2013.2356%206.27952%2012.9805%206.54492L8.81348%2010.8779C8.68779%2011.0086%208.51435%2011.083%208.33301%2011.083C8.15178%2011.0829%207.97816%2011.0086%207.85254%2010.8779L3.68652%206.54492C3.43133%206.27952%203.43967%205.85773%203.70508%205.60254C3.97049%205.34755%204.39233%205.35576%204.64746%205.62109L7.66699%208.76074V0.666016C7.66717%200.298084%207.96508%200.000176161%208.33301%200Z'%20fill='%2333363D'/%3e%3c/svg%3e" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+        
+                        <details class="op-detail__panel" open>
+                            <summary class="op-detail__panel-head">
+                                <h3 class="op-detail__panel-title">작업 액션</h3>
+                                <img class="op-detail__panel-chevron" src="data:image/svg+xml,%3csvg%20width='16'%20height='10'%20viewBox='0%200%2016%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M15.7344%209.39622C16.0628%209.10067%2016.0894%208.59484%2015.7939%208.26642L8.59467%200.266416C8.44296%200.0978308%208.22683%200.00156212%208.00003%200.00155544C7.77323%200.00154972%207.55709%200.0978069%207.40537%200.266384L0.205372%208.26638C-0.0901956%208.59479%20-0.0635729%209.10062%200.264835%209.39619C0.593243%209.69176%201.09908%209.66514%201.39464%209.33673L7.99997%201.99747L14.6046%209.3367C14.9001%209.66512%2015.4059%209.69177%2015.7344%209.39622Z'%20fill='%231D1D1D'/%3e%3c/svg%3e" alt="">
+                            </summary>
+                            <div class="op-detail__panel-body">
+                                <div class="op-detail__action">
+                                    <div class="op-detail__action-row">
+                                        <span class="op-detail__action-label">통신 유형</span>
+                                        <div class="op-detail__radios">
+                                            <label class="al-radio">
+                                                <input class="al-radio__input" type="radio" name="operation-detail-comm"
+                                                    checked>
+                                                <span class="al-radio__control" aria-hidden="true"></span>
+                                                배정완료
+                                            </label>
+                                            <label class="al-radio">
+                                                <input class="al-radio__input" type="radio" name="operation-detail-comm">
+                                                <span class="al-radio__control" aria-hidden="true"></span>
+                                                진행중
+                                            </label>
+                                            <label class="al-radio">
+                                                <input class="al-radio__input" type="radio" name="operation-detail-comm">
+                                                <span class="al-radio__control" aria-hidden="true"></span>
+                                                완료
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="op-detail__action-row op-detail__action-row--stack">
+                                        <span class="op-detail__action-label op-detail__action-label--top">업데이트 내용</span>
+                                        <div class="op-detail__action-field">
+                                            <textarea class="op-detail__textarea form__textarea" rows="5"
+                                                placeholder=" 작업 완료 후 세부 내용을 입력하세요." aria-label="업데이트 내용"></textarea>
+                                            <div class="op-detail__action-btns">
+                                                <button type="button" class="btn btn--white btn--md op-detail__btn-wide">작업 시작
+                                                    취소</button>
+                                                <button type="button" class="btn btn--white btn--md">실패</button>
+                                                <button type="button" class="btn btn--secondary btn--md">성공</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="operation-task-detail">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>        <div class="al-modal-backdrop" id="al-modal-warning-1" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-warning-1-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-warning-1-title">경고</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-warning-1"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--warning" aria-hidden="true"></div>
+                    <p class="al-modal__message">오류 메시지</p>
+                    <p class="al-modal__submessage">해당 텍스트에 <strong>금칙어</strong>가 포함되어 있어<br />등록이 <strong>불가능</strong>
+                        합니다.</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-warning-1">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-warning-1">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-warning-2" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-warning-2-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-warning-2-title">경고</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-warning-2"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--warning" aria-hidden="true"></div>
+                    <p class="al-modal__message">OTP초기화</p>
+                    <p class="al-modal__submessage">사용자의 OTP를 초기화합니다. 정말로 진행하시겠습니까?</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-warning-2">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-warning-2">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-confirm" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-confirm-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-confirm-title">확인</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-confirm"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <p class="al-modal__message">단말을 등록하겠습니까?</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-confirm">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-confirm">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-modify" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-modify-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-modify-title">수정</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-modify"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--modify" aria-hidden="true"></div>
+                    <p class="al-modal__message">수정하시겠습니까?</p>
+                    <p class="al-modal__submessage">변경하신 내용으로 저장됩니다.</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-modify">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-modify">
+                        수정
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-regist" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-regist-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-regist-title">등록</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-regist"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--regist" aria-hidden="true"></div>
+                    <p class="al-modal__message">등록하시겠습니까?</p>
+                    <p class="al-modal__submessage">입력하신 내용으로 새로 등록됩니다.</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-regist">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-regist">
+                        등록
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+      </main>
+      <!-- // al-content -->
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>

@@ -287,7 +287,11 @@
 		white-space: nowrap;
 		color: var(--al-color-primary);
 	}
-	.left{
-		text-align:left !important;
+	.left {
+		text-align: left !important;
+	}
+
+	.right {
+		text-align: right !important;
 	}
 }

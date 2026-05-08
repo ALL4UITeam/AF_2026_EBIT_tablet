@@ -21,6 +21,20 @@ function setOpen(modal, open) {
 export function initModals() {
     document.addEventListener('click', (e) => {
         const target = /** @type {HTMLElement} */ (e.target);
+        const togglePw = target.closest('[data-al-pw-toggle]');
+        if (togglePw instanceof HTMLButtonElement) {
+            const wrap = togglePw.closest('.modal-detail__control--password');
+            const pwInput = wrap?.querySelector('.modal-detail__text-input--password');
+            if (pwInput instanceof HTMLInputElement) {
+                e.preventDefault();
+                const isPassword = pwInput.type === 'password';
+                pwInput.type = isPassword ? 'text' : 'password';
+                togglePw.classList.toggle('is-visible', isPassword);
+                togglePw.setAttribute('aria-label', isPassword ? '비밀번호 숨기기' : '비밀번호 표시');
+                togglePw.setAttribute('aria-pressed', String(isPassword));
+                return;
+            }
+        }
 
         const openBtn = target.closest('[data-al-modal-open]');
         if (openBtn) {

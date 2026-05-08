@@ -19,13 +19,13 @@
       {{> nav }}
       <main class="al-content" id="alContent">
         <section class="card">
-          <h3 class="card__title">콘텐츠 관리 Modal</h3>
+          <h3 class="card__title">장비분석 관리 Modal</h3>
           <div class="al-guide-row">
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 상세</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 수정</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 등록</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 등록</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">배터리 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-device-type-detail">기기유형 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-device-type-modify">기기유형 수정</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-device-type-regist">기기유형 등록</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-battery-detail">배터리 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-battery-modify">배터리 수정</button>
             <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-1">경고(오류)</button>
             <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-2">경고(OTP초기화)</button>
             <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-confirm">확인</button>
@@ -34,7 +34,7 @@
           </div>
         </section>
 
-        
+        {{>modal-equipment }}
         {{>modal-common-alerts }}
 
       </main>

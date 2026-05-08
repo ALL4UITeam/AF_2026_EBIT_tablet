@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>권한 관리 | E-BIT 관리자</title>
+    {{> meta}}
+</head>
+
+<body class="al-admin">
+    <div class="al-wrap">
+
+        {{> header }}
+
+        <div class="al-body">
+            <div class="al-backdrop" id="alBackdrop" aria-hidden="true"></div>
+
+            {{> nav }}
+
+            <main class="al-content board-page" id="permMgmtPage">
+
+                <section class="al-page-header" aria-labelledby="permMgmtPageTitle">
+                    <div class="al-page-header__inner">
+                        <div class="al-page-header__meta">
+                            <ol class="al-page-header__breadcrumb">
+                                <li><a href="#">홈</a></li>
+                                <li><span>시스템관리</span></li>
+                                <li><span id="permMgmtPageTitle">권한 관리</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="al-page-body" aria-label="권한 관리 본문">
+                    <div class="perm-mgmt__shell">
+
+                        <!-- 좌: 그룹 목록 -->
+                        <div class="perm-mgmt__col perm-mgmt__col--groups">
+                            <h2 class="perm-mgmt__heading">
+                                <span class="perm-mgmt__heading-lead">그룹 목록 </span>
+                                <span class="perm-mgmt__stat-num">20</span>
+                                <span class="perm-mgmt__stat-unit">그룹</span>
+                            </h2>
+
+                            <div class="perm-mgmt__panel">
+                                <div class="perm-mgmt__search-head">
+                                    <form class="form form--search perm-mgmt__search-form" role="search"
+                                        aria-label="그룹 검색">
+                                        <label class="form__group">
+                                            <span class="form__field form__field--search">
+                                                <input class="form__input" type="search"
+                                                    placeholder="검색어를 입력해주세요." aria-label="그룹 검색어">
+                                                <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                    aria-label="검색"></button>
+                                            </span>
+                                        </label>
+                                    </form>
+                                </div>
+
+                                <div class="perm-mgmt__group-scroll">
+                                    <button type="button"
+                                        class="perm-mgmt__group-card perm-mgmt__group-card--active"
+                                        data-perm-mgmt-group="관리자" data-perm-mgmt-current="22"
+                                        data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">관리자</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-member.svg" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">3</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-right.svg" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>22</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="유지보수팀"
+                                        data-perm-mgmt-current="22" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">유지보수팀</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-member.svg" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">12</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-right.svg" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>22</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="고객사"
+                                        data-perm-mgmt-current="12" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">고객사</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-member.svg" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">2</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-right.svg" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>12</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="설치업체"
+                                        data-perm-mgmt-current="20" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">설치업체</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-member.svg" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">6</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-right.svg" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>20</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="고창군"
+                                        data-perm-mgmt-current="5" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">고창군</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-member.svg" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">33</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-right.svg" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>5</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="유지보수업체"
+                                        data-perm-mgmt-current="22" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">유지보수업체</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-member.svg" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">2</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="./assets/images/icon/ico-right.svg" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>22</strong>/22</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 우: 권한 트리 -->
+                        <div class="perm-mgmt__col perm-mgmt__col--rights">
+                            <h2 class="perm-mgmt__heading">
+                                <span data-perm-mgmt-detail-name>관리자</span>
+                                <strong class="perm-mgmt__stat-num" data-perm-mgmt-detail-num>22</strong>
+                                <span class="perm-mgmt__stat-unit">권한</span>
+                            </h2>
+
+                            <div class="perm-mgmt__rights-panel">
+                                <div class="perm-mgmt__select-row">
+                                    <label class="al-checkbox">
+                                        <input class="al-checkbox__input" type="checkbox"
+                                            data-perm-mgmt-select-all checked id="permMgmtSelectAll"
+                                            aria-controls="permMgmtTreePanel">
+                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                        전체 선택
+                                    </label>
+                                </div>
+
+                                <div class="perm-mgmt__rights-scroll perm-tree" id="permMgmtTreePanel"
+                                    data-perm-mgmt-tree role="tree" aria-label="메뉴별 권한">
+
+                                    <!-- 단말관리 -->
+                                    <div class="perm-tree__branch" data-perm-tree-branch>
+                                        <div class="perm-tree__depth1 perm-tree__depth1--filled">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="단말관리 전체">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <button type="button" class="perm-tree__toggle" data-perm-tree-toggle
+                                                aria-expanded="true">
+                                                단말관리
+                                            </button>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="perm-tree__nest">
+                                            <span class="perm-tree__vbar" aria-hidden="true"></span>
+                                            <div class="perm-tree__leaves">
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말현황">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말현황</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말등록">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말등록</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="그룹 관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">그룹 관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말 상태 이력">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말 상태 이력</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 콘텐츠관리 (접힘) -->
+                                    <div class="perm-tree__branch perm-tree__branch--leaf"
+                                        data-perm-tree-branch data-perm-tree-leaf>
+                                        <div class="perm-tree__depth1">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="콘텐츠관리">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <span class="perm-tree__title">콘텐츠관리</span>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- 앱관리 (접힘) -->
+                                    <div class="perm-tree__branch perm-tree__branch--leaf"
+                                        data-perm-tree-branch data-perm-tree-leaf>
+                                        <div class="perm-tree__depth1">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="앱관리">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <span class="perm-tree__title">앱관리</span>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- 운영관리 -->
+                                    <div class="perm-tree__branch" data-perm-tree-branch>
+                                        <div class="perm-tree__depth1 perm-tree__depth1--filled">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="운영관리 전체">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <button type="button" class="perm-tree__toggle" data-perm-tree-toggle
+                                                aria-expanded="true">
+                                                운영관리
+                                            </button>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="perm-tree__nest">
+                                            <span class="perm-tree__vbar" aria-hidden="true"></span>
+                                            <div class="perm-tree__leaves">
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="작업지시관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">작업지시관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="유지보수 분석">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">유지보수 분석</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 시스템관리 -->
+                                    <div class="perm-tree__branch" data-perm-tree-branch>
+                                        <div class="perm-tree__depth1 perm-tree__depth1--filled">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="시스템관리 전체">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <button type="button" class="perm-tree__toggle" data-perm-tree-toggle
+                                                aria-expanded="true">
+                                                시스템관리
+                                            </button>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="perm-tree__nest">
+                                            <span class="perm-tree__vbar" aria-hidden="true"></span>
+                                            <div class="perm-tree__leaves">
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="사용자관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">사용자관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="그룹관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">그룹관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="권한관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">권한관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말관리 메뉴">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="perm-mgmt__footer">
+                                    <button type="button" class="btn btn--primary btn--md">등록</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+    <script type="module" src="./js/page/index.js"></script>
+</body>
+
+</html>

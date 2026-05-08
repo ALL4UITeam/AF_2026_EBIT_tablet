@@ -6,6 +6,8 @@ import { initTabs } from '../ui/tabs.js';
 import { initToggle } from '../ui/toggle.js';
 import { initPagination } from '../ui/pagination.js';
 import { initSidenav } from '../ui/sidenav.js';
+import { initGlightbox } from '../ui/glightbox.js';
+import { initPermissionMgmtPage } from '../ui/permissionMgmt.js';
 import '../common/CustomSelect.js';
 
 /**
@@ -103,7 +105,9 @@ function initGuidePage() {
     initTabs(root);
     initToggle(root);
     initDatePop(root);
+    initOperationTaskAttach(root);
     initBrightnessControls(root);
+    initBatterySocRanges(root);
     initIssueFilterTabs(root);
     initMapLegendToggles(root);
 
@@ -117,6 +121,54 @@ function initGuidePage() {
     });
 
     applyFilter();
+}
+
+function initOperationTaskAttach(root) {
+    const backdrop = root.querySelector('#operation-task-content');
+    if (!backdrop) return;
+
+    const attach = backdrop.querySelector('.op-task__attach');
+    if (!attach) return;
+
+    const input = attach.querySelector('#operationTaskApkFile');
+    const pickBtn = attach.querySelector('[data-al-file-pick]');
+    const dropzone = attach.querySelector('[data-al-file-dropzone]');
+    const message = attach.querySelector('[data-al-file-message]');
+
+    const clearMessage = () => {
+        if (!message) return;
+        message.replaceChildren();
+        message.setAttribute('hidden', '');
+    };
+
+    const openPicker = () => {
+        clearMessage();
+        input?.click();
+    };
+
+    pickBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openPicker();
+    });
+
+    dropzone?.addEventListener('click', (e) => {
+        if (pickBtn && e.target instanceof Node && pickBtn.contains(e.target)) return;
+        openPicker();
+    });
+
+    dropzone?.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('file-upload__dropzone--active', 'al-file-upload__dropzone--active');
+    });
+
+    dropzone?.addEventListener('dragleave', () => {
+        dropzone.classList.remove('file-upload__dropzone--active', 'al-file-upload__dropzone--active');
+    });
+
+    dropzone?.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('file-upload__dropzone--active', 'al-file-upload__dropzone--active');
+    });
 }
 
 function initDatePop(root) {
@@ -153,10 +205,10 @@ function initDatePop(root) {
     root.addEventListener('click', (e) => {
         const target = /** @type {HTMLElement} */ (e.target);
         const field = target.closest('.form__field--date');
-        const pop = field?.querySelector('[data-date-pop]');
         const dayButton = target.closest('.date-pop__days button');
 
         if (dayButton && field instanceof HTMLElement && dayButton instanceof HTMLButtonElement) {
+            const pop = field.querySelector('[data-date-pop]');
             const input = field.querySelector('.form__input');
             const value = getDateValue(dayButton);
 
@@ -177,13 +229,25 @@ function initDatePop(root) {
             return;
         }
 
-        if (field instanceof HTMLElement && !target.closest('[data-date-pop]')) {
-            const isOpen = pop instanceof HTMLElement && !pop.hidden;
+        if (!(field instanceof HTMLElement)) return;
+
+        const pop = field.querySelector('[data-date-pop]');
+        if (!(pop instanceof HTMLElement)) return;
+
+        if (target.closest('[data-date-pop]')) return;
+
+        const toggle = target.closest('[data-date-toggle]');
+        if (toggle && field.contains(toggle)) {
+            const wasHidden = pop.hidden;
             closeAll();
-            if (pop instanceof HTMLElement) {
-                pop.hidden = isOpen && target.closest('[data-date-toggle]') ? true : false;
-                paintSelectedDays(field);
-            }
+            pop.hidden = !wasHidden;
+            paintSelectedDays(field);
+            return;
+        }
+
+        if (!pop.hidden) {
+            closeAll();
+            paintSelectedDays(field);
         }
     });
 
@@ -320,8 +384,35 @@ function initBrightnessControls(root) {
     });
 }
 
+function initBatterySocRanges(root) {
+    root.querySelectorAll('.battery-board__soc-filter').forEach((control) => {
+        const range = control.querySelector('.battery-board__soc-range');
+        const valueText = control.querySelector('.battery-board__soc-value strong');
+
+        if (!(range instanceof HTMLInputElement)) return;
+
+        const render = () => {
+            const min = Number(range.min || 0);
+            const max = Number(range.max || 100);
+            const value = Number(range.value || 0);
+            const percent = max === min ? 0 : ((value - min) / (max - min)) * 100;
+
+            range.style.setProperty('--battery-soc-percent', `${Math.min(100, Math.max(0, percent))}%`);
+
+            if (valueText) {
+                valueText.textContent = String(value);
+            }
+        };
+
+        range.addEventListener('input', render);
+        render();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initSidenav();
+    initGlightbox();
+    initPermissionMgmtPage();
 });
 
 initGuidePage();

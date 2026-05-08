@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.min.css">
   <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.theme.min.css">
   <link rel="stylesheet" href="./lib/datetimepicker/jquery.datetimepicker.css">
+  <link rel="stylesheet" href="./lib/glightbox/glightbox.min.css">
   
   
   <script src="./lib/jQuery/jquery-3.7.1.js"></script>
@@ -19,6 +20,7 @@
   <script src="./lib/jQuery-ui/jquery-ui.min.js"></script>
   <script src="./lib/simplebar/simplebar.min.js"></script>
   <script src="./lib/dragula/dragula.min.js"></script>
+  <script src="./lib/glightbox/glightbox.min.js"></script>
   <script type="module" src="/2026_AF_EBIT/assets/index.js"></script>
   <link rel="stylesheet" href="/2026_AF_EBIT/assets/style.css">
 </head>
@@ -73,7 +75,7 @@
                       </button>
                       <ul class="al-sidenav__sub">
                           <li class="al-sidenav__subitem">
-                              <a href="#" class="al-sidenav__sublink is-active">앱 관리</a>
+                              <a href="#" class="al-sidenav__sublink">앱 관리</a>
                           </li>
                           <li class="al-sidenav__subitem">
                               <a href="#" class="al-sidenav__sublink">배포 관리</a>
@@ -159,7 +161,7 @@
                   </li>
       
                   <!-- 시스템관리 -->
-                  <li class="al-sidenav__item">
+                  <li class="al-sidenav__item is-open">
                       <button type="button" class="al-sidenav__trigger" aria-expanded="true">
                           <span class="al-sidenav__icon al-sidenav__icon--m07" aria-hidden="true"></span>
                           <span class="al-sidenav__label">시스템관리</span>
@@ -173,7 +175,7 @@
                               <a href="#" class="al-sidenav__sublink">그룹 관리</a>
                           </li>
                           <li class="al-sidenav__subitem">
-                              <a href="#" class="al-sidenav__sublink">권한 관리</a>
+                              <a href="./06_사용자관리_권한관리.html" class="al-sidenav__sublink is-active">권한 관리</a>
                           </li>
                           <li class="al-sidenav__subitem">
                               <a href="#" class="al-sidenav__sublink">작업 이력</a>
@@ -188,13 +190,13 @@
       </aside>
       <main class="al-content" id="alContent">
         <section class="card">
-          <h3 class="card__title">콘텐츠 관리 Modal</h3>
+          <h3 class="card__title">장비분석 관리 Modal</h3>
           <div class="al-guide-row">
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 상세</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 수정</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 등록</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">기기유형 등록</button>
-            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="">배터리 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-device-type-detail">기기유형 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-device-type-modify">기기유형 수정</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-device-type-regist">기기유형 등록</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-battery-detail">배터리 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="equipment-battery-modify">배터리 수정</button>
             <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-1">경고(오류)</button>
             <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-2">경고(OTP초기화)</button>
             <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-confirm">확인</button>
@@ -203,7 +205,494 @@
           </div>
         </section>
 
+        <div class="modal-backdrop" id="equipment-device-type-detail" data-al-modal-backdrop data-open="false" aria-hidden="true">
+          <div class="modal modal--form w-900 equipment-detail" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="modal__header">
+              <div class="equipment-detail__title-wrap">
+                <h2 class="modal__title">기기 유형 상세</h2>
+                <span class="equipment-detail__code">W-TYPE-001</span>
+              </div>
+              <button type="button" class="modal__close" data-al-modal-close="equipment-device-type-detail" aria-label="닫기">닫기</button>
+            </div>
+            <div class="modal__body">
+              <div class="equipment-detail__content">
+                <section class="equipment-detail__summary" aria-labelledby="equipment-type-name">
+                  <p class="equipment-detail__summary-label">기기 유형명</p>
+                  <h3 class="equipment-detail__summary-title" id="equipment-type-name">완주 13인치 가로형</h3>
+                  <p class="equipment-detail__summary-desc">13.3&quot; · 271 × 207 · 1600 × 1200 px</p>
+                </section>
         
+                <div class="equipment-detail__grid">
+                  <section class="modal-card equipment-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">기본 정보</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <ul class="round-list equipment-detail__list">
+                        <li class="round-list__item">
+                          <span class="label">유형 코드</span>
+                          <strong class="value">W-TYPE-001</strong>
+                        </li>
+                        <li class="round-list__item">
+                          <span class="label">기기 유형명</span>
+                          <strong class="value">DANMAL-1</strong>
+                        </li>
+                        <li class="round-list__item">
+                          <span class="label">등록일</span>
+                          <strong class="value">2024-01-15</strong>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+        
+                  <section class="modal-card equipment-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">디스플레이 사양</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <ul class="round-list equipment-detail__list">
+                        <li class="round-list__item">
+                          <span class="label">사이즈 (inch)</span>
+                          <strong class="value">13.3</strong>
+                        </li>
+                        <li class="round-list__item">
+                          <span class="label">물리 크기 (mm)</span>
+                          <strong class="value">271 × 207</strong>
+                        </li>
+                        <li class="round-list__item">
+                          <span class="label">해상도 (px)</span>
+                          <strong class="value">1600 × 1200</strong>
+                        </li>
+                        <li class="round-list__item">
+                          <span class="label">TXT 최대 길이</span>
+                          <strong class="value">60 자</strong>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+        
+                <section class="modal-card equipment-detail__card equipment-detail__history">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">이력</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="table-wrapper equipment-detail__table">
+                      <table class="al-table">
+                        <colgroup>
+                          <col style="width: 25%;">
+                          <col style="width: 25%;">
+                          <col style="width: 25%;">
+                          <col style="width: 25%;">
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th>등록자</th>
+                            <th>등록일시</th>
+                            <th>수정자</th>
+                            <th>수정일시</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><strong>관리자 (admin)</strong></td>
+                            <td>2024-01-15 <span class="equipment-detail__time">14:22</span></td>
+                            <td><strong>관리자 (admin)</strong></td>
+                            <td>2024-03-02 <span class="equipment-detail__time">09:48</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="equipment-device-type-detail">취소</button>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--secondary btn--pill btn--lg">삭제</button>
+                <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-backdrop" id="equipment-battery-detail" data-al-modal-backdrop data-open="false" aria-hidden="true">
+          <div class="modal modal--form w-900 battery-detail" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="modal__header">
+              <div class="battery-detail__title-wrap">
+                <h2 class="modal__title">기기 유형 상세</h2>
+                <span class="equipment-detail__code">W-EBIT-001</span>
+                <span class="battery-detail__state battery-detail__state--normal">
+                  <span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8440)'%3e%3cpath%20d='M1%2010C0.716667%2010%200.479167%209.90417%200.2875%209.7125C0.0958333%209.52083%200%209.28333%200%209V1C0%200.716667%200.0958333%200.479167%200.2875%200.2875C0.479167%200.0958333%200.716667%200%201%200H12.45C12.7333%200%2012.9708%200.0958333%2013.1625%200.2875C13.3542%200.479167%2013.45%200.716667%2013.45%201L10.325%204.875C9.825%205.50833%209.74583%206.1875%2010.0875%206.9125C10.4292%207.6375%2011.0083%208%2011.825%208C12.1083%208%2012.3458%208.09583%2012.5375%208.2875C12.7292%208.47917%2012.825%208.71667%2012.825%209C12.825%209.28333%2012.7292%209.52083%2012.5375%209.7125C12.3458%209.90417%2012.1083%2010%2011.825%2010H1ZM15.375%206H13.05C12.8333%206%2012.6792%205.90833%2012.5875%205.725C12.4958%205.54167%2012.5167%205.36667%2012.65%205.2L16.25%200.675C16.3333%200.575%2016.4292%200.516667%2016.5375%200.5C16.6458%200.483333%2016.75%200.491667%2016.85%200.525C16.95%200.558333%2017.0333%200.625%2017.1%200.725C17.1667%200.825%2017.1833%200.941667%2017.15%201.075L16.625%204H18.95C19.1667%204%2019.3208%204.09167%2019.4125%204.275C19.5042%204.45833%2019.4833%204.63333%2019.35%204.8L15.75%209.325C15.6667%209.425%2015.5708%209.48333%2015.4625%209.5C15.3542%209.51667%2015.25%209.50833%2015.15%209.475C15.05%209.44167%2014.9667%209.375%2014.9%209.275C14.8333%209.175%2014.8167%209.05833%2014.85%208.925L15.375%206Z'%20fill='%23228738'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8440'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>정상
+                </span>
+              </div>
+              <button type="button" class="modal__close" data-al-modal-close="equipment-battery-detail" aria-label="닫기">닫기</button>
+            </div>
+            <div class="modal__body">
+              <div class="battery-detail__content">
+                <section class="modal-card battery-detail__card">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">기본 정보</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="battery-detail__summary-grid">
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">정류장명</span>
+                        <strong class="battery-detail__summary-value">완주 00정류장</strong>
+                      </div>
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">고객사</span>
+                        <strong class="battery-detail__summary-value">완주</strong>
+                      </div>
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">현재 SOC</span>
+                        <strong class="battery-detail__soc battery-detail__soc--normal"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8440)'%3e%3cpath%20d='M1%2010C0.716667%2010%200.479167%209.90417%200.2875%209.7125C0.0958333%209.52083%200%209.28333%200%209V1C0%200.716667%200.0958333%200.479167%200.2875%200.2875C0.479167%200.0958333%200.716667%200%201%200H12.45C12.7333%200%2012.9708%200.0958333%2013.1625%200.2875C13.3542%200.479167%2013.45%200.716667%2013.45%201L10.325%204.875C9.825%205.50833%209.74583%206.1875%2010.0875%206.9125C10.4292%207.6375%2011.0083%208%2011.825%208C12.1083%208%2012.3458%208.09583%2012.5375%208.2875C12.7292%208.47917%2012.825%208.71667%2012.825%209C12.825%209.28333%2012.7292%209.52083%2012.5375%209.7125C12.3458%209.90417%2012.1083%2010%2011.825%2010H1ZM15.375%206H13.05C12.8333%206%2012.6792%205.90833%2012.5875%205.725C12.4958%205.54167%2012.5167%205.36667%2012.65%205.2L16.25%200.675C16.3333%200.575%2016.4292%200.516667%2016.5375%200.5C16.6458%200.483333%2016.75%200.491667%2016.85%200.525C16.95%200.558333%2017.0333%200.625%2017.1%200.725C17.1667%200.825%2017.1833%200.941667%2017.15%201.075L16.625%204H18.95C19.1667%204%2019.3208%204.09167%2019.4125%204.275C19.5042%204.45833%2019.4833%204.63333%2019.35%204.8L15.75%209.325C15.6667%209.425%2015.5708%209.48333%2015.4625%209.5C15.3542%209.51667%2015.25%209.50833%2015.15%209.475C15.05%209.44167%2014.9667%209.375%2014.9%209.275C14.8333%209.175%2014.8167%209.05833%2014.85%208.925L15.375%206Z'%20fill='%23228738'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8440'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>85<small>%</small></strong>
+                      </div>
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">현재 온도</span>
+                        <strong class="battery-detail__summary-value">15<small>°C</small></strong>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+        
+                <section class="modal-card battery-detail__card">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">SOC 충전 추이</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="battery-detail__chart battery-detail__chart--wide">차트 영역</div>
+                  </div>
+                </section>
+        
+                <div class="battery-detail__grid">
+                  <section class="modal-card battery-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">SOC 단계 설정</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <ul class="battery-detail__level-list">
+                        <li class="battery-detail__level-item battery-detail__level-item--normal">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8440)'%3e%3cpath%20d='M1%2010C0.716667%2010%200.479167%209.90417%200.2875%209.7125C0.0958333%209.52083%200%209.28333%200%209V1C0%200.716667%200.0958333%200.479167%200.2875%200.2875C0.479167%200.0958333%200.716667%200%201%200H12.45C12.7333%200%2012.9708%200.0958333%2013.1625%200.2875C13.3542%200.479167%2013.45%200.716667%2013.45%201L10.325%204.875C9.825%205.50833%209.74583%206.1875%2010.0875%206.9125C10.4292%207.6375%2011.0083%208%2011.825%208C12.1083%208%2012.3458%208.09583%2012.5375%208.2875C12.7292%208.47917%2012.825%208.71667%2012.825%209C12.825%209.28333%2012.7292%209.52083%2012.5375%209.7125C12.3458%209.90417%2012.1083%2010%2011.825%2010H1ZM15.375%206H13.05C12.8333%206%2012.6792%205.90833%2012.5875%205.725C12.4958%205.54167%2012.5167%205.36667%2012.65%205.2L16.25%200.675C16.3333%200.575%2016.4292%200.516667%2016.5375%200.5C16.6458%200.483333%2016.75%200.491667%2016.85%200.525C16.95%200.558333%2017.0333%200.625%2017.1%200.725C17.1667%200.825%2017.1833%200.941667%2017.15%201.075L16.625%204H18.95C19.1667%204%2019.3208%204.09167%2019.4125%204.275C19.5042%204.45833%2019.4833%204.63333%2019.35%204.8L15.75%209.325C15.6667%209.425%2015.5708%209.48333%2015.4625%209.5C15.3542%209.51667%2015.25%209.50833%2015.15%209.475C15.05%209.44167%2014.9667%209.375%2014.9%209.275C14.8333%209.175%2014.8167%209.05833%2014.85%208.925L15.375%206Z'%20fill='%23228738'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8440'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>정상</span>
+                          <strong>70<small>%</small></strong><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--warn">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8447)'%3e%3cpath%20d='M0.531494%2010C0.248161%2010%200.0106608%209.90417%20-0.181006%209.7125C-0.372673%209.52083%20-0.468506%209.28333%20-0.468506%209V1C-0.468506%200.716667%20-0.372673%200.479167%20-0.181006%200.2875C0.0106608%200.0958333%200.248161%200%200.531494%200H11.9815C12.2648%200%2012.5023%200.0958333%2012.694%200.2875C12.8857%200.479167%2012.9815%200.716667%2012.9815%201C12.9815%201.28333%2012.8857%201.52083%2012.694%201.7125C12.5023%201.90417%2012.2648%202%2011.9815%202H9.53149V8H11.3565C11.6398%208%2011.8773%208.09583%2012.069%208.2875C12.2607%208.47917%2012.3565%208.71667%2012.3565%209C12.3565%209.28333%2012.2607%209.52083%2012.069%209.7125C11.8773%209.90417%2011.6398%2010%2011.3565%2010H0.531494ZM14.9065%206H12.5815C12.3648%206%2012.2107%205.90833%2012.119%205.725C12.0273%205.54167%2012.0482%205.36667%2012.1815%205.2L15.7815%200.675C15.8648%200.575%2015.9607%200.516667%2016.069%200.5C16.1773%200.483333%2016.2815%200.491667%2016.3815%200.525C16.4815%200.558333%2016.5648%200.625%2016.6315%200.725C16.6982%200.825%2016.7148%200.941667%2016.6815%201.075L16.1565%204H18.4815C18.6982%204%2018.8523%204.09167%2018.944%204.275C19.0357%204.45833%2019.0148%204.63333%2018.8815%204.8L15.2815%209.325C15.1982%209.425%2015.1023%209.48333%2014.994%209.5C14.8857%209.51667%2014.7815%209.50833%2014.6815%209.475C14.5815%209.44167%2014.4982%209.375%2014.4315%209.275C14.3648%209.175%2014.3482%209.05833%2014.3815%208.925L14.9065%206Z'%20fill='%23C78500'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8447'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>경고</span>
+                          <strong>30<small>%</small></strong><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--danger">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8454)'%3e%3cpath%20d='M0.531494%2010C0.248161%2010%200.0106608%209.90417%20-0.181006%209.7125C-0.372673%209.52083%20-0.468506%209.28333%20-0.468506%209V1C-0.468506%200.716667%20-0.372673%200.479167%20-0.181006%200.2875C0.0106608%200.0958333%200.248161%200%200.531494%200H11.9815C12.2648%200%2012.5023%200.0958333%2012.694%200.2875C12.8857%200.479167%2012.9815%200.716667%2012.9815%201C12.9815%201.28333%2012.8857%201.52083%2012.694%201.7125C12.5023%201.90417%2012.2648%202%2011.9815%202H6.53149V8H11.3565C11.6398%208%2011.8773%208.09583%2012.069%208.2875C12.2607%208.47917%2012.3565%208.71667%2012.3565%209C12.3565%209.28333%2012.2607%209.52083%2012.069%209.7125C11.8773%209.90417%2011.6398%2010%2011.3565%2010H0.531494ZM14.9065%206H12.5815C12.3648%206%2012.2107%205.90833%2012.119%205.725C12.0273%205.54167%2012.0482%205.36667%2012.1815%205.2L15.7815%200.675C15.8648%200.575%2015.9607%200.516667%2016.069%200.5C16.1773%200.483333%2016.2815%200.491667%2016.3815%200.525C16.4815%200.558333%2016.5648%200.625%2016.6315%200.725C16.6982%200.825%2016.7148%200.941667%2016.6815%201.075L16.1565%204H18.4815C18.6982%204%2018.8523%204.09167%2018.944%204.275C19.0357%204.45833%2019.0148%204.63333%2018.8815%204.8L15.2815%209.325C15.1982%209.425%2015.1023%209.48333%2014.994%209.5C14.8857%209.51667%2014.7815%209.50833%2014.6815%209.475C14.5815%209.44167%2014.4982%209.375%2014.4315%209.275C14.3648%209.175%2014.3482%209.05833%2014.3815%208.925L14.9065%206Z'%20fill='%23FF6D00'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8454'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>위험</span>
+                          <strong>15<small>%</small></strong><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--low">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8461)'%3e%3cpath%20d='M0.594482%2010C0.311149%2010%200.0736491%209.90417%20-0.118018%209.7125C-0.309684%209.52083%20-0.405518%209.28333%20-0.405518%209V1C-0.405518%200.716667%20-0.309684%200.479167%20-0.118018%200.2875C0.0736491%200.0958333%200.311149%200%200.594482%200H12.0445C12.3278%200%2012.5653%200.0958333%2012.757%200.2875C12.9486%200.479167%2013.0445%200.716667%2013.0445%201C13.0445%201.28333%2012.9486%201.52083%2012.757%201.7125C12.5653%201.90417%2012.3278%202%2012.0445%202H4.59448V8H11.4195C11.7028%208%2011.9403%208.09583%2012.132%208.2875C12.3236%208.47917%2012.4195%208.71667%2012.4195%209C12.4195%209.28333%2012.3236%209.52083%2012.132%209.7125C11.9403%209.90417%2011.7028%2010%2011.4195%2010H0.594482ZM14.9695%206H12.6445C12.4278%206%2012.2736%205.90833%2012.182%205.725C12.0903%205.54167%2012.1111%205.36667%2012.2445%205.2L15.8445%200.675C15.9278%200.575%2016.0236%200.516667%2016.132%200.5C16.2403%200.483333%2016.3445%200.491667%2016.4445%200.525C16.5445%200.558333%2016.6278%200.625%2016.6945%200.725C16.7611%200.825%2016.7778%200.941667%2016.7445%201.075L16.2195%204H18.5445C18.7611%204%2018.9153%204.09167%2019.007%204.275C19.0986%204.45833%2019.0778%204.63333%2018.9445%204.8L15.3445%209.325C15.2611%209.425%2015.1653%209.48333%2015.057%209.5C14.9486%209.51667%2014.8445%209.50833%2014.7445%209.475C14.6445%209.44167%2014.5611%209.375%2014.4945%209.275C14.4278%209.175%2014.4111%209.05833%2014.4445%208.925L14.9695%206Z'%20fill='%23DE3412'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8461'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>저배터리</span>
+                          <strong>5<small>%</small></strong><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--critical">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8468)'%3e%3cpath%20d='M17.126%2010C17.4093%2010%2017.6468%209.90417%2017.8385%209.7125C18.0301%209.52083%2018.126%209.28333%2018.126%209V7H19.126C19.4093%207%2019.6468%206.90417%2019.8385%206.7125C20.0301%206.52083%2020.126%206.28333%2020.126%206V4C20.126%203.71667%2020.0301%203.47917%2019.8385%203.2875C19.6468%203.09583%2019.4093%203%2019.126%203H18.126V1C18.126%200.716667%2018.0301%200.479167%2017.8385%200.2875C17.6468%200.0958333%2017.4093%200%2017.126%200H1.12598C0.842644%200%200.605145%200.0958333%200.413477%200.2875C0.221809%200.479167%200.125977%200.716667%200.125977%201V9C0.125977%209.28333%200.221809%209.52083%200.413477%209.7125C0.605145%209.90417%200.842644%2010%201.12598%2010H17.126ZM16.126%208H2.12598V2H16.126V8Z'%20fill='%234A0404'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8468'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>고위험</span>
+                          <strong>0<small>%</small></strong><span>이상</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+        
+                  <section class="modal-card battery-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">SOC 단계 구간 미리보기</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <div class="battery-detail__chart battery-detail__chart--preview">차트 영역</div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="equipment-battery-detail">취소</button>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-backdrop" id="equipment-battery-modify" data-al-modal-backdrop data-open="false" aria-hidden="true">
+          <div class="modal modal--form w-900 battery-detail battery-detail--modify" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="modal__header">
+              <div class="battery-detail__title-wrap">
+                <h2 class="modal__title">기기 유형 상세</h2>
+                <span class="equipment-detail__code">W-EBIT-001</span>
+                <span class="battery-detail__state battery-detail__state--normal">
+                  <span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8440)'%3e%3cpath%20d='M1%2010C0.716667%2010%200.479167%209.90417%200.2875%209.7125C0.0958333%209.52083%200%209.28333%200%209V1C0%200.716667%200.0958333%200.479167%200.2875%200.2875C0.479167%200.0958333%200.716667%200%201%200H12.45C12.7333%200%2012.9708%200.0958333%2013.1625%200.2875C13.3542%200.479167%2013.45%200.716667%2013.45%201L10.325%204.875C9.825%205.50833%209.74583%206.1875%2010.0875%206.9125C10.4292%207.6375%2011.0083%208%2011.825%208C12.1083%208%2012.3458%208.09583%2012.5375%208.2875C12.7292%208.47917%2012.825%208.71667%2012.825%209C12.825%209.28333%2012.7292%209.52083%2012.5375%209.7125C12.3458%209.90417%2012.1083%2010%2011.825%2010H1ZM15.375%206H13.05C12.8333%206%2012.6792%205.90833%2012.5875%205.725C12.4958%205.54167%2012.5167%205.36667%2012.65%205.2L16.25%200.675C16.3333%200.575%2016.4292%200.516667%2016.5375%200.5C16.6458%200.483333%2016.75%200.491667%2016.85%200.525C16.95%200.558333%2017.0333%200.625%2017.1%200.725C17.1667%200.825%2017.1833%200.941667%2017.15%201.075L16.625%204H18.95C19.1667%204%2019.3208%204.09167%2019.4125%204.275C19.5042%204.45833%2019.4833%204.63333%2019.35%204.8L15.75%209.325C15.6667%209.425%2015.5708%209.48333%2015.4625%209.5C15.3542%209.51667%2015.25%209.50833%2015.15%209.475C15.05%209.44167%2014.9667%209.375%2014.9%209.275C14.8333%209.175%2014.8167%209.05833%2014.85%208.925L15.375%206Z'%20fill='%23228738'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8440'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>정상
+                </span>
+              </div>
+              <button type="button" class="modal__close" data-al-modal-close="equipment-battery-modify" aria-label="닫기">닫기</button>
+            </div>
+            <div class="modal__body">
+              <div class="battery-detail__content">
+                <section class="modal-card battery-detail__card">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">기본 정보</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="battery-detail__summary-grid">
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">정류장명</span>
+                        <strong class="battery-detail__summary-value">완주 00정류장</strong>
+                      </div>
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">고객사</span>
+                        <strong class="battery-detail__summary-value">완주</strong>
+                      </div>
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">현재 SOC</span>
+                        <strong class="battery-detail__soc battery-detail__soc--normal"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8440)'%3e%3cpath%20d='M1%2010C0.716667%2010%200.479167%209.90417%200.2875%209.7125C0.0958333%209.52083%200%209.28333%200%209V1C0%200.716667%200.0958333%200.479167%200.2875%200.2875C0.479167%200.0958333%200.716667%200%201%200H12.45C12.7333%200%2012.9708%200.0958333%2013.1625%200.2875C13.3542%200.479167%2013.45%200.716667%2013.45%201L10.325%204.875C9.825%205.50833%209.74583%206.1875%2010.0875%206.9125C10.4292%207.6375%2011.0083%208%2011.825%208C12.1083%208%2012.3458%208.09583%2012.5375%208.2875C12.7292%208.47917%2012.825%208.71667%2012.825%209C12.825%209.28333%2012.7292%209.52083%2012.5375%209.7125C12.3458%209.90417%2012.1083%2010%2011.825%2010H1ZM15.375%206H13.05C12.8333%206%2012.6792%205.90833%2012.5875%205.725C12.4958%205.54167%2012.5167%205.36667%2012.65%205.2L16.25%200.675C16.3333%200.575%2016.4292%200.516667%2016.5375%200.5C16.6458%200.483333%2016.75%200.491667%2016.85%200.525C16.95%200.558333%2017.0333%200.625%2017.1%200.725C17.1667%200.825%2017.1833%200.941667%2017.15%201.075L16.625%204H18.95C19.1667%204%2019.3208%204.09167%2019.4125%204.275C19.5042%204.45833%2019.4833%204.63333%2019.35%204.8L15.75%209.325C15.6667%209.425%2015.5708%209.48333%2015.4625%209.5C15.3542%209.51667%2015.25%209.50833%2015.15%209.475C15.05%209.44167%2014.9667%209.375%2014.9%209.275C14.8333%209.175%2014.8167%209.05833%2014.85%208.925L15.375%206Z'%20fill='%23228738'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8440'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>85<small>%</small></strong>
+                      </div>
+                      <div class="battery-detail__summary-box">
+                        <span class="battery-detail__summary-label">현재 온도</span>
+                        <strong class="battery-detail__summary-value">15<small>°C</small></strong>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+        
+                <section class="modal-card battery-detail__card">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">SOC 충전 추이</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="battery-detail__chart battery-detail__chart--wide">차트 영역</div>
+                  </div>
+                </section>
+        
+                <div class="battery-detail__grid battery-detail__grid--modify">
+                  <section class="modal-card battery-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">SOC 단계 설정</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <ul class="battery-detail__level-list">
+                        <li class="battery-detail__level-item battery-detail__level-item--normal">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8440)'%3e%3cpath%20d='M1%2010C0.716667%2010%200.479167%209.90417%200.2875%209.7125C0.0958333%209.52083%200%209.28333%200%209V1C0%200.716667%200.0958333%200.479167%200.2875%200.2875C0.479167%200.0958333%200.716667%200%201%200H12.45C12.7333%200%2012.9708%200.0958333%2013.1625%200.2875C13.3542%200.479167%2013.45%200.716667%2013.45%201L10.325%204.875C9.825%205.50833%209.74583%206.1875%2010.0875%206.9125C10.4292%207.6375%2011.0083%208%2011.825%208C12.1083%208%2012.3458%208.09583%2012.5375%208.2875C12.7292%208.47917%2012.825%208.71667%2012.825%209C12.825%209.28333%2012.7292%209.52083%2012.5375%209.7125C12.3458%209.90417%2012.1083%2010%2011.825%2010H1ZM15.375%206H13.05C12.8333%206%2012.6792%205.90833%2012.5875%205.725C12.4958%205.54167%2012.5167%205.36667%2012.65%205.2L16.25%200.675C16.3333%200.575%2016.4292%200.516667%2016.5375%200.5C16.6458%200.483333%2016.75%200.491667%2016.85%200.525C16.95%200.558333%2017.0333%200.625%2017.1%200.725C17.1667%200.825%2017.1833%200.941667%2017.15%201.075L16.625%204H18.95C19.1667%204%2019.3208%204.09167%2019.4125%204.275C19.5042%204.45833%2019.4833%204.63333%2019.35%204.8L15.75%209.325C15.6667%209.425%2015.5708%209.48333%2015.4625%209.5C15.3542%209.51667%2015.25%209.50833%2015.15%209.475C15.05%209.44167%2014.9667%209.375%2014.9%209.275C14.8333%209.175%2014.8167%209.05833%2014.85%208.925L15.375%206Z'%20fill='%23228738'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8440'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>정상</span>
+                          <input class="battery-detail__level-input" type="text" value="70" aria-label="정상 SOC 기준">
+                          <small>%</small><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--warn">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8447)'%3e%3cpath%20d='M0.531494%2010C0.248161%2010%200.0106608%209.90417%20-0.181006%209.7125C-0.372673%209.52083%20-0.468506%209.28333%20-0.468506%209V1C-0.468506%200.716667%20-0.372673%200.479167%20-0.181006%200.2875C0.0106608%200.0958333%200.248161%200%200.531494%200H11.9815C12.2648%200%2012.5023%200.0958333%2012.694%200.2875C12.8857%200.479167%2012.9815%200.716667%2012.9815%201C12.9815%201.28333%2012.8857%201.52083%2012.694%201.7125C12.5023%201.90417%2012.2648%202%2011.9815%202H9.53149V8H11.3565C11.6398%208%2011.8773%208.09583%2012.069%208.2875C12.2607%208.47917%2012.3565%208.71667%2012.3565%209C12.3565%209.28333%2012.2607%209.52083%2012.069%209.7125C11.8773%209.90417%2011.6398%2010%2011.3565%2010H0.531494ZM14.9065%206H12.5815C12.3648%206%2012.2107%205.90833%2012.119%205.725C12.0273%205.54167%2012.0482%205.36667%2012.1815%205.2L15.7815%200.675C15.8648%200.575%2015.9607%200.516667%2016.069%200.5C16.1773%200.483333%2016.2815%200.491667%2016.3815%200.525C16.4815%200.558333%2016.5648%200.625%2016.6315%200.725C16.6982%200.825%2016.7148%200.941667%2016.6815%201.075L16.1565%204H18.4815C18.6982%204%2018.8523%204.09167%2018.944%204.275C19.0357%204.45833%2019.0148%204.63333%2018.8815%204.8L15.2815%209.325C15.1982%209.425%2015.1023%209.48333%2014.994%209.5C14.8857%209.51667%2014.7815%209.50833%2014.6815%209.475C14.5815%209.44167%2014.4982%209.375%2014.4315%209.275C14.3648%209.175%2014.3482%209.05833%2014.3815%208.925L14.9065%206Z'%20fill='%23C78500'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8447'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>경고</span>
+                          <input class="battery-detail__level-input" type="text" value="30" aria-label="경고 SOC 기준">
+                          <small>%</small><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--danger">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8454)'%3e%3cpath%20d='M0.531494%2010C0.248161%2010%200.0106608%209.90417%20-0.181006%209.7125C-0.372673%209.52083%20-0.468506%209.28333%20-0.468506%209V1C-0.468506%200.716667%20-0.372673%200.479167%20-0.181006%200.2875C0.0106608%200.0958333%200.248161%200%200.531494%200H11.9815C12.2648%200%2012.5023%200.0958333%2012.694%200.2875C12.8857%200.479167%2012.9815%200.716667%2012.9815%201C12.9815%201.28333%2012.8857%201.52083%2012.694%201.7125C12.5023%201.90417%2012.2648%202%2011.9815%202H6.53149V8H11.3565C11.6398%208%2011.8773%208.09583%2012.069%208.2875C12.2607%208.47917%2012.3565%208.71667%2012.3565%209C12.3565%209.28333%2012.2607%209.52083%2012.069%209.7125C11.8773%209.90417%2011.6398%2010%2011.3565%2010H0.531494ZM14.9065%206H12.5815C12.3648%206%2012.2107%205.90833%2012.119%205.725C12.0273%205.54167%2012.0482%205.36667%2012.1815%205.2L15.7815%200.675C15.8648%200.575%2015.9607%200.516667%2016.069%200.5C16.1773%200.483333%2016.2815%200.491667%2016.3815%200.525C16.4815%200.558333%2016.5648%200.625%2016.6315%200.725C16.6982%200.825%2016.7148%200.941667%2016.6815%201.075L16.1565%204H18.4815C18.6982%204%2018.8523%204.09167%2018.944%204.275C19.0357%204.45833%2019.0148%204.63333%2018.8815%204.8L15.2815%209.325C15.1982%209.425%2015.1023%209.48333%2014.994%209.5C14.8857%209.51667%2014.7815%209.50833%2014.6815%209.475C14.5815%209.44167%2014.4982%209.375%2014.4315%209.275C14.3648%209.175%2014.3482%209.05833%2014.3815%208.925L14.9065%206Z'%20fill='%23FF6D00'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8454'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>위험</span>
+                          <input class="battery-detail__level-input" type="text" value="15" aria-label="위험 SOC 기준">
+                          <small>%</small><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--low">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8461)'%3e%3cpath%20d='M0.594482%2010C0.311149%2010%200.0736491%209.90417%20-0.118018%209.7125C-0.309684%209.52083%20-0.405518%209.28333%20-0.405518%209V1C-0.405518%200.716667%20-0.309684%200.479167%20-0.118018%200.2875C0.0736491%200.0958333%200.311149%200%200.594482%200H12.0445C12.3278%200%2012.5653%200.0958333%2012.757%200.2875C12.9486%200.479167%2013.0445%200.716667%2013.0445%201C13.0445%201.28333%2012.9486%201.52083%2012.757%201.7125C12.5653%201.90417%2012.3278%202%2012.0445%202H4.59448V8H11.4195C11.7028%208%2011.9403%208.09583%2012.132%208.2875C12.3236%208.47917%2012.4195%208.71667%2012.4195%209C12.4195%209.28333%2012.3236%209.52083%2012.132%209.7125C11.9403%209.90417%2011.7028%2010%2011.4195%2010H0.594482ZM14.9695%206H12.6445C12.4278%206%2012.2736%205.90833%2012.182%205.725C12.0903%205.54167%2012.1111%205.36667%2012.2445%205.2L15.8445%200.675C15.9278%200.575%2016.0236%200.516667%2016.132%200.5C16.2403%200.483333%2016.3445%200.491667%2016.4445%200.525C16.5445%200.558333%2016.6278%200.625%2016.6945%200.725C16.7611%200.825%2016.7778%200.941667%2016.7445%201.075L16.2195%204H18.5445C18.7611%204%2018.9153%204.09167%2019.007%204.275C19.0986%204.45833%2019.0778%204.63333%2018.9445%204.8L15.3445%209.325C15.2611%209.425%2015.1653%209.48333%2015.057%209.5C14.9486%209.51667%2014.8445%209.50833%2014.7445%209.475C14.6445%209.44167%2014.5611%209.375%2014.4945%209.275C14.4278%209.175%2014.4111%209.05833%2014.4445%208.925L14.9695%206Z'%20fill='%23DE3412'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8461'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>저배터리</span>
+                          <input class="battery-detail__level-input" type="text" value="5" aria-label="저배터리 SOC 기준">
+                          <small>%</small><span>이상</span>
+                        </li>
+                        <li class="battery-detail__level-item battery-detail__level-item--critical">
+                          <span class="battery-detail__level-label"><span class="battery-detail__soc-icon" aria-hidden="true"><img src="data:image/svg+xml,%3csvg%20width='20'%20height='10'%20viewBox='0%200%2020%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_468_8468)'%3e%3cpath%20d='M17.126%2010C17.4093%2010%2017.6468%209.90417%2017.8385%209.7125C18.0301%209.52083%2018.126%209.28333%2018.126%209V7H19.126C19.4093%207%2019.6468%206.90417%2019.8385%206.7125C20.0301%206.52083%2020.126%206.28333%2020.126%206V4C20.126%203.71667%2020.0301%203.47917%2019.8385%203.2875C19.6468%203.09583%2019.4093%203%2019.126%203H18.126V1C18.126%200.716667%2018.0301%200.479167%2017.8385%200.2875C17.6468%200.0958333%2017.4093%200%2017.126%200H1.12598C0.842644%200%200.605145%200.0958333%200.413477%200.2875C0.221809%200.479167%200.125977%200.716667%200.125977%201V9C0.125977%209.28333%200.221809%209.52083%200.413477%209.7125C0.605145%209.90417%200.842644%2010%201.12598%2010H17.126ZM16.126%208H2.12598V2H16.126V8Z'%20fill='%234A0404'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_468_8468'%3e%3crect%20width='19.4685'%20height='10'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></span>고위험</span>
+                          <input class="battery-detail__level-input" type="text" value="0" aria-label="고위험 SOC 기준">
+                          <small>%</small><span>이상</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+        
+                  <section class="modal-card battery-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">SOC 단계 구간 미리보기</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <div class="battery-detail__chart battery-detail__chart--preview">차트 영역</div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="equipment-battery-modify">취소</button>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--primary btn--pill btn--lg">저장</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-backdrop" id="equipment-device-type-regist" data-al-modal-backdrop data-open="false" aria-hidden="true">
+          <div class="modal modal--form w-900 equipment-detail equipment-detail--form equipment-detail--regist" role="dialog"
+            aria-modal="true" tabindex="-1">
+            <div class="modal__header">
+              <h2 class="modal__title">기기 유형 등록</h2>
+              <button type="button" class="modal__close" data-al-modal-close="equipment-device-type-regist" aria-label="닫기">닫기</button>
+            </div>
+            <div class="modal__body">
+              <div class="equipment-detail__content">
+                <section class="equipment-detail__summary" aria-labelledby="equipment-regist-type-name">
+                  <label class="equipment-detail__summary-label" for="equipment-regist-type-name">기기 유형명</label>
+                  <input class="equipment-detail__input" id="equipment-regist-type-name" type="text" placeholder="예: 완주 13인치 가로형">
+                </section>
+        
+                <section class="modal-card equipment-detail__card equipment-detail__spec">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">디스플레이 사양</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="equipment-detail__form-list">
+                      <div class="equipment-detail__form-row">
+                        <label class="equipment-detail__form-label" for="equipment-regist-size">사이즈 (inch)</label>
+                        <input class="equipment-detail__input" id="equipment-regist-size" type="text" placeholder="13.3">
+                      </div>
+                      <div class="equipment-detail__form-row">
+                        <span class="equipment-detail__form-label">물리 크기 (mm)</span>
+                        <div class="equipment-detail__split-field">
+                          <input class="equipment-detail__input" type="text" placeholder="가로" aria-label="물리 크기 가로">
+                          <span class="equipment-detail__multiply" aria-hidden="true">×</span>
+                          <input class="equipment-detail__input" type="text" placeholder="세로" aria-label="물리 크기 세로">
+                        </div>
+                      </div>
+                      <div class="equipment-detail__form-row">
+                        <span class="equipment-detail__form-label">해상도 (px)</span>
+                        <div class="equipment-detail__split-field">
+                          <input class="equipment-detail__input" type="text" placeholder="가로" aria-label="해상도 가로">
+                          <span class="equipment-detail__multiply" aria-hidden="true">×</span>
+                          <input class="equipment-detail__input" type="text" placeholder="세로" aria-label="해상도 세로">
+                        </div>
+                      </div>
+                      <div class="equipment-detail__form-row">
+                        <label class="equipment-detail__form-label" for="equipment-regist-txt">TXT 최대 길이</label>
+                        <input class="equipment-detail__input" id="equipment-regist-txt" type="text" placeholder="60">
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="equipment-device-type-regist">취소</button>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-backdrop" id="equipment-device-type-modify" data-al-modal-backdrop data-open="false" aria-hidden="true">
+          <div class="modal modal--form w-960 equipment-detail equipment-detail--form" role="dialog" aria-modal="true" tabindex="-1">
+            <div class="modal__header">
+              <div class="equipment-detail__title-wrap">
+                <h2 class="modal__title">기기 유형 상세</h2>
+                <span class="equipment-detail__code">W-TYPE-001</span>
+              </div>
+              <button type="button" class="modal__close" data-al-modal-close="equipment-device-type-modify" aria-label="닫기">닫기</button>
+            </div>
+            <div class="modal__body">
+              <div class="equipment-detail__content">
+                <section class="equipment-detail__summary" aria-labelledby="equipment-modify-type-name">
+                  <label class="equipment-detail__summary-label" for="equipment-modify-type-name">기기 유형명</label>
+                  <input class="equipment-detail__input" id="equipment-modify-type-name" type="text" value="완주 13인치 가로형">
+                </section>
+        
+                <div class="equipment-detail__grid">
+                  <section class="modal-card equipment-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">기본 정보</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <div class="equipment-detail__form-list">
+                        <div class="equipment-detail__form-row">
+                          <label class="equipment-detail__form-label" for="equipment-modify-code">사이즈 (inch)</label>
+                          <input class="equipment-detail__input equipment-detail__input--readonly" id="equipment-modify-code" type="text" value="W-TYPE-001" readonly>
+                        </div>
+                        <div class="equipment-detail__form-row">
+                          <label class="equipment-detail__form-label" for="equipment-modify-date">등록일</label>
+                          <input class="equipment-detail__input equipment-detail__input--readonly" id="equipment-modify-date" type="text" value="2024-01-15" readonly>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+        
+                  <section class="modal-card equipment-detail__card">
+                    <div class="modal-card__header">
+                      <h3 class="modal-card__title">디스플레이 사양</h3>
+                    </div>
+                    <div class="modal-card__body">
+                      <div class="equipment-detail__form-list">
+                        <div class="equipment-detail__form-row">
+                          <label class="equipment-detail__form-label" for="equipment-modify-size">사이즈 (inch)</label>
+                          <input class="equipment-detail__input" id="equipment-modify-size" type="text" value="13.3">
+                        </div>
+                        <div class="equipment-detail__form-row">
+                          <span class="equipment-detail__form-label">물리 크기 (mm)</span>
+                          <div class="equipment-detail__split-field">
+                            <input class="equipment-detail__input" type="text" value="271" aria-label="물리 크기 가로">
+                            <span class="equipment-detail__multiply" aria-hidden="true">×</span>
+                            <input class="equipment-detail__input" type="text" value="207" aria-label="물리 크기 세로">
+                          </div>
+                        </div>
+                        <div class="equipment-detail__form-row">
+                          <span class="equipment-detail__form-label">해상도 (px)</span>
+                          <div class="equipment-detail__split-field">
+                            <input class="equipment-detail__input" type="text" value="1600" aria-label="해상도 가로">
+                            <span class="equipment-detail__multiply" aria-hidden="true">×</span>
+                            <input class="equipment-detail__input" type="text" value="1200" aria-label="해상도 세로">
+                          </div>
+                        </div>
+                        <div class="equipment-detail__form-row">
+                          <label class="equipment-detail__form-label" for="equipment-modify-txt">TXT 최대 길이</label>
+                          <input class="equipment-detail__input" id="equipment-modify-txt" type="text" value="60 자">
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+        
+                <section class="modal-card equipment-detail__card equipment-detail__history">
+                  <div class="modal-card__header">
+                    <h3 class="modal-card__title">이력</h3>
+                  </div>
+                  <div class="modal-card__body">
+                    <div class="table-wrapper equipment-detail__table">
+                      <table class="al-table">
+                        <colgroup>
+                          <col style="width: 25%;">
+                          <col style="width: 25%;">
+                          <col style="width: 25%;">
+                          <col style="width: 25%;">
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th>등록자</th>
+                            <th>등록일시</th>
+                            <th>수정자</th>
+                            <th>수정일시</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><strong>관리자 (admin)</strong></td>
+                            <td>2024-01-15 <span class="equipment-detail__time">14:22</span></td>
+                            <td><strong>관리자 (admin)</strong></td>
+                            <td>2024-03-02 <span class="equipment-detail__time">09:48</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div class="modal__footer">
+              <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="equipment-device-type-modify">취소</button>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="al-modal-backdrop" id="al-modal-warning-1" data-al-modal-backdrop data-open="false"
             aria-hidden="true">
             <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-warning-1-title" tabindex="-1">

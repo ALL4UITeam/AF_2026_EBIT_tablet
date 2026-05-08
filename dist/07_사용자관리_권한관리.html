@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>권한 관리 | E-BIT 관리자</title>
+    
+    <link rel="stylesheet" href="./assets/fonts/pretendard.css">
+    <link rel="stylesheet" href="./lib/simplebar/simplebar.css">
+    <link rel="stylesheet" href="./lib/dragula/dragula.min.css">
+    <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="./lib/datetimepicker/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="./lib/glightbox/glightbox.min.css">
+    
+    
+    <script src="./lib/jQuery/jquery-3.7.1.js"></script>
+    <script src="./lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="./lib/jQuery-ui/jquery-ui.min.js"></script>
+    <script src="./lib/simplebar/simplebar.min.js"></script>
+    <script src="./lib/dragula/dragula.min.js"></script>
+    <script src="./lib/glightbox/glightbox.min.js"></script>
+  <script type="module" src="/2026_AF_EBIT/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_EBIT/assets/style.css">
+</head>
+
+<body class="al-admin">
+    <div class="al-wrap">
+
+        <header class="al-header">
+            <div class="al-header__left">
+                <button type="button" class="al-header__menu-btn" id="alMenuBtn" aria-label="메뉴 열기">
+                    <span class="al-header__hamburger" aria-hidden="true"><span></span></span>
+                </button>
+                <a href="#" class="al-header__brand">
+                    <img src="/2026_AF_EBIT/assets/images/logo2.svg" alt="" />
+                </a>
+            </div>
+        
+            <div class="al-header__right">
+                <button type="button" class="al-header__notify" aria-label="알림">
+                    <span class="al-header__notify-icon" aria-hidden="true"></span>
+                </button>
+                <div class="al-header__user">
+                    <div class="al-header__user-name"><strong>관리자</strong>님</div>
+                    <div class="al-header__avatar" aria-hidden="true">
+                        <span class="al-header__avatar-icon"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="al-body">
+            <div class="al-backdrop" id="alBackdrop" aria-hidden="true"></div>
+
+            <aside class="al-sidenav" id="alSidenav" aria-label="주 메뉴">
+                <div class="al-sidenav__scroll">
+                    <ul class="al-sidenav__list">
+            
+                        <!-- 대시보드 (단일 메뉴) -->
+                        <li class="al-sidenav__item">
+                            <a href="#" class="al-sidenav__link">
+                                <span class="al-sidenav__icon al-sidenav__icon--m01" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">대시보드</span>
+                            </a>
+                        </li>
+            
+                        <!-- 앱 관리 (2depth, 현재 활성) -->
+                        <li class="al-sidenav__item is-open" data-nav="app">
+                            <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                                <span class="al-sidenav__icon al-sidenav__icon--m02" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">앱관리</span>
+                                <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="al-sidenav__sub">
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">앱 관리</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">배포 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <!-- 단말 관리 -->
+                        <li class="al-sidenav__item">
+                            <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                                <span class="al-sidenav__icon al-sidenav__icon--m03" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">단말관리</span>
+                                <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="al-sidenav__sub">
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">운영 대시보드</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">단말 등록</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">단말 등록</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">그룹 관리</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">단말 상태 현황</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">원격 제어</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <!-- 컨텐츠 관리 -->
+                        <li class="al-sidenav__item">
+                            <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                                <span class="al-sidenav__icon al-sidenav__icon--m04" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">컨텐츠관리</span>
+                                <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="al-sidenav__sub">
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">텍스트 설정</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">텍스트 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <!-- 장비분석 -->
+                        <li class="al-sidenav__item">
+                            <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                                <span class="al-sidenav__icon al-sidenav__icon--m05" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">장비분석</span>
+                                <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="al-sidenav__sub">
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">분석 현황</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">교체주기 분석</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">기기 유형 관리</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">배터리 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+            
+                        <!-- 운영관리 -->
+                        <li class="al-sidenav__item">
+                            <a href="#" class="al-sidenav__link">
+                                <span class="al-sidenav__icon al-sidenav__icon--m06" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">운영관리</span>
+                            </a>
+                        </li>
+            
+                        <!-- 시스템관리 -->
+                        <li class="al-sidenav__item is-open">
+                            <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                                <span class="al-sidenav__icon al-sidenav__icon--m07" aria-hidden="true"></span>
+                                <span class="al-sidenav__label">시스템관리</span>
+                                <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                            </button>
+                            <ul class="al-sidenav__sub">
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">사용자 관리</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">그룹 관리</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="./06_사용자관리_권한관리.html" class="al-sidenav__sublink is-active">권한 관리</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">작업 이력</a>
+                                </li>
+                                <li class="al-sidenav__subitem">
+                                    <a href="#" class="al-sidenav__sublink">공통 코드 관리</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="al-content board-page" id="permMgmtPage">
+
+                <section class="al-page-header" aria-labelledby="permMgmtPageTitle">
+                    <div class="al-page-header__inner">
+                        <div class="al-page-header__meta">
+                            <ol class="al-page-header__breadcrumb">
+                                <li><a href="#">홈</a></li>
+                                <li><span>시스템관리</span></li>
+                                <li><span id="permMgmtPageTitle">권한 관리</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="al-page-body" aria-label="권한 관리 본문">
+                    <div class="perm-mgmt__shell">
+
+                        <!-- 좌: 그룹 목록 -->
+                        <div class="perm-mgmt__col perm-mgmt__col--groups">
+                            <h2 class="perm-mgmt__heading">
+                                <span class="perm-mgmt__heading-lead">그룹 목록 </span>
+                                <span class="perm-mgmt__stat-num">20</span>
+                                <span class="perm-mgmt__stat-unit">그룹</span>
+                            </h2>
+
+                            <div class="perm-mgmt__panel">
+                                <div class="perm-mgmt__search-head">
+                                    <form class="form form--search perm-mgmt__search-form" role="search"
+                                        aria-label="그룹 검색">
+                                        <label class="form__group">
+                                            <span class="form__field form__field--search">
+                                                <input class="form__input" type="search"
+                                                    placeholder="검색어를 입력해주세요." aria-label="그룹 검색어">
+                                                <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                    aria-label="검색"></button>
+                                            </span>
+                                        </label>
+                                    </form>
+                                </div>
+
+                                <div class="perm-mgmt__group-scroll">
+                                    <button type="button"
+                                        class="perm-mgmt__group-card perm-mgmt__group-card--active"
+                                        data-perm-mgmt-group="관리자" data-perm-mgmt-current="22"
+                                        data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">관리자</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3.45%204.55C2.92778%204.02778%202.66667%203.4%202.66667%202.66667C2.66667%201.93333%202.92778%201.30556%203.45%200.783333C3.97222%200.261111%204.6%200%205.33333%200C6.06667%200%206.69444%200.261111%207.21667%200.783333C7.73889%201.30556%208%201.93333%208%202.66667C8%203.4%207.73889%204.02778%207.21667%204.55C6.69444%205.07222%206.06667%205.33333%205.33333%205.33333C4.6%205.33333%203.97222%205.07222%203.45%204.55ZM0%2010.6667V8.8C0%208.42222%200.0972222%208.075%200.291667%207.75833C0.486111%207.44167%200.744444%207.2%201.06667%207.03333C1.75556%206.68889%202.45556%206.43056%203.16667%206.25833C3.87778%206.08611%204.6%206%205.33333%206C6.06667%206%206.78889%206.08611%207.5%206.25833C8.21111%206.43056%208.91111%206.68889%209.6%207.03333C9.92222%207.2%2010.1806%207.44167%2010.375%207.75833C10.5694%208.075%2010.6667%208.42222%2010.6667%208.8V10.6667H0Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">3</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.45002%209.13594L7.03335%207.23594L5.50002%206.0026H7.40002L8.00002%204.13594L8.60002%206.0026H10.5L8.95002%207.23594L9.53335%209.13594L8.00002%207.9526L6.45002%209.13594ZM4.00002%2015.3359V10.1859C3.5778%209.71927%203.25002%209.18594%203.01669%208.58594C2.78335%207.98594%202.66669%207.34705%202.66669%206.66927C2.66669%205.18038%203.18335%203.91927%204.21669%202.88594C5.25002%201.8526%206.51113%201.33594%208.00002%201.33594C9.48891%201.33594%2010.75%201.8526%2011.7834%202.88594C12.8167%203.91927%2013.3334%205.18038%2013.3334%206.66927C13.3334%207.34705%2013.2167%207.98594%2012.9834%208.58594C12.75%209.18594%2012.4222%209.71927%2012%2010.1859V15.3359L8.00002%2014.0026L4.00002%2015.3359ZM10.8334%209.5026C11.6111%208.72483%2012%207.78038%2012%206.66927C12%205.55816%2011.6111%204.61372%2010.8334%203.83594C10.0556%203.05816%209.11113%202.66927%208.00002%202.66927C6.88891%202.66927%205.94446%203.05816%205.16669%203.83594C4.38891%204.61372%204.00002%205.55816%204.00002%206.66927C4.00002%207.78038%204.38891%208.72483%205.16669%209.5026C5.94446%2010.2804%206.88891%2010.6693%208.00002%2010.6693C9.11113%2010.6693%2010.0556%2010.2804%2010.8334%209.5026Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>22</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="유지보수팀"
+                                        data-perm-mgmt-current="22" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">유지보수팀</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3.45%204.55C2.92778%204.02778%202.66667%203.4%202.66667%202.66667C2.66667%201.93333%202.92778%201.30556%203.45%200.783333C3.97222%200.261111%204.6%200%205.33333%200C6.06667%200%206.69444%200.261111%207.21667%200.783333C7.73889%201.30556%208%201.93333%208%202.66667C8%203.4%207.73889%204.02778%207.21667%204.55C6.69444%205.07222%206.06667%205.33333%205.33333%205.33333C4.6%205.33333%203.97222%205.07222%203.45%204.55ZM0%2010.6667V8.8C0%208.42222%200.0972222%208.075%200.291667%207.75833C0.486111%207.44167%200.744444%207.2%201.06667%207.03333C1.75556%206.68889%202.45556%206.43056%203.16667%206.25833C3.87778%206.08611%204.6%206%205.33333%206C6.06667%206%206.78889%206.08611%207.5%206.25833C8.21111%206.43056%208.91111%206.68889%209.6%207.03333C9.92222%207.2%2010.1806%207.44167%2010.375%207.75833C10.5694%208.075%2010.6667%208.42222%2010.6667%208.8V10.6667H0Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">12</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.45002%209.13594L7.03335%207.23594L5.50002%206.0026H7.40002L8.00002%204.13594L8.60002%206.0026H10.5L8.95002%207.23594L9.53335%209.13594L8.00002%207.9526L6.45002%209.13594ZM4.00002%2015.3359V10.1859C3.5778%209.71927%203.25002%209.18594%203.01669%208.58594C2.78335%207.98594%202.66669%207.34705%202.66669%206.66927C2.66669%205.18038%203.18335%203.91927%204.21669%202.88594C5.25002%201.8526%206.51113%201.33594%208.00002%201.33594C9.48891%201.33594%2010.75%201.8526%2011.7834%202.88594C12.8167%203.91927%2013.3334%205.18038%2013.3334%206.66927C13.3334%207.34705%2013.2167%207.98594%2012.9834%208.58594C12.75%209.18594%2012.4222%209.71927%2012%2010.1859V15.3359L8.00002%2014.0026L4.00002%2015.3359ZM10.8334%209.5026C11.6111%208.72483%2012%207.78038%2012%206.66927C12%205.55816%2011.6111%204.61372%2010.8334%203.83594C10.0556%203.05816%209.11113%202.66927%208.00002%202.66927C6.88891%202.66927%205.94446%203.05816%205.16669%203.83594C4.38891%204.61372%204.00002%205.55816%204.00002%206.66927C4.00002%207.78038%204.38891%208.72483%205.16669%209.5026C5.94446%2010.2804%206.88891%2010.6693%208.00002%2010.6693C9.11113%2010.6693%2010.0556%2010.2804%2010.8334%209.5026Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>22</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="고객사"
+                                        data-perm-mgmt-current="12" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">고객사</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3.45%204.55C2.92778%204.02778%202.66667%203.4%202.66667%202.66667C2.66667%201.93333%202.92778%201.30556%203.45%200.783333C3.97222%200.261111%204.6%200%205.33333%200C6.06667%200%206.69444%200.261111%207.21667%200.783333C7.73889%201.30556%208%201.93333%208%202.66667C8%203.4%207.73889%204.02778%207.21667%204.55C6.69444%205.07222%206.06667%205.33333%205.33333%205.33333C4.6%205.33333%203.97222%205.07222%203.45%204.55ZM0%2010.6667V8.8C0%208.42222%200.0972222%208.075%200.291667%207.75833C0.486111%207.44167%200.744444%207.2%201.06667%207.03333C1.75556%206.68889%202.45556%206.43056%203.16667%206.25833C3.87778%206.08611%204.6%206%205.33333%206C6.06667%206%206.78889%206.08611%207.5%206.25833C8.21111%206.43056%208.91111%206.68889%209.6%207.03333C9.92222%207.2%2010.1806%207.44167%2010.375%207.75833C10.5694%208.075%2010.6667%208.42222%2010.6667%208.8V10.6667H0Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">2</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.45002%209.13594L7.03335%207.23594L5.50002%206.0026H7.40002L8.00002%204.13594L8.60002%206.0026H10.5L8.95002%207.23594L9.53335%209.13594L8.00002%207.9526L6.45002%209.13594ZM4.00002%2015.3359V10.1859C3.5778%209.71927%203.25002%209.18594%203.01669%208.58594C2.78335%207.98594%202.66669%207.34705%202.66669%206.66927C2.66669%205.18038%203.18335%203.91927%204.21669%202.88594C5.25002%201.8526%206.51113%201.33594%208.00002%201.33594C9.48891%201.33594%2010.75%201.8526%2011.7834%202.88594C12.8167%203.91927%2013.3334%205.18038%2013.3334%206.66927C13.3334%207.34705%2013.2167%207.98594%2012.9834%208.58594C12.75%209.18594%2012.4222%209.71927%2012%2010.1859V15.3359L8.00002%2014.0026L4.00002%2015.3359ZM10.8334%209.5026C11.6111%208.72483%2012%207.78038%2012%206.66927C12%205.55816%2011.6111%204.61372%2010.8334%203.83594C10.0556%203.05816%209.11113%202.66927%208.00002%202.66927C6.88891%202.66927%205.94446%203.05816%205.16669%203.83594C4.38891%204.61372%204.00002%205.55816%204.00002%206.66927C4.00002%207.78038%204.38891%208.72483%205.16669%209.5026C5.94446%2010.2804%206.88891%2010.6693%208.00002%2010.6693C9.11113%2010.6693%2010.0556%2010.2804%2010.8334%209.5026Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>12</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="설치업체"
+                                        data-perm-mgmt-current="20" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">설치업체</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3.45%204.55C2.92778%204.02778%202.66667%203.4%202.66667%202.66667C2.66667%201.93333%202.92778%201.30556%203.45%200.783333C3.97222%200.261111%204.6%200%205.33333%200C6.06667%200%206.69444%200.261111%207.21667%200.783333C7.73889%201.30556%208%201.93333%208%202.66667C8%203.4%207.73889%204.02778%207.21667%204.55C6.69444%205.07222%206.06667%205.33333%205.33333%205.33333C4.6%205.33333%203.97222%205.07222%203.45%204.55ZM0%2010.6667V8.8C0%208.42222%200.0972222%208.075%200.291667%207.75833C0.486111%207.44167%200.744444%207.2%201.06667%207.03333C1.75556%206.68889%202.45556%206.43056%203.16667%206.25833C3.87778%206.08611%204.6%206%205.33333%206C6.06667%206%206.78889%206.08611%207.5%206.25833C8.21111%206.43056%208.91111%206.68889%209.6%207.03333C9.92222%207.2%2010.1806%207.44167%2010.375%207.75833C10.5694%208.075%2010.6667%208.42222%2010.6667%208.8V10.6667H0Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">6</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.45002%209.13594L7.03335%207.23594L5.50002%206.0026H7.40002L8.00002%204.13594L8.60002%206.0026H10.5L8.95002%207.23594L9.53335%209.13594L8.00002%207.9526L6.45002%209.13594ZM4.00002%2015.3359V10.1859C3.5778%209.71927%203.25002%209.18594%203.01669%208.58594C2.78335%207.98594%202.66669%207.34705%202.66669%206.66927C2.66669%205.18038%203.18335%203.91927%204.21669%202.88594C5.25002%201.8526%206.51113%201.33594%208.00002%201.33594C9.48891%201.33594%2010.75%201.8526%2011.7834%202.88594C12.8167%203.91927%2013.3334%205.18038%2013.3334%206.66927C13.3334%207.34705%2013.2167%207.98594%2012.9834%208.58594C12.75%209.18594%2012.4222%209.71927%2012%2010.1859V15.3359L8.00002%2014.0026L4.00002%2015.3359ZM10.8334%209.5026C11.6111%208.72483%2012%207.78038%2012%206.66927C12%205.55816%2011.6111%204.61372%2010.8334%203.83594C10.0556%203.05816%209.11113%202.66927%208.00002%202.66927C6.88891%202.66927%205.94446%203.05816%205.16669%203.83594C4.38891%204.61372%204.00002%205.55816%204.00002%206.66927C4.00002%207.78038%204.38891%208.72483%205.16669%209.5026C5.94446%2010.2804%206.88891%2010.6693%208.00002%2010.6693C9.11113%2010.6693%2010.0556%2010.2804%2010.8334%209.5026Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>20</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="고창군"
+                                        data-perm-mgmt-current="5" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">고창군</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3.45%204.55C2.92778%204.02778%202.66667%203.4%202.66667%202.66667C2.66667%201.93333%202.92778%201.30556%203.45%200.783333C3.97222%200.261111%204.6%200%205.33333%200C6.06667%200%206.69444%200.261111%207.21667%200.783333C7.73889%201.30556%208%201.93333%208%202.66667C8%203.4%207.73889%204.02778%207.21667%204.55C6.69444%205.07222%206.06667%205.33333%205.33333%205.33333C4.6%205.33333%203.97222%205.07222%203.45%204.55ZM0%2010.6667V8.8C0%208.42222%200.0972222%208.075%200.291667%207.75833C0.486111%207.44167%200.744444%207.2%201.06667%207.03333C1.75556%206.68889%202.45556%206.43056%203.16667%206.25833C3.87778%206.08611%204.6%206%205.33333%206C6.06667%206%206.78889%206.08611%207.5%206.25833C8.21111%206.43056%208.91111%206.68889%209.6%207.03333C9.92222%207.2%2010.1806%207.44167%2010.375%207.75833C10.5694%208.075%2010.6667%208.42222%2010.6667%208.8V10.6667H0Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">33</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.45002%209.13594L7.03335%207.23594L5.50002%206.0026H7.40002L8.00002%204.13594L8.60002%206.0026H10.5L8.95002%207.23594L9.53335%209.13594L8.00002%207.9526L6.45002%209.13594ZM4.00002%2015.3359V10.1859C3.5778%209.71927%203.25002%209.18594%203.01669%208.58594C2.78335%207.98594%202.66669%207.34705%202.66669%206.66927C2.66669%205.18038%203.18335%203.91927%204.21669%202.88594C5.25002%201.8526%206.51113%201.33594%208.00002%201.33594C9.48891%201.33594%2010.75%201.8526%2011.7834%202.88594C12.8167%203.91927%2013.3334%205.18038%2013.3334%206.66927C13.3334%207.34705%2013.2167%207.98594%2012.9834%208.58594C12.75%209.18594%2012.4222%209.71927%2012%2010.1859V15.3359L8.00002%2014.0026L4.00002%2015.3359ZM10.8334%209.5026C11.6111%208.72483%2012%207.78038%2012%206.66927C12%205.55816%2011.6111%204.61372%2010.8334%203.83594C10.0556%203.05816%209.11113%202.66927%208.00002%202.66927C6.88891%202.66927%205.94446%203.05816%205.16669%203.83594C4.38891%204.61372%204.00002%205.55816%204.00002%206.66927C4.00002%207.78038%204.38891%208.72483%205.16669%209.5026C5.94446%2010.2804%206.88891%2010.6693%208.00002%2010.6693C9.11113%2010.6693%2010.0556%2010.2804%2010.8334%209.5026Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>5</strong>/22</span>
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="perm-mgmt__group-card" data-perm-mgmt-group="유지보수업체"
+                                        data-perm-mgmt-current="22" data-perm-mgmt-total="22">
+                                        <span class="perm-mgmt__group-pill">유지보수업체</span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3.45%204.55C2.92778%204.02778%202.66667%203.4%202.66667%202.66667C2.66667%201.93333%202.92778%201.30556%203.45%200.783333C3.97222%200.261111%204.6%200%205.33333%200C6.06667%200%206.69444%200.261111%207.21667%200.783333C7.73889%201.30556%208%201.93333%208%202.66667C8%203.4%207.73889%204.02778%207.21667%204.55C6.69444%205.07222%206.06667%205.33333%205.33333%205.33333C4.6%205.33333%203.97222%205.07222%203.45%204.55ZM0%2010.6667V8.8C0%208.42222%200.0972222%208.075%200.291667%207.75833C0.486111%207.44167%200.744444%207.2%201.06667%207.03333C1.75556%206.68889%202.45556%206.43056%203.16667%206.25833C3.87778%206.08611%204.6%206%205.33333%206C6.06667%206%206.78889%206.08611%207.5%206.25833C8.21111%206.43056%208.91111%206.68889%209.6%207.03333C9.92222%207.2%2010.1806%207.44167%2010.375%207.75833C10.5694%208.075%2010.6667%208.42222%2010.6667%208.8V10.6667H0Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt="" >
+                                                멤버
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-value">2</span>
+                                        </span>
+                                        <span class="perm-mgmt__group-stat">
+                                            <span class="perm-mgmt__group-stat-label">
+                                                <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.45002%209.13594L7.03335%207.23594L5.50002%206.0026H7.40002L8.00002%204.13594L8.60002%206.0026H10.5L8.95002%207.23594L9.53335%209.13594L8.00002%207.9526L6.45002%209.13594ZM4.00002%2015.3359V10.1859C3.5778%209.71927%203.25002%209.18594%203.01669%208.58594C2.78335%207.98594%202.66669%207.34705%202.66669%206.66927C2.66669%205.18038%203.18335%203.91927%204.21669%202.88594C5.25002%201.8526%206.51113%201.33594%208.00002%201.33594C9.48891%201.33594%2010.75%201.8526%2011.7834%202.88594C12.8167%203.91927%2013.3334%205.18038%2013.3334%206.66927C13.3334%207.34705%2013.2167%207.98594%2012.9834%208.58594C12.75%209.18594%2012.4222%209.71927%2012%2010.1859V15.3359L8.00002%2014.0026L4.00002%2015.3359ZM10.8334%209.5026C11.6111%208.72483%2012%207.78038%2012%206.66927C12%205.55816%2011.6111%204.61372%2010.8334%203.83594C10.0556%203.05816%209.11113%202.66927%208.00002%202.66927C6.88891%202.66927%205.94446%203.05816%205.16669%203.83594C4.38891%204.61372%204.00002%205.55816%204.00002%206.66927C4.00002%207.78038%204.38891%208.72483%205.16669%209.5026C5.94446%2010.2804%206.88891%2010.6693%208.00002%2010.6693C9.11113%2010.6693%2010.0556%2010.2804%2010.8334%209.5026Z'%20fill='%2394A3B8'/%3e%3c/svg%3e" alt=""
+                                                    width="16" height="16">
+                                                권한수
+                                            </span>
+                                            <span class="perm-mgmt__group-stat-ratio"><strong>22</strong>/22</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 우: 권한 트리 -->
+                        <div class="perm-mgmt__col perm-mgmt__col--rights">
+                            <h2 class="perm-mgmt__heading">
+                                <span data-perm-mgmt-detail-name>관리자</span>
+                                <strong class="perm-mgmt__stat-num" data-perm-mgmt-detail-num>22</strong>
+                                <span class="perm-mgmt__stat-unit">권한</span>
+                            </h2>
+
+                            <div class="perm-mgmt__rights-panel">
+                                <div class="perm-mgmt__select-row">
+                                    <label class="al-checkbox">
+                                        <input class="al-checkbox__input" type="checkbox"
+                                            data-perm-mgmt-select-all checked id="permMgmtSelectAll"
+                                            aria-controls="permMgmtTreePanel">
+                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                        전체 선택
+                                    </label>
+                                </div>
+
+                                <div class="perm-mgmt__rights-scroll perm-tree" id="permMgmtTreePanel"
+                                    data-perm-mgmt-tree role="tree" aria-label="메뉴별 권한">
+
+                                    <!-- 단말관리 -->
+                                    <div class="perm-tree__branch" data-perm-tree-branch>
+                                        <div class="perm-tree__depth1 perm-tree__depth1--filled">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="단말관리 전체">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <button type="button" class="perm-tree__toggle" data-perm-tree-toggle
+                                                aria-expanded="true">
+                                                단말관리
+                                            </button>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="perm-tree__nest">
+                                            <span class="perm-tree__vbar" aria-hidden="true"></span>
+                                            <div class="perm-tree__leaves">
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말현황">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말현황</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말등록">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말등록</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="그룹 관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">그룹 관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말 상태 이력">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말 상태 이력</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 콘텐츠관리 (접힘) -->
+                                    <div class="perm-tree__branch perm-tree__branch--leaf"
+                                        data-perm-tree-branch data-perm-tree-leaf>
+                                        <div class="perm-tree__depth1">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="콘텐츠관리">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <span class="perm-tree__title">콘텐츠관리</span>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- 앱관리 (접힘) -->
+                                    <div class="perm-tree__branch perm-tree__branch--leaf"
+                                        data-perm-tree-branch data-perm-tree-leaf>
+                                        <div class="perm-tree__depth1">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="앱관리">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <span class="perm-tree__title">앱관리</span>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- 운영관리 -->
+                                    <div class="perm-tree__branch" data-perm-tree-branch>
+                                        <div class="perm-tree__depth1 perm-tree__depth1--filled">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="운영관리 전체">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <button type="button" class="perm-tree__toggle" data-perm-tree-toggle
+                                                aria-expanded="true">
+                                                운영관리
+                                            </button>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="perm-tree__nest">
+                                            <span class="perm-tree__vbar" aria-hidden="true"></span>
+                                            <div class="perm-tree__leaves">
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="작업지시관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">작업지시관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="유지보수 분석">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">유지보수 분석</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 시스템관리 -->
+                                    <div class="perm-tree__branch" data-perm-tree-branch>
+                                        <div class="perm-tree__depth1 perm-tree__depth1--filled">
+                                            <label class="al-checkbox">
+                                                <input class="al-checkbox__input" type="checkbox" checked
+                                                    data-perm-node-check aria-label="시스템관리 전체">
+                                                <span class="al-checkbox__box" aria-hidden="true"></span>
+                                            </label>
+                                            <button type="button" class="perm-tree__toggle" data-perm-tree-toggle
+                                                aria-expanded="true">
+                                                시스템관리
+                                            </button>
+                                            <span class="perm-tree__chevron" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="perm-tree__nest">
+                                            <span class="perm-tree__vbar" aria-hidden="true"></span>
+                                            <div class="perm-tree__leaves">
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="사용자관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">사용자관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="그룹관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">그룹관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="권한관리">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">권한관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-tree__row">
+                                                    <div class="perm-tree__leaf">
+                                                        <label class="al-checkbox">
+                                                            <input class="al-checkbox__input" type="checkbox" checked
+                                                                data-perm-node-check aria-label="단말관리 메뉴">
+                                                            <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                            <span class="perm-tree__leaf-label">단말관리</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="perm-mgmt__footer">
+                                    <button type="button" class="btn btn--primary btn--md">등록</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

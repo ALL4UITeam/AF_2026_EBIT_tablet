@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>가이드 | E-BIT 관리자</title>
+  {{> meta}}
+</head>
+
+<body class="al-admin">
+  <div class="al-wrap">
+
+    {{> header }}
+
+    <div class="al-body">
+      <div class="al-backdrop" id="alBackdrop" aria-hidden="true"></div>
+
+      {{> nav }}
+      <main class="al-content" id="alContent">
+        <section class="card">
+          <h3 class="card__title">사용자 관리 Modal</h3>
+          <div class="al-guide-row">
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-user-detail">사용자 상세정보</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-user-edit">사용자 정보수정</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-user-register">사용자 등록</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-group-detail">그룹 상세 정보</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-group-edit">그룹 등록 및 수정</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-detail-info">상세정보</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-common-code-register">공통코드 등록</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-common-code-detail">공통코드 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-common-code-edit">공통코드 수정</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-1">경고(오류)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-2">경고(OTP초기화)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-confirm">확인</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-modify">수정</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-regist">등록</button>
+          </div>
+        </section>
+
+        {{>modal-user }}
+        {{>modal-common-alerts }}
+
+
+
+      </main>
+      <!-- // al-content -->
+    </div>
+  </div>
+
+
+
+
+  <script type="module" src="./js/page/index.js"></script>
+</body>
+
+</html>

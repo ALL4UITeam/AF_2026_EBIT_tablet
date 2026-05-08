@@ -217,3 +217,99 @@
         }
     }
 }
+
+.status-overview--battery {
+    grid-template-columns: minmax(340px, 464px) minmax(0, 1fr);
+
+    .status-card {
+        min-height: 200px;
+        border-radius: 20px;
+    }
+
+    .status-card__chart {
+        grid-template-columns: minmax(0, 1fr) 150px;
+        gap: 20px;
+    }
+
+    .status-card__legend {
+        grid-template-columns: repeat(2, max-content);
+        gap: 4px 20px;
+        font-size: 15px;
+    }
+
+    .status-card__legend-color {
+        width: 8px;
+        height: 8px;
+    }
+
+    .status-card__stats-list {
+        gap: 20px;
+        min-height: 76px;
+    }
+
+    .status-card__stats-item {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border: 0;
+    }
+
+    .status-card__stats-label {
+        color: #1e293b;
+        text-align: center;
+    }
+
+    .status-card__stats-value {
+        justify-content: center;
+        gap: 4px;
+
+        strong {
+            font-size: 25px;
+        }
+    }
+
+    .status-card__stats-item--normal {
+        background: #f7f9f0;
+
+        .status-card__stats-value strong {
+            color: #228738;
+        }
+    }
+
+    .status-card__stats-item--warning {
+        background: #fff3db;
+
+        .status-card__stats-value strong {
+            color: #c78500;
+        }
+    }
+
+    .status-card__stats-item--danger {
+        background: #fff1e6;
+
+        .status-card__stats-value strong {
+            color: #ff6d00;
+        }
+    }
+
+    .status-card__stats-item--low {
+        background: #fdefec;
+
+        .status-card__stats-value strong {
+            color: #de3412;
+        }
+    }
+
+    .status-card__stats-item--critical {
+        background: #f1ebeb;
+
+        .status-card__stats-value strong {
+            color: #4a0404;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        grid-template-columns: 1fr;
+    }
+}

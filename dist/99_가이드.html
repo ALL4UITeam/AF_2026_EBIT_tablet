@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="./lib/datetimepicker/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="./lib/glightbox/glightbox.min.css">
     
     
     <script src="./lib/jQuery/jquery-3.7.1.js"></script>
@@ -19,6 +20,7 @@
     <script src="./lib/jQuery-ui/jquery-ui.min.js"></script>
     <script src="./lib/simplebar/simplebar.min.js"></script>
     <script src="./lib/dragula/dragula.min.js"></script>
+    <script src="./lib/glightbox/glightbox.min.js"></script>
   <script type="module" src="/2026_AF_EBIT/assets/index.js"></script>
   <link rel="stylesheet" href="/2026_AF_EBIT/assets/style.css">
 </head>
@@ -73,7 +75,7 @@
                             </button>
                             <ul class="al-sidenav__sub">
                                 <li class="al-sidenav__subitem">
-                                    <a href="#" class="al-sidenav__sublink is-active">앱 관리</a>
+                                    <a href="#" class="al-sidenav__sublink">앱 관리</a>
                                 </li>
                                 <li class="al-sidenav__subitem">
                                     <a href="#" class="al-sidenav__sublink">배포 관리</a>
@@ -159,7 +161,7 @@
                         </li>
             
                         <!-- 시스템관리 -->
-                        <li class="al-sidenav__item">
+                        <li class="al-sidenav__item is-open">
                             <button type="button" class="al-sidenav__trigger" aria-expanded="true">
                                 <span class="al-sidenav__icon al-sidenav__icon--m07" aria-hidden="true"></span>
                                 <span class="al-sidenav__label">시스템관리</span>
@@ -173,7 +175,7 @@
                                     <a href="#" class="al-sidenav__sublink">그룹 관리</a>
                                 </li>
                                 <li class="al-sidenav__subitem">
-                                    <a href="#" class="al-sidenav__sublink">권한 관리</a>
+                                    <a href="./06_사용자관리_권한관리.html" class="al-sidenav__sublink is-active">권한 관리</a>
                                 </li>
                                 <li class="al-sidenav__subitem">
                                     <a href="#" class="al-sidenav__sublink">작업 이력</a>
@@ -839,10 +841,10 @@
                                     합니다.</p>
                             </div>
                             <div class="al-modal__footer">
-                                <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-warning-1">
+                                <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-warning-1">
                                     취소
                                 </button>
-                                <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-warning-1">
+                                <button type="button" class="btn btn--primary btn--pill btn--lg" data-al-modal-close="al-modal-warning-1">
                                     확인
                                 </button>
                             </div>
@@ -865,10 +867,10 @@
                                 <p class="al-modal__submessage">사용자의 OTP를 초기화합니다. 정말로 진행하시겠습니까?</p>
                             </div>
                             <div class="al-modal__footer">
-                                <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-warning-2">
+                                <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-warning-2">
                                     취소
                                 </button>
-                                <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-warning-2">
+                                <button type="button" class="btn btn--primary btn--pill btn--lg" data-al-modal-close="al-modal-warning-2">
                                     확인
                                 </button>
                             </div>
@@ -889,10 +891,10 @@
                                 <p class="al-modal__message">단말을 등록하겠습니까?</p>
                             </div>
                             <div class="al-modal__footer">
-                                <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-confirm">
+                                <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-confirm">
                                     취소
                                 </button>
-                                <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-confirm">
+                                <button type="button" class="btn btn--primary btn--pill btn--lg" data-al-modal-close="al-modal-confirm">
                                     확인
                                 </button>
                             </div>
@@ -913,10 +915,10 @@
                                 <p class="al-modal__submessage">변경하신 내용으로 저장됩니다.</p>
                             </div>
                             <div class="al-modal__footer">
-                                <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-modify">
+                                <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-modify">
                                     취소
                                 </button>
-                                <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-modify">
+                                <button type="button" class="btn btn--primary btn--pill btn--lg" data-al-modal-close="al-modal-modify">
                                     수정
                                 </button>
                             </div>
@@ -937,10 +939,10 @@
                                 <p class="al-modal__submessage">입력하신 내용으로 새로 등록됩니다.</p>
                             </div>
                             <div class="al-modal__footer">
-                                <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-regist">
+                                <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-regist">
                                     취소
                                 </button>
-                                <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-regist">
+                                <button type="button" class="btn btn--primary btn--pill btn--lg" data-al-modal-close="al-modal-regist">
                                     등록
                                 </button>
                             </div>
@@ -1023,11 +1025,11 @@
                                 </section>
                             </div>
                             <div class="modal__footer">
-                                <button type="button" class="btn btn--white btn--pill btn--md"
+                                <button type="button" class="btn btn--white btn--pill btn--lg"
                                     data-al-modal-close="al-modal-app-regist">취소</button>
                                 <div class="modal__actions">
-                                    <button type="button" class="btn btn--secondary btn--pill btn--md">이전</button>
-                                    <button type="button" class="btn btn--primary btn--pill btn--md">등록</button>
+                                    <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                                    <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
                                 </div>
                             </div>
                         </div>

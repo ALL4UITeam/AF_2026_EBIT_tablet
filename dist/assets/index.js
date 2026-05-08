@@ -204,6 +204,20 @@ function initModals() {
       /** @type {HTMLElement} */
       e.target
     );
+    const togglePw = target.closest("[data-al-pw-toggle]");
+    if (togglePw instanceof HTMLButtonElement) {
+      const wrap = togglePw.closest(".modal-detail__control--password");
+      const pwInput = wrap == null ? void 0 : wrap.querySelector(".modal-detail__text-input--password");
+      if (pwInput instanceof HTMLInputElement) {
+        e.preventDefault();
+        const isPassword = pwInput.type === "password";
+        pwInput.type = isPassword ? "text" : "password";
+        togglePw.classList.toggle("is-visible", isPassword);
+        togglePw.setAttribute("aria-label", isPassword ? "비밀번호 숨기기" : "비밀번호 표시");
+        togglePw.setAttribute("aria-pressed", String(isPassword));
+        return;
+      }
+    }
     const openBtn = target.closest("[data-al-modal-open]");
     if (openBtn) {
       const id = openBtn.getAttribute("data-al-modal-open");
@@ -432,6 +446,65 @@ function initDrawer() {
 function initSidenav() {
   initNavAccordion();
   initDrawer();
+}
+function initGlightbox() {
+  if (typeof window.GLightbox !== "function") return;
+  if (!document.querySelector(".glightbox")) return;
+  window.GLightbox({
+    selector: ".glightbox",
+    loop: true,
+    keyboardNavigation: true,
+    touchNavigation: true
+  });
+}
+function initPermissionMgmtPage() {
+  var _a;
+  const root = document.getElementById("permMgmtPage");
+  if (!root) return;
+  const detailName = root.querySelector("[data-perm-mgmt-detail-name]");
+  const detailNum = root.querySelector("[data-perm-mgmt-detail-num]");
+  root.querySelectorAll("[data-perm-mgmt-group]").forEach((card) => {
+    card.addEventListener("click", () => {
+      root.querySelectorAll("[data-perm-mgmt-group]").forEach((c) => {
+        c.classList.remove("perm-mgmt__group-card--active");
+      });
+      card.classList.add("perm-mgmt__group-card--active");
+      const name = card.getAttribute("data-perm-mgmt-group") || "";
+      const cur = card.getAttribute("data-perm-mgmt-current") || "";
+      if (detailName) detailName.textContent = name;
+      if (detailNum) detailNum.textContent = cur;
+    });
+  });
+  const selectAll = root.querySelector("[data-perm-mgmt-select-all]");
+  const tree = root.querySelector("[data-perm-mgmt-tree]");
+  const treeChecks = tree ? [...tree.querySelectorAll('input[type="checkbox"][data-perm-node-check]')] : [];
+  selectAll == null ? void 0 : selectAll.addEventListener("change", () => {
+    const master = (
+      /** @type {HTMLInputElement} */
+      selectAll
+    );
+    const on = master.checked;
+    treeChecks.forEach((cb) => {
+      if (cb instanceof HTMLInputElement) cb.checked = on;
+    });
+  });
+  root.querySelectorAll("[data-perm-tree-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const branch = btn.closest("[data-perm-tree-branch]");
+      if (!branch || branch.hasAttribute("data-perm-tree-leaf")) return;
+      branch.classList.toggle("is-collapsed");
+      const collapsed = branch.classList.contains("is-collapsed");
+      btn.setAttribute("aria-expanded", String(!collapsed));
+    });
+  });
+  root.querySelectorAll("[data-perm-tree-branch]:not([data-perm-tree-leaf])").forEach((branch) => {
+    const btn = branch.querySelector("[data-perm-tree-toggle]");
+    const collapsed = branch.classList.contains("is-collapsed");
+    btn == null ? void 0 : btn.setAttribute("aria-expanded", String(!collapsed));
+  });
+  (_a = root.querySelector(".perm-mgmt__search-form")) == null ? void 0 : _a.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
 }
 class CustomSelect {
   constructor(selectElement) {
@@ -731,7 +804,9 @@ function initGuidePage() {
   initTabs(root);
   initToggle(root);
   initDatePop(root);
+  initOperationTaskAttach(root);
   initBrightnessControls(root);
+  initBatterySocRanges(root);
   initIssueFilterTabs(root);
   initMapLegendToggles(root);
   const searchBtn = root.querySelector("[data-al-guide-search]");
@@ -742,6 +817,44 @@ function initGuidePage() {
     if (e.key === "Enter") runSearch();
   });
   applyFilter();
+}
+function initOperationTaskAttach(root) {
+  const backdrop = root.querySelector("#operation-task-content");
+  if (!backdrop) return;
+  const attach = backdrop.querySelector(".op-task__attach");
+  if (!attach) return;
+  const input = attach.querySelector("#operationTaskApkFile");
+  const pickBtn = attach.querySelector("[data-al-file-pick]");
+  const dropzone = attach.querySelector("[data-al-file-dropzone]");
+  const message = attach.querySelector("[data-al-file-message]");
+  const clearMessage = () => {
+    if (!message) return;
+    message.replaceChildren();
+    message.setAttribute("hidden", "");
+  };
+  const openPicker = () => {
+    clearMessage();
+    input == null ? void 0 : input.click();
+  };
+  pickBtn == null ? void 0 : pickBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openPicker();
+  });
+  dropzone == null ? void 0 : dropzone.addEventListener("click", (e) => {
+    if (pickBtn && e.target instanceof Node && pickBtn.contains(e.target)) return;
+    openPicker();
+  });
+  dropzone == null ? void 0 : dropzone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropzone.classList.add("file-upload__dropzone--active", "al-file-upload__dropzone--active");
+  });
+  dropzone == null ? void 0 : dropzone.addEventListener("dragleave", () => {
+    dropzone.classList.remove("file-upload__dropzone--active", "al-file-upload__dropzone--active");
+  });
+  dropzone == null ? void 0 : dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropzone.classList.remove("file-upload__dropzone--active", "al-file-upload__dropzone--active");
+  });
 }
 function initDatePop(root) {
   const closeAll = () => {
@@ -776,9 +889,9 @@ function initDatePop(root) {
       e.target
     );
     const field = target.closest(".form__field--date");
-    const pop = field == null ? void 0 : field.querySelector("[data-date-pop]");
     const dayButton = target.closest(".date-pop__days button");
     if (dayButton && field instanceof HTMLElement && dayButton instanceof HTMLButtonElement) {
+      const pop2 = field.querySelector("[data-date-pop]");
       const input = field.querySelector(".form__input");
       const value = getDateValue(dayButton);
       if (!field.dataset.dateStart || field.dataset.dateEnd) {
@@ -791,18 +904,26 @@ function initDatePop(root) {
         field.dataset.dateStart = sorted[0];
         field.dataset.dateEnd = sorted[1];
         if (input instanceof HTMLInputElement) input.value = `${sorted[0]} ~ ${sorted[1]}`;
-        if (pop instanceof HTMLElement) pop.hidden = true;
+        if (pop2 instanceof HTMLElement) pop2.hidden = true;
       }
       paintSelectedDays(field);
       return;
     }
-    if (field instanceof HTMLElement && !target.closest("[data-date-pop]")) {
-      const isOpen = pop instanceof HTMLElement && !pop.hidden;
+    if (!(field instanceof HTMLElement)) return;
+    const pop = field.querySelector("[data-date-pop]");
+    if (!(pop instanceof HTMLElement)) return;
+    if (target.closest("[data-date-pop]")) return;
+    const toggle = target.closest("[data-date-toggle]");
+    if (toggle && field.contains(toggle)) {
+      const wasHidden = pop.hidden;
       closeAll();
-      if (pop instanceof HTMLElement) {
-        pop.hidden = isOpen && target.closest("[data-date-toggle]") ? true : false;
-        paintSelectedDays(field);
-      }
+      pop.hidden = !wasHidden;
+      paintSelectedDays(field);
+      return;
+    }
+    if (!pop.hidden) {
+      closeAll();
+      paintSelectedDays(field);
     }
   });
   document.addEventListener("click", (e) => {
@@ -921,7 +1042,28 @@ function initBrightnessControls(root) {
     });
   });
 }
+function initBatterySocRanges(root) {
+  root.querySelectorAll(".battery-board__soc-filter").forEach((control) => {
+    const range = control.querySelector(".battery-board__soc-range");
+    const valueText = control.querySelector(".battery-board__soc-value strong");
+    if (!(range instanceof HTMLInputElement)) return;
+    const render = () => {
+      const min = Number(range.min || 0);
+      const max = Number(range.max || 100);
+      const value = Number(range.value || 0);
+      const percent = max === min ? 0 : (value - min) / (max - min) * 100;
+      range.style.setProperty("--battery-soc-percent", `${Math.min(100, Math.max(0, percent))}%`);
+      if (valueText) {
+        valueText.textContent = String(value);
+      }
+    };
+    range.addEventListener("input", render);
+    render();
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
   initSidenav();
+  initGlightbox();
+  initPermissionMgmtPage();
 });
 initGuidePage();

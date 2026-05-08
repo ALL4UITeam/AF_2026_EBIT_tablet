@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.min.css">
   <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.theme.min.css">
   <link rel="stylesheet" href="./lib/datetimepicker/jquery.datetimepicker.css">
+  <link rel="stylesheet" href="./lib/glightbox/glightbox.min.css">
   
   
   <script src="./lib/jQuery/jquery-3.7.1.js"></script>
@@ -19,6 +20,7 @@
   <script src="./lib/jQuery-ui/jquery-ui.min.js"></script>
   <script src="./lib/simplebar/simplebar.min.js"></script>
   <script src="./lib/dragula/dragula.min.js"></script>
+  <script src="./lib/glightbox/glightbox.min.js"></script>
   <script type="module" src="/2026_AF_EBIT/assets/index.js"></script>
   <link rel="stylesheet" href="/2026_AF_EBIT/assets/style.css">
 </head>
@@ -73,7 +75,7 @@
                       </button>
                       <ul class="al-sidenav__sub">
                           <li class="al-sidenav__subitem">
-                              <a href="#" class="al-sidenav__sublink is-active">앱 관리</a>
+                              <a href="#" class="al-sidenav__sublink">앱 관리</a>
                           </li>
                           <li class="al-sidenav__subitem">
                               <a href="#" class="al-sidenav__sublink">배포 관리</a>
@@ -159,7 +161,7 @@
                   </li>
       
                   <!-- 시스템관리 -->
-                  <li class="al-sidenav__item">
+                  <li class="al-sidenav__item is-open">
                       <button type="button" class="al-sidenav__trigger" aria-expanded="true">
                           <span class="al-sidenav__icon al-sidenav__icon--m07" aria-hidden="true"></span>
                           <span class="al-sidenav__label">시스템관리</span>
@@ -173,7 +175,7 @@
                               <a href="#" class="al-sidenav__sublink">그룹 관리</a>
                           </li>
                           <li class="al-sidenav__subitem">
-                              <a href="#" class="al-sidenav__sublink">권한 관리</a>
+                              <a href="./06_사용자관리_권한관리.html" class="al-sidenav__sublink is-active">권한 관리</a>
                           </li>
                           <li class="al-sidenav__subitem">
                               <a href="#" class="al-sidenav__sublink">작업 이력</a>
@@ -277,10 +279,10 @@
                     </section>
                 </div>
                 <div class="modal__footer">
-                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-app-detail">닫기</button>
+                    <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-app-detail">닫기</button>
                     <div class="modal__actions">
-                        <button type="button" class="btn btn--secondary btn--pill btn--md">삭제</button>
-                        <button type="button" class="btn btn--primary btn--pill btn--md">수정</button>
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">삭제</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
                     </div>
                 </div>
             </div>
@@ -425,10 +427,10 @@
                     </div>
                 </div>
                 <div class="modal__footer">
-                    <button type="button" class="btn btn--white btn--pill btn--md">재배포</button>
+                    <button type="button" class="btn btn--white btn--pill btn--lg">재배포</button>
                     <div class="modal__actions">
-                        <button type="button" class="btn btn--secondary btn--pill btn--md">삭제</button>
-                        <button type="button" class="btn btn--primary btn--pill btn--md">수정</button>
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">삭제</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
                     </div>
                 </div>
             </div>
@@ -505,9 +507,9 @@
                     </div>
                 </div>
                 <div class="modal__footer">
-                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-deploy-app-select">취소</button>
+                    <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-deploy-app-select">취소</button>
                     <div class="modal__actions">
-                        <button type="button" class="btn btn--primary btn--pill btn--md">다음</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">다음</button>
                     </div>
                 </div>
             </div>
@@ -587,10 +589,10 @@
                     </div>
                 </div>
                 <div class="modal__footer">
-                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-deploy-device-select">취소</button>
+                    <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-deploy-device-select">취소</button>
                     <div class="modal__actions">
-                        <button type="button" class="btn btn--secondary btn--pill btn--md">이전</button>
-                        <button type="button" class="btn btn--primary btn--pill btn--md">다음</button>
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">다음</button>
                     </div>
                 </div>
             </div>
@@ -649,10 +651,10 @@
                     </div>
                 </div>
                 <div class="modal__footer">
-                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-deploy-type-select">취소</button>
+                    <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-deploy-type-select">취소</button>
                     <div class="modal__actions">
-                        <button type="button" class="btn btn--secondary btn--pill btn--md">이전</button>
-                        <button type="button" class="btn btn--primary btn--pill btn--md">등록</button>
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
                     </div>
                 </div>
             </div>
@@ -729,10 +731,10 @@
                     </section>
                 </div>
                 <div class="modal__footer">
-                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-app-regist">취소</button>
+                    <button type="button" class="btn btn--white btn--pill btn--lg" data-al-modal-close="al-modal-app-regist">취소</button>
                     <div class="modal__actions">
-                        <button type="button" class="btn btn--secondary btn--pill btn--md">이전</button>
-                        <button type="button" class="btn btn--primary btn--pill btn--md">등록</button>
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">이전</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
                     </div>
                 </div>
             </div>

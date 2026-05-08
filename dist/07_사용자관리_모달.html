@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>가이드 | E-BIT 관리자</title>
+  
+  <link rel="stylesheet" href="./assets/fonts/pretendard.css">
+  <link rel="stylesheet" href="./lib/simplebar/simplebar.css">
+  <link rel="stylesheet" href="./lib/dragula/dragula.min.css">
+  <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="./lib/jQuery-ui/jquery-ui.theme.min.css">
+  <link rel="stylesheet" href="./lib/datetimepicker/jquery.datetimepicker.css">
+  <link rel="stylesheet" href="./lib/glightbox/glightbox.min.css">
+  
+  
+  <script src="./lib/jQuery/jquery-3.7.1.js"></script>
+  <script src="./lib/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+  <script src="./lib/jQuery-ui/jquery-ui.min.js"></script>
+  <script src="./lib/simplebar/simplebar.min.js"></script>
+  <script src="./lib/dragula/dragula.min.js"></script>
+  <script src="./lib/glightbox/glightbox.min.js"></script>
+  <script type="module" src="/2026_AF_EBIT/assets/index.js"></script>
+  <link rel="stylesheet" href="/2026_AF_EBIT/assets/style.css">
+</head>
+
+<body class="al-admin">
+  <div class="al-wrap">
+
+    <header class="al-header">
+        <div class="al-header__left">
+            <button type="button" class="al-header__menu-btn" id="alMenuBtn" aria-label="메뉴 열기">
+                <span class="al-header__hamburger" aria-hidden="true"><span></span></span>
+            </button>
+            <a href="#" class="al-header__brand">
+                <img src="/2026_AF_EBIT/assets/images/logo2.svg" alt="" />
+            </a>
+        </div>
+    
+        <div class="al-header__right">
+            <button type="button" class="al-header__notify" aria-label="알림">
+                <span class="al-header__notify-icon" aria-hidden="true"></span>
+            </button>
+            <div class="al-header__user">
+                <div class="al-header__user-name"><strong>관리자</strong>님</div>
+                <div class="al-header__avatar" aria-hidden="true">
+                    <span class="al-header__avatar-icon"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="al-body">
+      <div class="al-backdrop" id="alBackdrop" aria-hidden="true"></div>
+
+      <aside class="al-sidenav" id="alSidenav" aria-label="주 메뉴">
+          <div class="al-sidenav__scroll">
+              <ul class="al-sidenav__list">
+      
+                  <!-- 대시보드 (단일 메뉴) -->
+                  <li class="al-sidenav__item">
+                      <a href="#" class="al-sidenav__link">
+                          <span class="al-sidenav__icon al-sidenav__icon--m01" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">대시보드</span>
+                      </a>
+                  </li>
+      
+                  <!-- 앱 관리 (2depth, 현재 활성) -->
+                  <li class="al-sidenav__item is-open" data-nav="app">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m02" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">앱관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">앱 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">배포 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 단말 관리 -->
+                  <li class="al-sidenav__item">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m03" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">단말관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">운영 대시보드</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">단말 등록</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">단말 등록</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">그룹 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">단말 상태 현황</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">원격 제어</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 컨텐츠 관리 -->
+                  <li class="al-sidenav__item">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m04" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">컨텐츠관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">텍스트 설정</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">텍스트 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 장비분석 -->
+                  <li class="al-sidenav__item">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m05" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">장비분석</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">분석 현황</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">교체주기 분석</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">기기 유형 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">배터리 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+      
+                  <!-- 운영관리 -->
+                  <li class="al-sidenav__item">
+                      <a href="#" class="al-sidenav__link">
+                          <span class="al-sidenav__icon al-sidenav__icon--m06" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">운영관리</span>
+                      </a>
+                  </li>
+      
+                  <!-- 시스템관리 -->
+                  <li class="al-sidenav__item is-open">
+                      <button type="button" class="al-sidenav__trigger" aria-expanded="true">
+                          <span class="al-sidenav__icon al-sidenav__icon--m07" aria-hidden="true"></span>
+                          <span class="al-sidenav__label">시스템관리</span>
+                          <span class="al-sidenav__arrow" aria-hidden="true"></span>
+                      </button>
+                      <ul class="al-sidenav__sub">
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">사용자 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">그룹 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="./06_사용자관리_권한관리.html" class="al-sidenav__sublink is-active">권한 관리</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">작업 이력</a>
+                          </li>
+                          <li class="al-sidenav__subitem">
+                              <a href="#" class="al-sidenav__sublink">공통 코드 관리</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </aside>
+      <main class="al-content" id="alContent">
+        <section class="card">
+          <h3 class="card__title">사용자 관리 Modal</h3>
+          <div class="al-guide-row">
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-user-detail">사용자 상세정보</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-user-edit">사용자 정보수정</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-user-register">사용자 등록</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-group-detail">그룹 상세 정보</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-group-edit">그룹 등록 및 수정</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-detail-info">상세정보</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-common-code-register">공통코드 등록</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-common-code-detail">공통코드 상세</button>
+            <button type="button" class="btn btn--primary btn--md" data-al-modal-open="al-modal-common-code-edit">공통코드 수정</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-1">경고(오류)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-warning-2">경고(OTP초기화)</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-confirm">확인</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-modify">수정</button>
+            <button type="button" class="btn btn--secondary btn--md" data-al-modal-open="al-modal-regist">등록</button>
+          </div>
+        </section>
+
+        <!-- 그룹 상세 정보 — 공통 modal modal--form w-960 -->
+        <div class="modal-backdrop" id="al-modal-group-detail" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-group-detail-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-group-detail-title">그룹 상세 정보</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-group-detail"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card">
+                        <div class="modal-detail__fields">
+                            <div class="modal-detail__col">
+                                <div class="modal-detail__row">
+                                    <span class="modal-detail__label">그룹명</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__static-input">관리자</div>
+                                    </div>
+                                </div>
+                                <div class="modal-detail__row">
+                                    <span class="modal-detail__label">등록일시</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__static-input">2026.03.06</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__col">
+                                <div class="modal-detail__row modal-detail__row--fixed-h">
+                                    <span class="modal-detail__label">사용여부</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__radios" role="radiogroup"
+                                            aria-label="사용여부">
+                                            <label class="modal-detail__radio-label">
+                                                <span class="modal-detail__radio modal-detail__radio--checked"
+                                                    aria-hidden="true"></span>
+                                                <span class="modal-detail__radio-text">사용</span>
+                                            </label>
+                                            <label class="modal-detail__radio-label">
+                                                <span class="modal-detail__radio modal-detail__radio--disabled"
+                                                    aria-hidden="true"></span>
+                                                <span class="modal-detail__radio-text">미사용</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-detail__row">
+                                    <span class="modal-detail__label">최종 수정일</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__static-input">2026.04.08</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <hr class="modal-detail__divider" />
+        
+                        <div class="modal-detail__members">
+                            <p class="modal-detail__members-title">
+                                그룹원 목록 <strong class="modal-detail__members-count">3</strong>명
+                            </p>
+                            <div class="form-tbl form-tbl--modal-group-members" role="region"
+                                aria-label="그룹원 목록">
+                                <div class="table-header">
+                                    <div class="table-cell__row">
+                                        <div class="table-cell">회원명</div>
+                                        <div class="table-cell">회원 아이디</div>
+                                        <div class="table-cell">이메일</div>
+                                    </div>
+                                </div>
+                                <div class="table-body">
+                                    <div class="table-cell__row">
+                                        <div class="table-cell">일관리</div>
+                                        <div class="table-cell">AU001</div>
+                                        <div class="table-cell">001@gmail.com</div>
+                                    </div>
+                                    <div class="table-cell__row">
+                                        <div class="table-cell">이관리</div>
+                                        <div class="table-cell">AU007</div>
+                                        <div class="table-cell">007@gmail.com</div>
+                                    </div>
+                                    <div class="table-cell__row">
+                                        <div class="table-cell">삼관리</div>
+                                        <div class="table-cell">AU0011</div>
+                                        <div class="table-cell">011@gmail.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-group-detail">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">삭제</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 그룹 등록 및 수정 — Figma node 472:11154 -->
+        <div class="modal-backdrop" id="al-modal-group-edit" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-group-edit-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-group-edit-title">그룹 등록 및 수정</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-group-edit"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card">
+                        <div class="modal-detail__fields">
+                            <div class="modal-detail__col">
+                                <div class="modal-detail__row">
+                                    <span class="modal-detail__label">그룹명</span>
+                                    <div class="modal-detail__control">
+                                        <input type="text" class="modal-detail__text-input" value="관리자"
+                                            autocomplete="organization" aria-label="그룹명" />
+                                    </div>
+                                </div>
+                                <div class="modal-detail__row">
+                                    <span class="modal-detail__label">등록일시</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__static-input">2026.03.06</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__col">
+                                <div class="modal-detail__row modal-detail__row--fixed-h">
+                                    <span class="modal-detail__label">사용여부</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__radios" role="radiogroup" aria-label="사용여부">
+                                            <label class="modal-detail__radio-label">
+                                                <span class="modal-detail__radio modal-detail__radio--checked"
+                                                    aria-hidden="true"></span>
+                                                <span class="modal-detail__radio-text">사용</span>
+                                            </label>
+                                            <label class="modal-detail__radio-label">
+                                                <span class="modal-detail__radio" aria-hidden="true"></span>
+                                                <span class="modal-detail__radio-text">미사용</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-detail__row">
+                                    <span class="modal-detail__label">최종 수정일</span>
+                                    <div class="modal-detail__control">
+                                        <div class="modal-detail__static-input">2026.04.08</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <hr class="modal-detail__divider" />
+        
+                        <div class="modal-detail__pick">
+                            <div class="modal-detail__pick-grid">
+                                <div class="modal-detail__pick-col">
+                                    <p class="modal-detail__members-title">
+                                        그룹원 목록 <strong class="modal-detail__members-count">3</strong>명
+                                    </p>
+                                    <div class="modal-detail__pick-card">
+                                        <form class="form form--search" action="#" role="search" aria-label="그룹원 검색">
+                                            <span class="form__field form__field--search">
+                                                <input class="form__input" type="search" inputmode="search" autocomplete="off"
+                                                    placeholder="검색할 회원을 입력해주세요." aria-label="그룹원 검색" />
+                                                <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                    aria-label="검색"></button>
+                                            </span>
+                                        </form>
+                                        <div class="table-wrapper">
+                                            <div class="member-pick-list" role="region" aria-label="그룹원 목록">
+                                                <div class="member-pick-list__head">
+                                                    <div class="member-pick-list__head-cell">회원명</div>
+                                                    <div class="member-pick-list__head-cell member-pick-list__head-cell--grow">
+                                                        회원 ID / 이메일</div>
+                                                    <div class="member-pick-list__head-spacer" aria-hidden="true"></div>
+                                                </div>
+                                                <div class="member-pick-list__row">
+                                                    <div class="member-pick-list__cell">일관리</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU001</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            001@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            삭제
+                                                            <img class="member-pick-list__btn-icon"
+                                                                src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.26665%2012.6654L3.33331%2011.732L7.06665%207.9987L3.33331%204.26536L4.26665%203.33203L7.99998%207.06536L11.7333%203.33203L12.6666%204.26536L8.93331%207.9987L12.6666%2011.732L11.7333%2012.6654L7.99998%208.93203L4.26665%2012.6654Z'%20fill='%231E293B'/%3e%3c/svg%3e" alt="" width="16"
+                                                                height="16" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="member-pick-list__row">
+                                                    <div class="member-pick-list__cell">이관리</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU005</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            005@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            삭제
+                                                            <img class="member-pick-list__btn-icon"
+                                                                src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.26665%2012.6654L3.33331%2011.732L7.06665%207.9987L3.33331%204.26536L4.26665%203.33203L7.99998%207.06536L11.7333%203.33203L12.6666%204.26536L8.93331%207.9987L12.6666%2011.732L11.7333%2012.6654L7.99998%208.93203L4.26665%2012.6654Z'%20fill='%231E293B'/%3e%3c/svg%3e" alt="" width="16"
+                                                                height="16" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="member-pick-list__row member-pick-list__row--last">
+                                                    <div class="member-pick-list__cell">삼관리</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU011</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            011@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            삭제
+                                                            <img class="member-pick-list__btn-icon"
+                                                                src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.26665%2012.6654L3.33331%2011.732L7.06665%207.9987L3.33331%204.26536L4.26665%203.33203L7.99998%207.06536L11.7333%203.33203L12.6666%204.26536L8.93331%207.9987L12.6666%2011.732L11.7333%2012.6654L7.99998%208.93203L4.26665%2012.6654Z'%20fill='%231E293B'/%3e%3c/svg%3e" alt="" width="16"
+                                                                height="16" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-detail__pick-col">
+                                    <p class="modal-detail__members-title">
+                                        회원 목록 <strong class="modal-detail__members-count">125</strong>명
+                                    </p>
+                                    <div class="modal-detail__pick-card">
+                                        <form class="form form--search" action="#" role="search" aria-label="전체 회원 검색">
+                                            <span class="form__field form__field--search">
+                                                <input class="form__input" type="search" inputmode="search" autocomplete="off"
+                                                    placeholder="검색할 회원을 입력해주세요." aria-label="전체 회원 검색" />
+                                                <button type="button" class="form__icon-btn form__icon-btn--search"
+                                                    aria-label="검색"></button>
+                                            </span>
+                                        </form>
+                                        <div class="table-wrapper">
+                                            <div class="member-pick-list" role="region" aria-label="전체 회원 목록">
+                                                <div class="member-pick-list__head">
+                                                    <div class="member-pick-list__head-cell">회원명</div>
+                                                    <div class="member-pick-list__head-cell member-pick-list__head-cell--grow">
+                                                        회원 ID / 이메일</div>
+                                                    <div class="member-pick-list__head-spacer" aria-hidden="true"></div>
+                                                </div>
+                                                <div class="member-pick-list__row">
+                                                    <div class="member-pick-list__cell">김관리</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU003</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            001@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            추가
+                                                            <span class="member-pick-list__btn-icon member-pick-list__btn-icon--add"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="member-pick-list__row">
+                                                    <div class="member-pick-list__cell">회원명</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU004</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            004@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            추가
+                                                            <span class="member-pick-list__btn-icon member-pick-list__btn-icon--add"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="member-pick-list__row">
+                                                    <div class="member-pick-list__cell">김관리</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU007</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            007@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            추가
+                                                            <span class="member-pick-list__btn-icon member-pick-list__btn-icon--add"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="member-pick-list__row">
+                                                    <div class="member-pick-list__cell">회원명</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU008</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            008@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            추가
+                                                            <span class="member-pick-list__btn-icon member-pick-list__btn-icon--add"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="member-pick-list__row member-pick-list__row--last">
+                                                    <div class="member-pick-list__cell">김관리</div>
+                                                    <div class="member-pick-list__cell member-pick-list__cell--info">
+                                                        <p class="member-pick-list__id">AU009</p>
+                                                        <p class="member-pick-list__mail">
+                                                            <img class="member-pick-list__mail-icon" src="data:image/svg+xml,%3csvg%20width='14'%20height='11'%20viewBox='0%200%2014%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1.33333%2010.6667C0.966667%2010.6667%200.652778%2010.5361%200.391667%2010.275C0.130556%2010.0139%200%209.7%200%209.33333V1.33333C0%200.966667%200.130556%200.652778%200.391667%200.391667C0.652778%200.130556%200.966667%200%201.33333%200H12C12.3667%200%2012.6806%200.130556%2012.9417%200.391667C13.2028%200.652778%2013.3333%200.966667%2013.3333%201.33333V9.33333C13.3333%209.7%2013.2028%2010.0139%2012.9417%2010.275C12.6806%2010.5361%2012.3667%2010.6667%2012%2010.6667H1.33333ZM6.66667%206L12%202.66667V1.33333L6.66667%204.66667L1.33333%201.33333V2.66667L6.66667%206Z'%20fill='%2394A3B8'/%3e%3c/svg%3e"
+                                                                alt="" width="16" height="16" />
+                                                            009@gmail.com
+                                                        </p>
+                                                    </div>
+                                                    <div class="member-pick-list__action">
+                                                        <button type="button" class="member-pick-list__btn">
+                                                            추가
+                                                            <span class="member-pick-list__btn-icon member-pick-list__btn-icon--add"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-group-edit">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 사용자 상세 정보 -->
+        <div class="modal-backdrop" id="al-modal-user-detail" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-user-detail-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-user-detail-title">사용자 상세 정보</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-user-detail"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card modal-detail__card--scroll">
+                        <div class="modal-detail__fields modal-detail__fields--stack">
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">사용자명</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">김관리</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">아이디</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">AU001</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">소속그룹</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">슈퍼관리자</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">이메일</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">001@gmail.com</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">최근 수정일</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026.03.06</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">마지막 로그인</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026.04.08</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-user-detail">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">OTP초기화</button>
+                        <button type="button" class="btn btn--secondary btn--pill btn--lg">삭제</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 사용자 정보 수정 -->
+        <div class="modal-backdrop" id="al-modal-user-edit" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-user-edit-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-user-edit-title">사용자 정보 수정</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-user-edit"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card modal-detail__card--scroll">
+                        <div class="modal-detail__fields modal-detail__fields--stack">
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-edit-name">사용자명</span>
+                                <div class="modal-detail__control">
+                                    <input type="text" class="modal-detail__text-input" value="김관리" autocomplete="name"
+                                        aria-labelledby="label-user-edit-name" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-edit-id">아이디</span>
+                                <div class="modal-detail__control">
+                                    <input type="text"
+                                        class="modal-detail__text-input modal-detail__text-input--readonly"
+                                        value="AU001" autocomplete="username" readonly
+                                        aria-labelledby="label-user-edit-id" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-edit-pw">비밀번호</span>
+                                <div class="modal-detail__control modal-detail__control--password">
+                                    <input type="password" class="modal-detail__text-input modal-detail__text-input--password"
+                                        id="user-edit-password" autocomplete="new-password"
+                                        placeholder="비밀번호 변경 시 입력하세요" aria-labelledby="label-user-edit-pw" />
+                                    <button type="button" class="modal-detail__pw-toggle" data-al-pw-toggle
+                                        aria-label="비밀번호 표시" aria-pressed="false">
+                                        <span class="modal-detail__pw-toggle-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-edit-pw2">비밀번호 확인</span>
+                                <div class="modal-detail__control modal-detail__control--password">
+                                    <input type="password" class="modal-detail__text-input modal-detail__text-input--password"
+                                        id="user-edit-password-confirm" autocomplete="new-password"
+                                        placeholder="비밀번호 확인" aria-labelledby="label-user-edit-pw2" />
+                                    <button type="button" class="modal-detail__pw-toggle" data-al-pw-toggle
+                                        aria-label="비밀번호 표시" aria-pressed="false">
+                                        <span class="modal-detail__pw-toggle-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">최근 수정일</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026.03.06</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">마지막 로그인</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026.04.08</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-user-edit">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 사용자 등록 -->
+        <div class="modal-backdrop" id="al-modal-user-register" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-user-register-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-user-register-title">사용자 등록</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-user-register"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card modal-detail__card--scroll">
+                        <div class="modal-detail__fields modal-detail__fields--stack modal-detail__fields--strong-label">
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-reg-name">사용자명<span class="form__required"
+                                        aria-hidden="true">*</span></span>
+                                <div class="modal-detail__control">
+                                    <input type="text" class="modal-detail__text-input" required autocomplete="name"
+                                        placeholder="사용자명을 입력하세요." aria-labelledby="label-user-reg-name" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-reg-id">아이디<span class="form__required"
+                                        aria-hidden="true">*</span></span>
+                                <div class="modal-detail__control">
+                                    <input type="text" class="modal-detail__text-input" required autocomplete="username"
+                                        placeholder="사용할 아이디를 입력하세요." aria-labelledby="label-user-reg-id" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-reg-pw">비밀번호<span class="form__required"
+                                        aria-hidden="true">*</span></span>
+                                <div class="modal-detail__control modal-detail__control--password">
+                                    <input type="password" class="modal-detail__text-input modal-detail__text-input--password"
+                                        id="user-register-password" required autocomplete="new-password"
+                                        placeholder="사용할 비밀번호를 입력하세요." aria-labelledby="label-user-reg-pw" />
+                                    <button type="button" class="modal-detail__pw-toggle" data-al-pw-toggle
+                                        aria-label="비밀번호 표시" aria-pressed="false">
+                                        <span class="modal-detail__pw-toggle-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-user-reg-pw2">비밀번호 확인<span class="form__required"
+                                        aria-hidden="true">*</span></span>
+                                <div class="modal-detail__control modal-detail__control--password">
+                                    <input type="password" class="modal-detail__text-input modal-detail__text-input--password"
+                                        id="user-register-password-confirm" required autocomplete="new-password"
+                                        placeholder="비밀번호 확인" aria-labelledby="label-user-reg-pw2" />
+                                    <button type="button" class="modal-detail__pw-toggle" data-al-pw-toggle
+                                        aria-label="비밀번호 표시" aria-pressed="false">
+                                        <span class="modal-detail__pw-toggle-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">등록일시</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026.03.06</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">최근로그인</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026.04.08</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-user-register">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 공통코드 상세 — Figma 486:15656 (가이드 tabs--line 패턴) -->
+        <div class="modal-backdrop" id="al-modal-common-code-detail" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-common-code-detail-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-common-code-detail-title">공통코드 상세</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-common-code-detail"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card modal-code-detail">
+                        <div class="tabs tabs--line" data-al-tabs>
+                            <div class="tabs__list" role="tablist" aria-label="코드 구분">
+                                <button type="button" class="tabs__tab tabs__tab--active" role="tab" id="tab-common-code-major"
+                                    data-al-tab="common-code-major" aria-selected="true"
+                                    aria-controls="al-common-code-panel-major">대분류</button>
+                                <button type="button" class="tabs__tab" role="tab" id="tab-common-code-sub"
+                                    data-al-tab="common-code-sub" aria-selected="false"
+                                    aria-controls="al-common-code-panel-sub" tabindex="-1">세부코드</button>
+                            </div>
+                            <div class="tabs__panel tabs__panel--active" role="tabpanel" id="al-common-code-panel-major"
+                                data-al-tabpanel="common-code-major" aria-labelledby="tab-common-code-major">
+                                <div class="modal-detail__fields modal-detail__fields--stack">
+                                    <div class="modal-detail__row">
+                                        <span class="modal-detail__label">코드 ID</span>
+                                        <div class="modal-detail__control">
+                                            <div class="modal-detail__static-input">CM005</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-detail__row">
+                                        <span class="modal-detail__label">코드명</span>
+                                        <div class="modal-detail__control">
+                                            <div class="modal-detail__static-input">그룹 관리</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-detail__row">
+                                        <span class="modal-detail__label">코드 설명</span>
+                                        <div class="modal-detail__control">
+                                            <div class="modal-detail__static-input">그룹 관리 코드</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-detail__row modal-detail__row--fixed-h">
+                                        <span class="modal-detail__label">사용 여부</span>
+                                        <div class="modal-detail__control modal-detail__control--start">
+                                            <button type="button" class="al-toggle" data-al-toggle role="switch" aria-checked="true"
+                                                aria-label="사용 여부">
+                                                <span class="al-toggle__track" aria-hidden="true"></span>
+                                                <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                <span class="al-toggle__label">사용 여부</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tabs__panel" role="tabpanel" id="al-common-code-panel-sub"
+                                data-al-tabpanel="common-code-sub" aria-labelledby="tab-common-code-sub" hidden>
+                                <div class="modal-detail__table-wrap">
+                                    <table class="al-table" aria-label="세부코드 목록">
+                                        <colgroup>
+                                            <col style="width: 56px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: auto;">
+                                            <col style="width: 72px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="세부코드 전체 선택">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </th>
+                                                <th scope="col">코드ID</th>
+                                                <th scope="col">세부코드ID</th>
+                                                <th scope="col" class="left">세부코드명</th>
+                                                <th scope="col" class="left">설명</th>
+                                                <th scope="col" class="right">사용</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 11 행 선택">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>CM001</td>
+                                                <td>11</td>
+                                                <td class="left">모바일</td>
+                                                <td class="left">모바일기기</td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="true" aria-label="모바일(11) 사용 여부">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">모바일(11) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 12 행 선택">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>CM001</td>
+                                                <td>12</td>
+                                                <td class="left">태블릿</td>
+                                                <td class="left">태블릿 기기</td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="false" aria-label="태블릿(12) 사용 여부">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">태블릿(12) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 13 행 선택">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>CM001</td>
+                                                <td>13</td>
+                                                <td class="left">PC</td>
+                                                <td class="left">PC 기기</td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="false" aria-label="PC(13) 사용 여부">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">PC(13) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 14 행 선택">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>CM001</td>
+                                                <td>14</td>
+                                                <td class="left">기타</td>
+                                                <td class="left">기타 기기</td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="true" aria-label="기타(14) 사용 여부">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">기타(14) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-common-code-detail">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary-ghost btn--pill btn--lg">삭제</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 공통코드 수정  -->
+        <div class="modal-backdrop" id="al-modal-common-code-edit" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-common-code-edit-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-common-code-edit-title">공통코드 수정</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-common-code-edit"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card modal-code-detail">
+                        <div class="tabs tabs--line" data-al-tabs>
+                            <div class="tabs__list" role="tablist" aria-label="코드 구분">
+                                <button type="button" class="tabs__tab tabs__tab--active" role="tab" id="tab-common-code-major-edit"
+                                    data-al-tab="common-code-edit-major" aria-selected="true"
+                                    aria-controls="al-common-code-panel-major-edit">대분류</button>
+                                <button type="button" class="tabs__tab" role="tab" id="tab-common-code-sub-edit"
+                                    data-al-tab="common-code-edit-sub" aria-selected="false"
+                                    aria-controls="al-common-code-panel-sub-edit" tabindex="-1">세부코드</button>
+                            </div>
+                            <div class="tabs__panel tabs__panel--active" role="tabpanel" id="al-common-code-panel-major-edit"
+                                data-al-tabpanel="common-code-edit-major" aria-labelledby="tab-common-code-major-edit">
+                                <div class="modal-detail__fields modal-detail__fields--stack">
+                                    <div class="modal-detail__row">
+                                        <span class="modal-detail__label">코드 ID</span>
+                                        <div class="modal-detail__control">
+                                            <input type="text" class="modal-detail__text-input" value="CM005"
+                                                autocomplete="off" aria-label="코드 ID (공통코드 수정)" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-detail__row">
+                                        <span class="modal-detail__label">코드명</span>
+                                        <div class="modal-detail__control">
+                                            <input type="text" class="modal-detail__text-input" value="그룹 관리"
+                                                autocomplete="off" aria-label="그룹 관리" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-detail__row">
+                                        <span class="modal-detail__label">코드 설명</span>
+                                        <div class="modal-detail__control">
+                                            <input type="text" class="modal-detail__text-input" value="그룹 관리 코드"
+                                                autocomplete="off" aria-label="그룹 관리 코드" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-detail__row modal-detail__row--fixed-h">
+                                        <span class="modal-detail__label">사용 여부</span>
+                                        <div class="modal-detail__control modal-detail__control--start">
+                                            <button type="button" class="al-toggle" data-al-toggle role="switch" aria-checked="true"
+                                                aria-label="사용 여부 (공통코드 수정)">
+                                                <span class="al-toggle__track" aria-hidden="true"></span>
+                                                <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                <span class="al-toggle__label">사용 여부 (공통코드 수정)</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tabs__panel" role="tabpanel" id="al-common-code-panel-sub-edit"
+                                data-al-tabpanel="common-code-edit-sub" aria-labelledby="tab-common-code-sub-edit" hidden>
+                                <div class="modal-detail__table-wrap">
+                                    <table class="al-table" aria-label="세부코드 목록 (공통코드 수정)">
+                                        <colgroup>
+                                            <col style="width: 56px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: auto;">
+                                            <col style="width: 72px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="세부코드 전체 선택 (공통코드 수정)">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </th>
+                                                <th scope="col">코드ID</th>
+                                                <th scope="col">세부코드ID</th>
+                                                <th scope="col" class="left">세부코드명</th>
+                                                <th scope="col" class="left">설명</th>
+                                                <th scope="col" class="right">사용</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 11 행 선택 (공통코드 수정)">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="CM001" autocomplete="off"
+                                                        aria-label="CM001 / 11 코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="11" inputmode="numeric" autocomplete="off"
+                                                        aria-label="CM001 / 11 세부코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="모바일"
+                                                        autocomplete="off" aria-label="CM001 / 11 세부코드명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="모바일기기"
+                                                        autocomplete="off" aria-label="CM001 / 11 설명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="true" aria-label="모바일(11) 사용 여부 (공통코드 수정)">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">모바일(11) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 12 행 선택 (공통코드 수정)">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="CM001" autocomplete="off"
+                                                        aria-label="CM001 / 12 코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="12" inputmode="numeric" autocomplete="off"
+                                                        aria-label="CM001 / 12 세부코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="태블릿"
+                                                        autocomplete="off" aria-label="CM001 / 12 세부코드명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="태블릿 기기"
+                                                        autocomplete="off" aria-label="CM001 / 12 설명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="false" aria-label="태블릿(12) 사용 여부 (공통코드 수정)">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">태블릿(12) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 13 행 선택 (공통코드 수정)">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="CM001" autocomplete="off"
+                                                        aria-label="CM001 / 13 코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="13" inputmode="numeric" autocomplete="off"
+                                                        aria-label="CM001 / 13 세부코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="PC"
+                                                        autocomplete="off" aria-label="CM001 / 13 세부코드명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="PC 기기"
+                                                        autocomplete="off" aria-label="CM001 / 13 설명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="false" aria-label="PC(13) 사용 여부 (공통코드 수정)">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">PC(13) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label class="al-checkbox">
+                                                        <input class="al-checkbox__input" type="checkbox"
+                                                            aria-label="CM001 / 14 행 선택 (공통코드 수정)">
+                                                        <span class="al-checkbox__box" aria-hidden="true"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="CM001" autocomplete="off"
+                                                        aria-label="CM001 / 14 코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact modal-detail__text-input--center"
+                                                        value="14" inputmode="numeric" autocomplete="off"
+                                                        aria-label="CM001 / 14 세부코드 ID (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="기타"
+                                                        autocomplete="off" aria-label="CM001 / 14 세부코드명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="left">
+                                                    <input type="text" class="modal-detail__text-input modal-detail__text-input--compact" value="기타 기기"
+                                                        autocomplete="off" aria-label="CM001 / 14 설명 (공통코드 수정)" />
+                                                </td>
+                                                <td class="right">
+                                                    <button type="button" class="al-toggle" data-al-toggle role="switch"
+                                                        aria-checked="true" aria-label="기타(14) 사용 여부 (공통코드 수정)">
+                                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                                        <span class="al-toggle__label">기타(14) 사용</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-common-code-edit">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary-ghost btn--pill btn--lg">삭제</button>
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-backdrop" id="al-modal-common-code-register" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-common-code-register-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-common-code-register-title">공통코드 등록</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-common-code-register"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card modal-code-detail">
+                        <div class="modal-detail__fields modal-detail__fields--stack modal-detail__fields--strong-label">
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-common-code-register-id">코드 ID<span
+                                        class="form__required" aria-hidden="true">*</span></span>
+                                <div class="modal-detail__control">
+                                    <input type="text" class="modal-detail__text-input" value="CM005" required
+                                        autocomplete="off" aria-labelledby="label-common-code-register-id" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-common-code-register-name">코드명<span
+                                        class="form__required" aria-hidden="true">*</span></span>
+                                <div class="modal-detail__control">
+                                    <input type="text" class="modal-detail__text-input" value="그룹 관리" required
+                                        autocomplete="off" aria-labelledby="label-common-code-register-name" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label" id="label-common-code-register-desc">코드 설명</span>
+                                <div class="modal-detail__control">
+                                    <input type="text" class="modal-detail__text-input" value="그룹 관리 코드"
+                                        autocomplete="off" aria-labelledby="label-common-code-register-desc" />
+                                </div>
+                            </div>
+                            <div class="modal-detail__row modal-detail__row--fixed-h">
+                                <span class="modal-detail__label" id="label-common-code-register-use">사용 여부</span>
+                                <div class="modal-detail__control modal-detail__control--start">
+                                    <button type="button" class="al-toggle" data-al-toggle role="switch" aria-checked="true"
+                                        aria-labelledby="label-common-code-register-use">
+                                        <span class="al-toggle__track" aria-hidden="true"></span>
+                                        <span class="al-toggle__thumb" aria-hidden="true"></span>
+                                        <span class="al-toggle__label">사용 여부 (공통코드 등록)</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="modal-card__note"><strong>*</strong> 표시는 필수 입력사항입니다.</p>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--lg"
+                        data-al-modal-close="al-modal-common-code-register">취소</button>
+                    <div class="modal__actions">
+                        <button type="button" class="btn btn--primary btn--pill btn--lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 상세정보 (작업·권한 로그 읽기 전용) -->
+        <div class="modal-backdrop" id="al-modal-detail-info" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="modal modal--form w-960" role="dialog" aria-modal="true"
+                aria-labelledby="al-modal-detail-info-title" tabindex="-1">
+                <div class="modal__header">
+                    <h2 class="modal__title" id="al-modal-detail-info-title">상세정보</h2>
+                    <button type="button" class="modal__close" data-al-modal-close="al-modal-detail-info"
+                        aria-label="닫기"></button>
+                </div>
+                <div class="modal__body">
+                    <div class="modal-detail__card">
+                        <div class="modal-detail__fields modal-detail__fields--stack">
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">메뉴</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">권한 관리</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">기능명</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">그룹 권한 변경</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">작업자</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">박OO</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">작업일시</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">2026-04-09 16:02</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row">
+                                <span class="modal-detail__label">기능설명</span>
+                                <div class="modal-detail__control">
+                                    <div class="modal-detail__static-input">완주 그룹에 정류장 관리 권한을 부여함.</div>
+                                </div>
+                            </div>
+                            <div class="modal-detail__row modal-detail__row--align-start">
+                                <span class="modal-detail__label">요청값</span>
+                                <div class="modal-detail__control modal-detail__control--start">
+                                    <div class="modal-detail__static-input modal-detail__static-input--multiline" role="region"
+                                        aria-label="요청값">{"groupId" : "wanju", "authority" : "Y"}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__footer modal__footer--end">
+                    <button type="button" class="btn btn--primary btn--pill btn--lg"
+                        data-al-modal-close="al-modal-detail-info">확인</button>
+                </div>
+            </div>
+        </div>
+        <div class="al-modal-backdrop" id="al-modal-warning-1" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-warning-1-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-warning-1-title">경고</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-warning-1"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--warning" aria-hidden="true"></div>
+                    <p class="al-modal__message">오류 메시지</p>
+                    <p class="al-modal__submessage">해당 텍스트에 <strong>금칙어</strong>가 포함되어 있어<br />등록이 <strong>불가능</strong>
+                        합니다.</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-warning-1">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-warning-1">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-warning-2" data-al-modal-backdrop data-open="false"
+            aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-warning-2-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-warning-2-title">경고</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-warning-2"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--warning" aria-hidden="true"></div>
+                    <p class="al-modal__message">OTP초기화</p>
+                    <p class="al-modal__submessage">사용자의 OTP를 초기화합니다. 정말로 진행하시겠습니까?</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-warning-2">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-warning-2">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-confirm" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-confirm-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-confirm-title">확인</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-confirm"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <p class="al-modal__message">단말을 등록하겠습니까?</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-confirm">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-confirm">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-modify" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-modify-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-modify-title">수정</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-modify"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--modify" aria-hidden="true"></div>
+                    <p class="al-modal__message">수정하시겠습니까?</p>
+                    <p class="al-modal__submessage">변경하신 내용으로 저장됩니다.</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-modify">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-modify">
+                        수정
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="al-modal-backdrop" id="al-modal-regist" data-al-modal-backdrop data-open="false" aria-hidden="true">
+            <div class="al-modal" role="dialog" aria-modal="true" aria-labelledby="al-modal-regist-title" tabindex="-1">
+                <div class="al-modal__header">
+                    <h2 class="al-modal__title" id="al-modal-regist-title">등록</h2>
+                    <button type="button" class="al-modal__close" data-al-modal-close="al-modal-regist"
+                        aria-label="닫기">닫기</button>
+                </div>
+                <div class="al-modal__body">
+                    <div class="al-modal__icon al-modal__icon--regist" aria-hidden="true"></div>
+                    <p class="al-modal__message">등록하시겠습니까?</p>
+                    <p class="al-modal__submessage">입력하신 내용으로 새로 등록됩니다.</p>
+                </div>
+                <div class="al-modal__footer">
+                    <button type="button" class="btn btn--white btn--pill btn--md" data-al-modal-close="al-modal-regist">
+                        취소
+                    </button>
+                    <button type="button" class="btn btn--primary btn--pill btn--md" data-al-modal-close="al-modal-regist">
+                        등록
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+      </main>
+      <!-- // al-content -->
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>
