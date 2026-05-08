@@ -2234,7 +2234,7 @@
   }
 
   &__chart--preview {
-    min-height: 206px;
+    min-height: 178px;
     height: 100%;
   }
 
@@ -2242,13 +2242,8 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-    min-height: 290px;
+    min-height: 280px;
   }
-
-  &__grid--modify {
-    min-height: 400px;
-  }
-
   &__level-list {
     display: flex;
     flex-direction: column;
@@ -2351,12 +2346,8 @@
   }
 
   &--modify {
-    .battery-detail__grid {
-      min-height: 400px;
-    }
-
     .battery-detail__level-item {
-      min-height: 48px;
+      min-height: 38px;
     }
   }
 }

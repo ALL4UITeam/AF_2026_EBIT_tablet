@@ -368,18 +368,41 @@ body.al-admin {
 }
 
 // ----- chevron / arrow -----
+// 기본 숨김 — 호버/포커스 또는 메뉴 확장(.is-open) 시에만 표시
+// (visibility 대신 opacity만 사용 — 일부 브라우저/상황에서 트리거 :hover와 궁합이 더 안정적)
 .al-sidenav__arrow {
-    flex: 0 0 10px;
-    width: 10px;
+    flex: 0 0 0;
+    width: 0;
+    min-width: 0;
     height: 10px;
-    background-image: url('@/assets/images/common/nav/nav-arrow.svg');    
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background-image: url('@/assets/images/common/nav/nav-arrow.svg');
     background-repeat: no-repeat;
     background-position: center;
-    transition: all .3s;
+    background-size: 10px 10px;
+    transition:
+        opacity 0.15s ease,
+        transform 0.3s ease,
+        flex-basis 0.15s ease,
+        width 0.15s ease;
+    transform: rotate(180deg);
+}
+
+.al-sidenav__item.is-open > .al-sidenav__trigger .al-sidenav__arrow,
+.al-sidenav__item:hover > .al-sidenav__trigger .al-sidenav__arrow,
+.al-sidenav__trigger:hover .al-sidenav__arrow,
+.al-sidenav__trigger:focus-visible .al-sidenav__arrow {
+    flex: 0 0 10px;
+    width: 10px;
+    opacity: 1;
 }
 
 .al-sidenav__item.is-open .al-sidenav__arrow {
-    transform: rotate(-180deg);
+    transform: rotate(0deg);
 }
 
 // ----- 2depth sub -----

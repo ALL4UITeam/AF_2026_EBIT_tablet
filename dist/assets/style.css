@@ -747,17 +747,34 @@ body.al-admin {
 }
 
 .al-sidenav__arrow {
-  flex: 0 0 10px;
-  width: 10px;
+  flex: 0 0 0;
+  width: 0;
+  min-width: 0;
   height: 10px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   background-image: url("data:image/svg+xml,%3csvg%20width='10'%20height='5'%20viewBox='0%200%2010%205'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5%20-2.38419e-07L10%205H0L5%20-2.38419e-07Z'%20fill='%23F0F7FF'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.3s;
+  background-size: 10px 10px;
+  transition: opacity 0.15s ease, transform 0.3s ease, flex-basis 0.15s ease, width 0.15s ease;
+  transform: rotate(180deg);
+}
+
+.al-sidenav__item.is-open > .al-sidenav__trigger .al-sidenav__arrow,
+.al-sidenav__item:hover > .al-sidenav__trigger .al-sidenav__arrow,
+.al-sidenav__trigger:hover .al-sidenav__arrow,
+.al-sidenav__trigger:focus-visible .al-sidenav__arrow {
+  flex: 0 0 10px;
+  width: 10px;
+  opacity: 1;
 }
 
 .al-sidenav__item.is-open .al-sidenav__arrow {
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
 }
 
 .al-sidenav__sub {
@@ -1732,10 +1749,9 @@ body.al-admin {
 .form--search .form__field {
   height: 40px;
   padding: 0 16px;
-  border: 1px solid #d7dce3;
+  border: 1px solid #94A3B8;
   border-radius: 4px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(4, 7, 26, 0.08);
 }
 .form--search .form__field:focus-within {
   border-color: var(--al-color-primary);
@@ -1764,7 +1780,7 @@ body.al-admin {
   color: #33363d;
 }
 .form--search .form__input::placeholder {
-  color: #8a949e;
+  color: #64748B;
 }
 .form--search .form__icon {
   position: absolute;
@@ -2104,7 +2120,7 @@ body.al-admin {
   height: 40px;
   padding: 0 14px;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #94A3B8;
   background: #fff;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
@@ -2184,9 +2200,12 @@ body.al-admin {
 }
 .form__field.disabled,
 .form-field.disabled {
-  background: #f5f5f5;
+  background: #E2E8F0;
   cursor: not-allowed;
-  opacity: 0.6;
+}
+.form__field.disabled input,
+.form-field.disabled input {
+  color: #64748B;
 }
 .form__field:has(.custom-select.is-open),
 .form-field:has(.custom-select.is-open) {
@@ -2221,7 +2240,7 @@ body.al-admin {
 .form-field input::placeholder,
 .form-field select::placeholder,
 .form-field textarea::placeholder {
-  color: #999;
+  color: #64748B;
 }
 .form__field textarea,
 .form-field textarea {
@@ -2305,7 +2324,7 @@ body.al-admin {
 .form__input::placeholder,
 .form__select::placeholder,
 .form__textarea::placeholder {
-  color: #999;
+  color: #64748B;
 }
 
 .form__actions,
@@ -6892,16 +6911,19 @@ select:focus {
 .perm-tree__branch {
   border-radius: 0;
 }
+.perm-tree__branch .perm-tree__chevron {
+  transform: rotate(180deg);
+}
 .perm-tree__branch.is-collapsed .perm-tree__nest {
   display: none;
 }
 .perm-tree__branch.is-collapsed .perm-tree__chevron {
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
 }
 .perm-tree__branch--leaf .perm-tree__chevron {
   opacity: 0.45;
   pointer-events: none;
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
 }
 .perm-tree__depth1 {
   box-sizing: border-box;
@@ -8987,17 +9009,14 @@ select:focus {
   height: 160px;
 }
 .battery-detail__chart--preview {
-  min-height: 206px;
+  min-height: 178px;
   height: 100%;
 }
 .battery-detail__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-  min-height: 290px;
-}
-.battery-detail__grid--modify {
-  min-height: 400px;
+  min-height: 280px;
 }
 .battery-detail__level-list {
   display: flex;
@@ -9078,9 +9097,6 @@ select:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(4, 123, 182, 0.14);
 }
-.battery-detail--modify .battery-detail__grid {
-  min-height: 400px;
-}
 .battery-detail--modify .battery-detail__level-item {
-  min-height: 48px;
+  min-height: 38px;
 }
