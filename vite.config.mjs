@@ -32,7 +32,9 @@ export default defineConfig(() => {
 
   return {
     root: "src",
-    base: '/2026_AF_EBIT_tablet/',
+    // 로컬에서 dist를 루트 정적 서버로 열 때 깨지지 않도록 기본은 상대 경로.
+    // GitHub Pages(서브패스) 배포는 CI에서 `npm run build -- --base /리포지토리명/` 로 덮어씀.
+    base: "./",
     publicDir: "../public",
 
     build: {

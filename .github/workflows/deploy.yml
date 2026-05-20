@@ -31,7 +31,7 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -- --base /2026_AF_EBIT_tablet/
 
       - uses: actions/configure-pages@v5
         with:

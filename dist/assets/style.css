@@ -4,21 +4,21 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/2026_AF_EBIT_tablet/assets/fonts/PretendardGOV-Regular.subset.woff2") format("woff2"), url("/2026_AF_EBIT_tablet/assets/fonts/PretendardGOV-Regular.subset.woff") format("woff");
+  src: url("../assets/fonts/PretendardGOV-Regular.subset.woff2") format("woff2"), url("../assets/fonts/PretendardGOV-Regular.subset.woff") format("woff");
 }
 @font-face {
   font-family: "Pretendard GOV";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/2026_AF_EBIT_tablet/assets/fonts/PretendardGOV-Medium.subset.woff2") format("woff2"), url("/2026_AF_EBIT_tablet/assets/fonts/PretendardGOV-Medium.subset.woff") format("woff");
+  src: url("../assets/fonts/PretendardGOV-Medium.subset.woff2") format("woff2"), url("../assets/fonts/PretendardGOV-Medium.subset.woff") format("woff");
 }
 @font-face {
   font-family: "Pretendard GOV";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/2026_AF_EBIT_tablet/assets/fonts/PretendardGOV-Bold.subset.woff2") format("woff2"), url("/2026_AF_EBIT_tablet/assets/fonts/PretendardGOV-Bold.subset.woff") format("woff");
+  src: url("../assets/fonts/PretendardGOV-Bold.subset.woff2") format("woff2"), url("../assets/fonts/PretendardGOV-Bold.subset.woff") format("woff");
 }
 *,
 *::before,
@@ -415,7 +415,7 @@ button, a {
   z-index: 0;
   pointer-events: none;
   background-color: var(--login-bg);
-  background-image: url("/2026_AF_EBIT_tablet/assets/images/bg.png");
+  background-image: url("./images/bg.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1008,6 +1008,10 @@ button, a {
 .dash-work__stat--total .dash-work__stat-num {
   color: #047bb6;
 }
+.dash-work__stat--total .dash-work__stat-icon-wrap img {
+  width: 18px;
+  height: 18px;
+}
 .dash-work__stat--install {
   background: #f7f9f0;
   border-color: #228738;
@@ -1017,6 +1021,10 @@ button, a {
 }
 .dash-work__stat--install .dash-work__stat-num {
   color: #228738;
+}
+.dash-work__stat--install .dash-work__stat-icon-wrap img {
+  width: 20px;
+  height: 16px;
 }
 .dash-work__stat--inspect {
   background: #fff3db;
@@ -1028,6 +1036,10 @@ button, a {
 .dash-work__stat--inspect .dash-work__stat-num {
   color: #c78500;
 }
+.dash-work__stat--inspect .dash-work__stat-icon-wrap img {
+  width: 17px;
+  height: 17px;
+}
 .dash-work__stat--fault {
   background: #fdefec;
   border-color: #de3412;
@@ -1037,6 +1049,10 @@ button, a {
 }
 .dash-work__stat--fault .dash-work__stat-num {
   color: #de3412;
+}
+.dash-work__stat--fault .dash-work__stat-icon-wrap img {
+  width: 18px;
+  height: 18px;
 }
 .dash-work__stat-bar {
   grid-column: 1;
@@ -1069,8 +1085,6 @@ button, a {
   flex-shrink: 0;
 }
 .dash-work__stat-icon-wrap img {
-  width: 24px;
-  height: 24px;
   display: block;
 }
 .dash-work__stat-label {

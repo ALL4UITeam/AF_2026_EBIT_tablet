@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:gh-pages": "vite build --base /2026_AF_EBIT_tablet/",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },

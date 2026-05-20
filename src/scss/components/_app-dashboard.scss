@@ -74,6 +74,12 @@
             .dash-work__stat-num {
                 color: #047bb6;
             }
+            .dash-work__stat-icon-wrap{
+                img{
+                    width: 18px;
+                    height: 18px;
+                }
+            }
         }
 
         &--install {
@@ -86,6 +92,12 @@
 
             .dash-work__stat-num {
                 color: #228738;
+            }
+            .dash-work__stat-icon-wrap{
+                img{
+                    width: 20px;
+                    height: 16px;
+                }
             }
         }
 
@@ -100,6 +112,12 @@
             .dash-work__stat-num {
                 color: #c78500;
             }
+            .dash-work__stat-icon-wrap{
+                img{
+                    width: 17px;
+                    height: 17px;
+                }
+            }
         }
 
         &--fault {
@@ -112,6 +130,12 @@
 
             .dash-work__stat-num {
                 color: #de3412;
+            }
+            .dash-work__stat-icon-wrap{
+                img{
+                    width: 18px;
+                    height: 18px;
+                }
             }
         }
     }
@@ -150,8 +174,6 @@
         flex-shrink: 0;
 
         img {
-            width: 24px;
-            height: 24px;
             display: block;
         }
     }
