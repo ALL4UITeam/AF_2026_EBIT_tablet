@@ -15,20 +15,14 @@
 @use 'components/icon';
 @use 'components/accordion';
 @use 'components/badge';
-@use 'components/status-overview';
 @use 'components/app-dashboard';
-@use 'components/tree';
-@use 'components/menu-permission-tree';
+@use 'components/dash-tab';
 @use 'components/datetimepicker';
 @use 'components/tokens';
-@use 'components/guide-page';
-@use 'components/field';
 @use 'components/choice';
 @use 'components/tabs';
 @use 'components/step';
 @use 'components/modal';
 @use 'components/pagination';
 @use 'components/file-upload';
-@use 'components/permission-mgmt';
 
-@use 'mdm';

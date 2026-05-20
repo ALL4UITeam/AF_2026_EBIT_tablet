@@ -1,82 +1,101 @@
 @use '../abstracts' as *;
 
-// ====== base ======
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-}
-// ====== app layout ======
-.app {
-    min-height: 100vh;
-    background: $bg;
-}
-
-.app-header {
-    z-index: 50;
-    padding: 20px;
-}
-
-.app-header__inner {
-    height: $header-h;
-    padding: 0 29px;
-    @include glass(0.60);
+.al-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+    height: $header-h;
+    padding: 0 20px 0 16px;
+    background: $panel-strong;
+    border-bottom: 1px solid $border;
+    box-shadow: $shadow;
+    box-sizing: border-box;
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    &__mark {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background: conic-gradient(from 180deg, #1f6feb, #22c55e, #f59e0b, #ef4444, #1f6feb);
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
     }
 
-    &__title {
-        font-size: 16px;
-        font-weight: 700;
-        letter-spacing: -0.2px;
+    &__menu-btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: $radius-sm;
+        background: transparent;
+
+        @media (max-width: 1024px) {
+            display: inline-flex;
+        }
     }
-}
-
-.app-header__actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.user-chip {
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color:#7e8790;
-    font-size: 15px;
-    cursor: pointer;
-
-    &__icon {
-        @include icon(15px);
-        background-image: url('@/assets/images/common/ico-user.svg');
+    
+    &__brand img {
+        display: block;
+        width: auto;
     }
-}
 
-.icon-btn {
-    background: #0d2a44;
-    @include icon(15px);
-    background-image: url('@/assets/images/common/ico-home.svg');
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    cursor: pointer;
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__notify {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        &:after{
+            display: block;
+            content:'';
+            width: 1px;
+            height: 16px;
+            background: #D9D9D9;
+            margin-left: 16px;
+        }
+    }
+
+    &__notify-icon {
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url('@/assets/images/icon/ico-alarm.svg') center / contain no-repeat;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__user-name {
+        font-size: 15px;
+        font-weight: 500;
+        color: $text;
+
+        strong {
+            font-weight: 700;
+            color: inherit;
+        }
+    }
+
+    &__avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__avatar-icon {
+        width: 32px;
+        height: 32px;
+        background: url('@/assets/images/icon/ico-user.svg') center / contain no-repeat;
+    }
 }

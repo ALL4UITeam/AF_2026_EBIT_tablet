@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>제출 확인 — E-bit 관리자</title>
+    {{> meta}}
+</head>
+
+<body class="al-app al-app--no-nav al-app--subnav">
+    {{> header}}
+    {{> dash-work-tabnav}}
+
+    <main class="al-app__main">
+        <span class="dash-work__subtract" aria-hidden="true"></span>
+
+        <div class="term-reg">
+            <div class="term-reg__inner">
+                <div class="term-reg__steps-wrap">
+                    <div class="term-reg__steps" aria-label="단말 등록 진행 단계">
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">정보 확인</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">체크리스트</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">장치 등록</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">사진 촬영</span>
+                            </span>
+                            <span class="term-reg__rail term-reg__rail--active" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg term-reg__seg--last">
+                            <span class="term-reg__pill term-reg__pill--current">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step05-current.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">제출 확인</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="term-reg__submit-con">
+                    <section class="term-reg__card" aria-labelledby="submit-confirm-title">
+                        <header class="term-reg__card-head">
+                            <h1 class="term-reg__card-title" id="submit-confirm-title">제출 확인</h1>
+                        </header>
+                        <div class="term-reg__card-body">
+                            <div class="term-reg__submit-meta">
+                                <div class="term-reg__submit-meta-block">
+                                    <div class="term-reg__submit-meta-label">
+                                        <span class="term-reg__dot" aria-hidden="true"></span>
+                                        설치담당자
+                                    </div>
+                                    <div class="term-reg__submit-meta-value">홍길동</div>
+                                </div>
+                                <div class="term-reg__submit-meta-block">
+                                    <div class="term-reg__submit-meta-label">
+                                        <span class="term-reg__dot" aria-hidden="true"></span>
+                                        도착시간
+                                    </div>
+                                    <div class="term-reg__submit-meta-value term-reg__submit-meta-value--datetime">
+                                        <time datetime="2026-04-20T19:28:33">
+                                            <span class="term-reg__submit-date">2026-04-20 </span>
+                                            <span class="term-reg__submit-time-sub">19시 28분 33초</span>
+                                        </time>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="term-reg__divider" aria-hidden="true"></div>
+
+                            <div class="term-reg__submit-split">
+                                <div class="term-reg__submit-checks">
+                                    <h2 class="term-reg__submit-checks-title">점검 결과</h2>
+                                    <div class="term-reg__submit-check-grid">
+                                        <div class="term-reg__submit-check-row">
+                                            <div class="term-reg__submit-check-item">
+                                                <img src="./assets/images/icon/ico-check-arrow.svg" alt="" />
+                                                전원 정상
+                                            </div>
+                                            <div class="term-reg__submit-check-item">
+                                                <img src="./assets/images/icon/ico-check-arrow.svg" alt="" />
+                                                통신 정상
+                                            </div>
+                                        </div>
+                                        <div class="term-reg__submit-check-row">
+                                            <div class="term-reg__submit-check-item">
+                                                <img src="./assets/images/icon/ico-check-arrow.svg" alt="" />
+                                                화면 정상 출력
+                                            </div>
+                                            <div class="term-reg__submit-check-item">
+                                                <img src="./assets/images/icon/ico-check-arrow.svg" alt="" />
+                                                외관 이상 없음
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="term-reg__submit-vrule" aria-hidden="true"></div>
+
+                                <div class="term-reg__submit-photos">
+                                    <div class="term-reg__submit-photos-head">
+                                        <h2 class="term-reg__submit-photos-title">첨부 사진</h2>
+                                        <p class="term-reg__submit-photos-count" aria-label="첨부 3장">
+                                            (<span class="term-reg__submit-photos-count-num">3</span>)
+                                        </p>
+                                    </div>
+                                    <div class="term-reg__submit-thumbs">
+                                        <div class="term-reg__submit-thumb" aria-hidden="true">
+                                            <img src="./assets/images/icon/ico-thumb-dummy.svg" alt="" />
+                                        </div>
+                                        <div class="term-reg__submit-thumb" aria-hidden="true">
+                                            <img src="./assets/images/icon/ico-thumb-dummy.svg" alt="" />
+                                        </div>
+                                        <div class="term-reg__submit-thumb" aria-hidden="true">
+                                            <img src="./assets/images/icon/ico-thumb-dummy.svg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="term-reg__card term-reg__card--work-result" aria-labelledby="work-result-title">
+                        <header class="term-reg__card-head term-reg__card-head--work-result">
+                            <h2 class="term-reg__card-title term-reg__card-title--work-result" id="work-result-title">작업 결과</h2>
+                            <span class="term-reg__work-result-ico" aria-hidden="true">
+                                <img src="./assets/images/icon/ico-clip.svg" alt="" />
+                            </span>
+                        </header>
+                        <div class="term-reg__card-body">
+                            <label for="work-note" class="term-reg__submit-work-label">현장특이사항</label>
+                            <textarea id="work-note" name="workNote" class="term-reg__textarea-work" rows="6"
+                                placeholder="현장에서 발견된 특이사항을 입력하세요."></textarea>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <footer class="term-reg__footer">
+                <div class="term-reg__footer-inner">
+                    <a class="term-reg__btn term-reg__btn--outline" href="./02_상세_04_사진촬영.html">이전</a>
+                    <a class="term-reg__btn term-reg__btn--primary" href="./01_대시보드.html">완료</a>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script type="module" src="./js/page/terminal-shell.js"></script>
+</body>
+
+</html>

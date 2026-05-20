@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>사진 촬영 — E-bit 관리자</title>
+    {{> meta}}
+</head>
+
+<body class="al-app al-app--no-nav al-app--subnav">
+    {{> header}}
+    {{> dash-work-tabnav}}
+
+    <main class="al-app__main">
+        <span class="dash-work__subtract" aria-hidden="true"></span>
+
+        <div class="term-reg" data-term-photo-page>
+            <div class="term-reg__inner">
+                <div class="term-reg__steps-wrap">
+                    <div class="term-reg__steps" aria-label="단말 등록 진행 단계">
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">정보 확인</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">체크리스트</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">장치 등록</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--current">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step04-current.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">사진 촬영</span>
+                            </span>
+                            <span class="term-reg__rail term-reg__rail--active" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg term-reg__seg--last">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step05.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">제출 확인</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="term-reg__card" aria-labelledby="photo-capture-title">
+                    <header class="term-reg__card-head">
+                        <h1 class="term-reg__card-title" id="photo-capture-title">사진 촬영</h1>
+                    </header>
+                    <div class="term-reg__card-body">
+                        <div class="term-reg__photo-toolbar">
+                            <p class="term-reg__photo-require">최소 3장 필요</p>
+                            <p class="term-reg__photo-count" aria-live="polite">
+                                (<span data-term-photo-count class="term-reg__photo-count-num">0</span>/3)
+                            </p>
+                            <label class="term-reg__btn-photo-capture">
+                                사진 촬영
+                                <img src="./assets/images/icon/ico-photo.svg" alt="" aria-hidden="true" />
+                                <input id="term-photo-file" name="photos" type="file" accept="image/*"
+                                    capture="environment" multiple class="term-reg__btn-photo-capture-input"
+                                    aria-label="사진 촬영·파일 선택" />
+                            </label>
+                        </div>
+
+                        <ul class="term-reg__photo-slots" aria-label="사진 업로드 슬롯 3개">
+                            <li>
+                                <div class="term-reg__photo-slot" aria-hidden="true">
+                                    <div class="term-reg__photo-slot-icon">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="term-reg__photo-slot" aria-hidden="true">
+                                    <div class="term-reg__photo-slot-icon">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="term-reg__photo-slot" aria-hidden="true">
+                                    <div class="term-reg__photo-slot-icon">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="term-reg__footer">
+                <div class="term-reg__footer-inner">
+                    <a class="term-reg__btn term-reg__btn--outline" href="./02_상세_03_장치등록.html">이전</a>
+                    <a class="term-reg__btn term-reg__btn--primary" href="./02_상세_05_제출확인.html">다음</a>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script type="module" src="./js/page/terminal-shell.js"></script>
+</body>
+
+</html>

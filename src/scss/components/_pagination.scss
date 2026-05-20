@@ -31,7 +31,7 @@
         &:hover:not(:disabled) {
             color: var(--al-color-text-muted);
         }
-
+        
         &:disabled {
             color: #8a949e;
             cursor: not-allowed;
@@ -104,7 +104,7 @@
         content: '';
         width: 20px;
         height: 20px;
-        background-image: url('@/assets/images/icon/ico-arrow-left.svg');
+        background-image: url('@/assets/images/icon/ico-check-arrow.svg');
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -113,7 +113,7 @@
         content: '';
         width: 20px;
         height: 20px;
-        background-image: url('@/assets/images/icon/ico-arrow-right.svg');
+        background-image: url('@/assets/images/icon/ico-check-arrow.svg');
         background-repeat: no-repeat;
         background-position: center;
     }

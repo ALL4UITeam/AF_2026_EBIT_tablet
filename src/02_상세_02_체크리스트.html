@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>체크리스트 — E-bit 관리자</title>
+    {{> meta}}
+</head>
+
+<body class="al-app al-app--no-nav al-app--subnav">
+    {{> header}}
+    {{> dash-work-tabnav}}
+
+    <main class="al-app__main">
+        <span class="dash-work__subtract" aria-hidden="true"></span>
+
+        <div class="term-reg">
+            <div class="term-reg__inner">
+                <div class="term-reg__steps-wrap">
+                    <div class="term-reg__steps" aria-label="단말 등록 진행 단계">
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--done">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step-complet.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">정보 확인</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--current">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step02-current.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">체크리스트</span>
+                            </span>
+                            <span class="term-reg__rail term-reg__rail--active" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step03.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">장치 등록</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step04.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">사진 촬영</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg term-reg__seg--last">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step05.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">제출 확인</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="term-reg__card" aria-label="예시 영역 플레이스홀더">
+                    <div class="term-reg__card-body">
+                        <div class="term-reg__preview-placeholder" aria-hidden="true"></div>
+                    </div>
+                </section>
+
+                <section class="term-reg__card" aria-labelledby="checklist-card-title">
+                    <header class="term-reg__card-head term-reg__card-head--split">
+                        <h1 class="term-reg__card-title" id="checklist-card-title">체크 항목</h1>
+                        <p class="term-reg__card-hint">현장 상태에 맞게 각 항목을 확인한 뒤 체크해 주세요.</p>
+                    </header>
+                    <div class="term-reg__card-body">
+                        <div class="term-reg__check-grid">
+                            <div class="term-reg__check-tile">
+                                <label class="al-checkbox term-reg__check-tile-inner" for="chk-power">
+                                    <input class="al-checkbox__input" type="checkbox" id="chk-power" checked />
+                                    <span class="al-checkbox__box" aria-hidden="true"></span>
+                                    <span class="al-checkbox__text term-reg__check-tile-cap">전원 정상</span>
+                                </label>
+                            </div>
+                            <div class="term-reg__check-tile">
+                                <label class="al-checkbox term-reg__check-tile-inner" for="chk-net">
+                                    <input class="al-checkbox__input" type="checkbox" id="chk-net" />
+                                    <span class="al-checkbox__box" aria-hidden="true"></span>
+                                    <span class="al-checkbox__text term-reg__check-tile-cap">통신정상</span>
+                                </label>
+                            </div>
+                            <div class="term-reg__check-tile">
+                                <label class="al-checkbox term-reg__check-tile-inner" for="chk-display">
+                                    <input class="al-checkbox__input" type="checkbox" id="chk-display" />
+                                    <span class="al-checkbox__box" aria-hidden="true"></span>
+                                    <span class="al-checkbox__text term-reg__check-tile-cap">화면 정상 출력</span>
+                                </label>
+                            </div>
+                            <div class="term-reg__check-tile">
+                                <label class="al-checkbox term-reg__check-tile-inner" for="chk-shell">
+                                    <input class="al-checkbox__input" type="checkbox" id="chk-shell" />
+                                    <span class="al-checkbox__box" aria-hidden="true"></span>
+                                    <span class="al-checkbox__text term-reg__check-tile-cap">외관 이상 없음</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="term-reg__footer">
+                <div class="term-reg__footer-inner">
+                    <a class="term-reg__btn term-reg__btn--outline" href="./03_단말등록_01_정보확인.html">이전</a>
+                    <a class="term-reg__btn term-reg__btn--primary" href="./03_단말등록_03_장치등록.html">다음</a>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script type="module" src="./js/page/terminal-shell.js"></script>
+</body>
+
+</html>

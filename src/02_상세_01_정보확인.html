@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>정보 확인 — E-bit 관리자</title>
+    {{> meta}}
+</head>
+
+<body class="al-app al-app--no-nav al-app--subnav">
+    {{> header}}
+    {{> dash-work-tabnav}}
+
+    <main class="al-app__main">
+        <span class="dash-work__subtract" aria-hidden="true"></span>
+
+        <div class="term-reg">
+            <div class="term-reg__inner">
+                <div class="term-reg__steps-wrap">
+                    <div class="term-reg__steps" aria-label="단말 등록 진행 단계">
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill term-reg__pill--current">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step01-current.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">정보 확인</span>
+                            </span>
+                            <span class="term-reg__rail term-reg__rail--active" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step02.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">체크리스트</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step03.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">장치 등록</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step04.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">사진 촬영</span>
+                            </span>
+                            <span class="term-reg__rail" aria-hidden="true"></span>
+                        </div>
+                        <div class="term-reg__seg term-reg__seg--last">
+                            <span class="term-reg__pill">
+                                <span class="term-reg__pill-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/step/ico-step05.svg" alt="" />
+                                </span>
+                                <span class="term-reg__pill-txt">제출 확인</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="term-reg__card" aria-labelledby="term-reg-card-title">
+                    <header class="term-reg__card-head">
+                        <h1 class="term-reg__card-title" id="term-reg-card-title">정류장 정보</h1>
+                    </header>
+                    <div class="term-reg__card-body">
+                        <div class="term-reg__grid">
+                            <div class="term-reg__row">
+                                <div class="term-reg__field">
+                                    <div class="term-reg__field-label">
+                                        <span class="term-reg__dot" aria-hidden="true"></span>
+                                        정류장
+                                    </div>
+                                    <div class="term-reg__field-value">역삼역 2번 출구</div>
+                                </div>
+                                <div class="term-reg__field">
+                                    <div class="term-reg__field-label">
+                                        <span class="term-reg__dot" aria-hidden="true"></span>
+                                        주소
+                                    </div>
+                                    <div class="term-reg__field-value">서울 강남구 역삼로 180</div>
+                                </div>
+                            </div>
+                            <div class="term-reg__row">
+                                <div class="term-reg__field">
+                                    <div class="term-reg__field-label">
+                                        <span class="term-reg__dot" aria-hidden="true"></span>
+                                        정류장 ID
+                                    </div>
+                                    <div class="term-reg__field-value">STOP-VS-022</div>
+                                </div>
+                                <div class="term-reg__field">
+                                    <div class="term-reg__field-label">
+                                        <span class="term-reg__dot" aria-hidden="true"></span>
+                                        GPS 좌표
+                                    </div>
+                                    <div class="term-reg__field-value">37.50070, 127.03660</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="term-reg__divider" aria-hidden="true"></div>
+                        <div class="term-reg__map" aria-hidden="true">
+                            지도 영역
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="term-reg__footer">
+                <div class="term-reg__footer-inner">
+                    <a class="term-reg__btn term-reg__btn--outline" href="./01_대시보드.html">목록으로</a>
+                    <a class="term-reg__btn term-reg__btn--primary" href="./02_상세_02_체크리스트.html">작업 시작</a>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script type="module" src="./js/page/terminal-shell.js"></script>
+</body>
+
+</html>

@@ -1,165 +1,161 @@
 @use '../abstracts' as *;
 
-// ====== side nav ======
-.side-nav_wrap{
-    position: sticky;
-    top: 20px;
-    align-self: start;
-    height: calc(100vh - #{$header-h} - 60px);
-    transition: top 0.3s ease;
-    
-    &.is-stuck {
-        top: 20px;
-    }
-}
+.al-sidenav {
+    position: fixed;
+    top: $header-h;
+    left: 0;
+    bottom: 0;
+    z-index: 30;
+    width: $nav-w;
+    background: $panel-strong;
+    border-right: 1px solid $border;
+    box-sizing: border-box;
+    transition: transform 0.22s ease;
 
-.side-nav {
-    align-self: start;
-    height: 100%;
-    padding: 12px;
-    background-color: #253b53;
-    border-radius: 10px;
-    transition: height 0.3s ease;
-    
-    &.is-stuck{
-        height: calc(100vh - 40px);
-    }
-}
-.side-nav__inner {
-    height: 100%;
-    overflow: auto;
-    padding: 10px;
-}
+    @media (max-width: 1024px) {
+        transform: translateX(-100%);
+        box-shadow: 8px 0 24px rgba(18, 32, 50, 0.12);
 
-.side-nav__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 8px;
-}
-
-
-.side-nav__arrow {
-    position: absolute;
-    top: 3px;
-    right: 0px;
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid rgba(255, 255, 255, .8);
-    border-bottom: 2px solid rgba(255, 255, 255, .8);
-    transform: rotate(45deg);
-    transition: transform .25s ease;
-}
-
-.side-nav__sub {
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition:
-        
-        opacity .2s ease,
-        transform .2s ease;
-
-}
-
-.side-nav__item{
-    padding: 20px;
-    border-radius: 10px;
-    &.is-open{
-        border: 1px solid rgba(255,255,255,1);
-        background:rgba(255, 255, 255, .1);
-        .side-nav__link{
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(243,245,247,0.2);
-        }
-        .side-nav__sub {
-            max-height: 300px; // 충분히 큰 값
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .side-nav__arrow {
-            transform: rotate(-135deg); // ▼
+        &.is-open {
+            transform: translateX(0);
         }
     }
-    &.has-children {
-        .side-nav__toggle {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            cursor: pointer;
-            background: transparent;
-        }
-    }
-}
 
-.side-nav__subitem{
-    a{
-        position: relative;
-        display: block;
-        padding: 10px 15px;
-        font-size: 13px;
-        border-radius: 8px;
-        color: rgba(255, 255, 255, .85);
+    &__scroll {
+        height: 100%;
+        overflow: auto;
+        padding: 16px 12px 24px;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__item {
+        border-radius: $radius-sm;
+    }
+
+    &__link,
+    &__trigger {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        text-align: left;
+        border-radius: $radius-sm;
+        font-size: 15px;
+        font-weight: 500;
+        color: $text;
         text-decoration: none;
-        color:#e2e6ec;
-        &:after{
-            position: absolute;
-            left: 5px;
-            top: 50%;
-            display: block;
-            background: #e2e6ec;
-            content:'';
-            width: 3px;
-            height:3px;
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
+        background: transparent;
+
         &:hover {
-            background: rgba(255, 255, 255, .12);
-        }
-        &.is-active{    
-            color:#fff;
-            &:after{
-                background: #fff;
-                border-radius: 0;
-                height: 20px;
-            }
+            background: rgba(4, 123, 182, 0.06);
         }
     }
-}
 
-.side-nav__link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 600;
-    font-size: 14px;
-    .icon{
-        @include icon(20px);
-        @for $i from 1 through 7 {
-            &.sni0#{$i} {
-                background-image: url('@/assets/images/common/nav/nav-m0#{$i}.svg');
-            }
-        }
-        
-    }
-}
-
-@media (max-width: 900px) {
-    .side-nav_wrap {
-        display: none;
+    &__trigger {
         position: relative;
-        top: auto;
-        height: auto;
+        padding-right: 36px;
     }
-    .side-nav{
-        background-size: contain;
+
+    &__arrow {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        margin-top: -5px;
+        border: solid $muted;
+        border-width: 0 1.5px 1.5px 0;
+        transform: rotate(45deg);
+        opacity: 0.85;
+    }
+
+    &__item.is-open > &__trigger .al-sidenav__arrow {
+        transform: rotate(-135deg);
+        margin-top: -2px;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        background: center / contain no-repeat;
+        opacity: 0.92;
+
+        &--m01 {
+            background-image: url('@/assets/images/icon/ico-menu-dash.svg');
+        }
+
+        &--m02 {
+            background-image: url('@/assets/images/icon/ico-clip.svg');
+        }
+
+        &--m03 {
+            background-image: url('@/assets/images/icon/ico-inspect.svg');
+        }
+
+        &--m04 {
+            background-image: url('@/assets/images/icon/ico-thumb-img.svg');
+        }
+
+        &--m05 {
+            background-image: url('@/assets/images/icon/ico-dash-fault.svg');
+        }
+
+        &--m06 {
+            background-image: url('@/assets/images/icon/ico-alarm.svg');
+        }
+
+        &--m07 {
+            background-image: url('@/assets/images/icon/ico-user.svg');
+        }
+    }
+
+    &__sub {
+        list-style: none;
+        margin: 0;
+        padding: 4px 0 8px 46px;
+        display: none;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__item.is-open .al-sidenav__sub {
+        display: flex;
+    }
+
+    &__sublink {
+        display: block;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        color: $muted;
+        text-decoration: none;
+
+        &:hover {
+            color: $text;
+            background: rgba(4, 123, 182, 0.06);
+        }
+
+        &.is-active {
+            color: #047bb6;
+            font-weight: 600;
+            background: rgba(4, 123, 182, 0.1);
+        }
+    }
+}
+
+body.nav-open .al-sidenav {
+    @media (max-width: 1024px) {
+        transform: translateX(0);
     }
 }

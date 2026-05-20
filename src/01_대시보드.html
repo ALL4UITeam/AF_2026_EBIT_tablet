@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>대시보드 — E-bit 관리자</title>
+    {{> meta}}
+</head>
+
+<body class="al-app al-app--no-nav al-app--subnav">
+    {{> header}}
+    {{> dash-work-tabnav}}
+
+    <main class="al-app__main">
+        <span class="dash-work__subtract" aria-hidden="true"></span>
+        <div class="dash-work">
+            <section class="dash-work__stats-row" aria-label="작업 통계">
+                <article class="dash-work__stat dash-work__stat--total">
+                    <div class="dash-work__stat-bar" aria-hidden="true"></div>
+                    <div class="dash-work__stat-body">
+                        <div class="dash-work__stat-title-row">
+                            <span class="dash-work__stat-icon-wrap">
+                                <img src="./assets/images/icon/ico-dash-total.svg" alt="" />
+                            </span>
+                            <span class="dash-work__stat-label">전체</span>
+                        </div>
+                        <div class="dash-work__stat-num-row">
+                            <span class="dash-work__stat-num">14</span>
+                            <span class="dash-work__stat-unit">건</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="dash-work__stat dash-work__stat--install">
+                    <div class="dash-work__stat-bar" aria-hidden="true"></div>
+                    <div class="dash-work__stat-body">
+                        <div class="dash-work__stat-title-row">
+                            <span class="dash-work__stat-icon-wrap">
+                                <img src="./assets/images/icon/ico-dash-install.svg" alt="" />
+                            </span>
+                            <span class="dash-work__stat-label">설치</span>
+                        </div>
+                        <div class="dash-work__stat-num-row">
+                            <span class="dash-work__stat-num">10</span>
+                            <span class="dash-work__stat-unit">건</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="dash-work__stat dash-work__stat--inspect">
+                    <div class="dash-work__stat-bar" aria-hidden="true"></div>
+                    <div class="dash-work__stat-body">
+                        <div class="dash-work__stat-title-row">
+                            <span class="dash-work__stat-icon-wrap">
+                                <img src="./assets/images/icon/ico-dash-inspect.svg" alt="" />
+                            </span>
+                            <span class="dash-work__stat-label">점검</span>
+                        </div>
+                        <div class="dash-work__stat-num-row">
+                            <span class="dash-work__stat-num">2</span>
+                            <span class="dash-work__stat-unit">건</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="dash-work__stat dash-work__stat--fault">
+                    <div class="dash-work__stat-bar" aria-hidden="true"></div>
+                    <div class="dash-work__stat-body">
+                        <div class="dash-work__stat-title-row">
+                            <span class="dash-work__stat-icon-wrap">
+                                <img src="./assets/images/icon/ico-dash-fault.svg" alt="" />
+                            </span>
+                            <span class="dash-work__stat-label">장애</span>
+                        </div>
+                        <div class="dash-work__stat-num-row">
+                            <span class="dash-work__stat-num">2</span>
+                            <span class="dash-work__stat-unit">건</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <div class="dash-work__cols">
+                <section class="dash-work__col" aria-labelledby="taskListTitle">
+                    <h2 class="sr-only" id="taskListTitle">작업 목록</h2>
+                    <div class="dash-work__toolbar">
+                        <div class="dash-work__tabs" role="tablist">
+                            <button type="button" class="dash-work__tab dash-work__tab--active" role="tab"
+                                aria-selected="true">오늘</button>
+                            <button type="button" class="dash-work__tab" role="tab" aria-selected="false">금주</button>
+                            <button type="button" class="dash-work__tab dash-work__tab--split" role="tab"
+                                aria-selected="false">
+                                긴급
+                                <span class="dash-work__tab-badge">3</span>
+                            </button>
+                        </div>
+                        <p class="dash-work__toolbar-count"><span class="dash-work__toolbar-count-label">전체</span> <span class="dash-work__toolbar-count-num">14</span><span class="dash-work__toolbar-count-suffix">건</span></p>
+                    </div>
+
+                    <div class="dash-work__panel-body">
+                        <div class="dash-work__search-wrap">
+                            <div class="dash-work__search">
+                                <input type="search" class="dash-work__search-input" placeholder="정류장/단말 검색"
+                                    autocomplete="off" />
+                                <span class="dash-work__search-ico" aria-hidden="true">
+                                    <img src="./assets/images/icon/ico-search.svg" alt="" />
+                                </span>
+                            </div>
+                        </div>
+
+                        <hr class="dash-work__rule" />
+
+                        <div class="dash-work__list-viewport">
+                            <div class="dash-work__list">
+                                <article class="dash-work__task">
+                                    <span class="dash-work__task-ico dash-work__task-ico--green dash-work__task-ico--on-dark">
+                                        <img src="./assets/images/icon/ico-location-install.svg" alt="" />
+                                    </span>
+                                    <span class="dash-work__task-main">
+                                        <span class="dash-work__task-badges">
+                                            <span class="dash-work__pill dash-work__pill--install-o">설치</span>
+                                            <span class="dash-work__pill dash-work__pill--assigned">배정됨</span>
+                                        </span>
+                                        <span class="dash-work__task-name">강남역 1번 출구</span>
+                                        <span class="dash-work__task-addr">서울 강남구 강남대로 396</span>
+                                        <span class="dash-work__task-meta">
+                                            <span class="dash-work__task-meta-item">
+                                                <img src="./assets/images/icon/ico-time.svg" alt="" />
+                                                09:00
+                                            </span>
+                                            <span class="dash-work__task-meta-item">
+                                                <img src="./assets/images/icon/ico-location.svg" alt="" />
+                                                서울교통공사
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dash-work__task-arrow" aria-hidden="true">
+                                        <img src="./assets/images/icon/ico-link-arrow.svg" alt="" />
+                                    </span>
+                                </article>
+
+                                <article class="dash-work__task">
+                                    <span class="dash-work__task-ico dash-work__task-ico--green dash-work__task-ico--on-dark">
+                                        <img src="./assets/images/icon/ico-location-install.svg" alt="" />
+                                    </span>
+                                    <span class="dash-work__task-main">
+                                        <span class="dash-work__task-badges">
+                                            <span class="dash-work__pill dash-work__pill--install-o">설치</span>
+                                            <span class="dash-work__pill dash-work__pill--progress">진행중</span>
+                                        </span>
+                                        <span class="dash-work__task-name">강남역 1번 출구</span>
+                                        <span class="dash-work__task-addr">서울 강남구 강남대로 396</span>
+                                        <span class="dash-work__task-meta">
+                                            <span class="dash-work__task-meta-item">
+                                                <img src="./assets/images/icon/ico-time.svg" alt="" />
+                                                09:00
+                                            </span>
+                                            <span class="dash-work__task-meta-item">
+                                                <img src="./assets/images/icon/ico-location.svg" alt="" />
+                                                서울교통공사
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dash-work__task-arrow" aria-hidden="true">
+                                        <img src="./assets/images/icon/ico-link-arrow.svg" alt="" />
+                                    </span>
+                                </article>
+
+                                <article class="dash-work__task">
+                                    <span class="dash-work__task-ico dash-work__task-ico--amber dash-work__task-ico--on-dark">
+                                        <img src="./assets/images/icon/ico-location-inspect.svg" alt="" />
+                                    </span>
+                                    <span class="dash-work__task-main">
+                                        <span class="dash-work__task-badges">
+                                            <span class="dash-work__pill dash-work__pill--inspect-o">점검</span>
+                                            <span class="dash-work__pill dash-work__pill--approved">승인됨</span>
+                                        </span>
+                                        <span class="dash-work__task-name">강남역 1번 출구</span>
+                                        <span class="dash-work__task-addr">서울 강남구 강남대로 396</span>
+                                        <span class="dash-work__task-meta">
+                                            <span class="dash-work__task-meta-item">
+                                                <img src="./assets/images/icon/ico-time.svg" alt="" />
+                                                09:00
+                                            </span>
+                                            <span class="dash-work__task-meta-item">
+                                                <img src="./assets/images/icon/ico-location.svg" alt="" />
+                                                서울교통공사
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dash-work__task-arrow" aria-hidden="true">
+                                        <img src="./assets/images/icon/ico-link-arrow.svg" alt="" />
+                                    </span>
+                                </article>
+                            </div>
+                            <div class="dash-work__list-fade" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dash-work__col" aria-labelledby="mapBlockTitle">
+                    <h2 class="dash-work__map-title" id="mapBlockTitle">작업위치</h2>
+                    <div class="dash-work__map-box">
+                        <div class="dash-work__legend-row">
+                            <span class="dash-work__legend">
+                                <img src="./assets/images/icon/ico-legend-install.svg" alt="" />
+                                설치
+                            </span>
+                            <span class="dash-work__legend">
+                                <img src="./assets/images/icon/ico-legend-inspect.svg" alt="" />
+                                점검
+                            </span>
+                            <span class="dash-work__legend">
+                                <img src="./assets/images/icon/ico-legend-fault.svg" alt="" />
+                                장애
+                            </span>
+                        </div>
+                        <div class="dash-work__map-placeholder">지도 영역</div>
+                        <div class="dash-work__map-markers">
+                            <span class="dash-work__marker dash-work__marker--install dash-work__marker--invert">
+                                <img src="./assets/images/icon/ico-location-install.svg" alt="" />
+                            </span>
+                            <span class="dash-work__marker dash-work__marker--inspect dash-work__marker--invert">
+                                <img src="./assets/images/icon/ico-location-inspect.svg" alt="" />
+                            </span>
+                            <span class="dash-work__marker dash-work__marker--fault dash-work__marker--invert">
+                                <img src="./assets/images/icon/ico-location-fault.svg" alt="" />
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
